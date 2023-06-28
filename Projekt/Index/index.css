@@ -8,5 +8,55 @@ body{
     width: 100%;
     height:100vh;
     background-color: yellow;
+    display: flex;
 }
+
+#blogDiv{
+    flex-basis: 70%;
+    height: 100%;
+    background-color: red;
+}
+
+aside{
+    flex-basis: 30%;
+    height: 100%;
+    background-color: pink;
+}
+
+article{
+    display:flex;
+    width: 60%;
+    margin:auto;
+}
+article > img{
+    width: 200px;
+    height: 150px;
+}
+.articleTextDiv{
+    flex-basis: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 5px;
+}
+h2{
+    font-size: 20px;
+    margin:0px;
+    margin-bottom: auto;
+}
+.articleSubTextP{
+    font-size: 15px;
+    font-weight: normal;
+    margin:0px;
+}
+
+.articleFooterDiv{
+    display: flex;
+    margin-top: auto;
+}
+
+.articleFooterDiv > p{
+    margin:0px;
+}
+
 
