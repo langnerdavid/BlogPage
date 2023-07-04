@@ -26,7 +26,11 @@ aside{
 article{
     display:flex;
     width: 60%;
+    background-color: gray;
+    padding: 5px;
+    border-radius:5px;
     margin:auto;
+    margin-top: 20px;
 }
 article > img{
     width: 200px;
@@ -55,8 +59,20 @@ h2{
     margin-top: auto;
 }
 
-.articleFooterDiv > p{
+.articlePublishingDate{
     margin:0px;
+    margin-right: 10px;
 }
 
+.articlePublisher{
+    margin:0px;
+    margin-left: 10px;
+}
 
+.centeredLine{
+    display: block;
+    width: 10px;
+    height: 1px;
+    background-color: black;
+    margin-top: 10px;
+}

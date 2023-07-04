@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    display: flex;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+  
+  #mainContentRegister {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100vw;
+  }
+  
+  .RegisterForm {
+    width: 350px;
+    padding: 40px;
+    background: #f0f0f0;
+    border-radius: 10px;
+  }
+  
+  .RegisterForm input[type="text"],
+  .RegisterForm input[type="password"],
+  .RegisterForm input[type="displayname"],
+  .RegisterForm textarea[name="description"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .RegisterForm textarea[name="description"] {
+    resize: vertical;
+  }
+  
+  .RegisterForm input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background: #4CAF50;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .RegisterForm input[type="submit"]:hover {
+    background: #45a049;
+  }
+  
