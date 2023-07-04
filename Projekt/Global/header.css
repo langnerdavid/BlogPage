@@ -3,8 +3,9 @@ header {
     height: 100px;
     background-color: blue;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 #logoDiv {
@@ -15,7 +16,12 @@ header {
 }
 
 #navBar {
-    margin-right: 6%;
+    margin-left: 10px;
+    position: absolute;
+    left:0px;
+    display: flex;
+    align-items: flex-start;
+
 }
 
 #navBar>ul {
@@ -25,8 +31,49 @@ header {
     overflow: hidden;
 }
 
-#navBar>ul>li {
+#navBar>ul>li, #navBar>ul>button {
     float: left;
     background-color: white;
     margin: 8px;
 }
+#searchWrapperDiv{
+    position: absolute;
+    right: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#searchButton{
+    border-radius: 0px;
+    border:none;
+    height: 40px;
+    width: 40px;
+    margin: 8px;
+    text-align:center;
+    display:flex;
+    justify-content: center;
+    margin-left:3px;
+    margin-right: 10px; 
+}
+
+#searchIcon{
+    margin:auto;
+    font-size: 15px;
+}
+
+#searchInput{
+    height: 40px;
+    padding: 0px;
+    margin: 0px;
+    border:none;
+    width:0px;
+}
+.searchInputAnimation{
+    animation: searchBarAnimation 0.4s forwards;
+}
+
+@keyframes searchBarAnimation {
+    from {width: 0px;}
+    to {width: 150px;}
+  }

@@ -17,9 +17,6 @@ body{
     background-color: red;
 }
 
-#articleWrapper{
-}
-
 aside{
     flex-basis: 30%;
     height: 100%;
