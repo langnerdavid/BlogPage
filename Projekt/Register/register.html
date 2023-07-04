@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Index/index.css">
     <link rel="stylesheet" href="../Global/header.css">
     <link rel="stylesheet" href="../Global/footer.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="register.css">
     <title>Document</title>
 </head>
 <body>
@@ -26,22 +26,22 @@
             </ul>
         </nav>
     </header>
-    <div id="mainContentDiv">
-        <div id="blogDiv">
-            <article>
-                <img src="https://images4.alphacoders.com/115/thumb-1920-115716.jpg" alt="Bild">
-                <div class ="articleTextDiv">
-                    <h2>Lorem, ipsum dolor sit amet consectetur</h2>
-                        <p class="articleSubTextP">Lorem ipsum dolor sit amet consectetur adipisicing elit. facilis illo, vitae aliquid.</p>
-                        <div class="articleFooterDiv">
-                            <p class="articlePublishingDate">Jun24</p>
-                            <p class="articleGenre">Landscape</p>
-                        </div>
-                </div>
-            </article>
-        </div>
-        <aside>
-        </aside>
+    <div id="mainContentRegister">
+        <form class="RegisterForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <label for="displayname">Display Name:</label>
+            <input type="text" id="displayname" name="displayname" required>
+            <br>
+            <label for="Description">Description:</label>
+            <input type="text" id="description" name="description">
+            <br>
+            <input type="submit" value="Register">
+        </form>
     </div>
     <footer>
     </footer>
