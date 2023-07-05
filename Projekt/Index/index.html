@@ -16,16 +16,17 @@
 <body>
     <header id="header">
         <nav id = "navBar">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="../Profile/profile.html">Profile</a></li>
-                <li><a href="../Login/login.html">Login</a></li>
-                <li><a href="../Register/register.html">Register</a></li>
-            </ul>
+            <button id="signInButton" class ="navButton">Sign In</button>
+            <button id="registerButton" class ="navButton">Register</button>
+            <button id="profileButton" ><i id="profileIcon" class="fa fa-user"></i></button>
+            <div id="profileToggleDiv" class = "hidden">
+                <p>Profile</p>
+                <p>Log Out</p>
+            </div>
         </nav>
         <div id = "logoDiv">Logo</div>
         <div id="searchWrapperDiv">
-            <input id="searchInput" type="text">
+            <input id="searchInput" type="text" class = "searchInputNarrow">
             <button id="searchButton"><i id="searchIcon" class="fa fa-search"></i></button>
         </div>
     </header>

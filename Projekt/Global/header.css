@@ -24,17 +24,44 @@ header {
 
 }
 
-#navBar>ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  .navButton {
+      width: 100px;
+      padding: 10px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin:5px;
+  }
+  .navButton:hover {
+      background: #45a049;
+  }
+  #profileButton{
+    background-color: transparent;
+    border:none;
+  }
+  #profileIcon{
+    font-size: 40px;
+    color: white;
+  }
+  .hidden{
+    display: none;
+  }
+#profileToggleDiv{
+    background-color:white;
+    width: 75px;
+    position: absolute;
+    left:0px;
+    top: 40px;
 }
-
-#navBar>ul>li, #navBar>ul>button {
-    float: left;
-    background-color: white;
-    margin: 8px;
+#profileToggleDiv > p{
+    line-height: 270%;
+    margin:0px;
+    padding-left: 10px;
+}
+#profileToggleDiv>p:hover {
+    background-color: rgb(206, 205, 205);
 }
 #searchWrapperDiv{
     position: absolute;
@@ -67,13 +94,22 @@ header {
     padding: 0px;
     margin: 0px;
     border:none;
-    width:0px;
+}
+.searchInputNarrow {
+    width: 0px;
+}
+.searchInputExtended{
+    width: 150px;
 }
 .searchInputAnimation{
     animation: searchBarAnimation 0.4s forwards;
 }
 
+.searchInputAnimationRev{
+    animation: searchBarAnimation 0.4s forwards;
+    animation-direction: reverse;
+}
 @keyframes searchBarAnimation {
     from {width: 0px;}
     to {width: 150px;}
-  }
+}
