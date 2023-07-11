@@ -7,7 +7,6 @@ const profileToggleDiv = document.getElementById('profile-toggle-div');
 let isSearchInputOpen = false;
 let isUserSignedIn = false; //statischer Input, ob User angemeldet ist
 
-
 searchButton.addEventListener('click', addAnimation);
 
 if(isUserSignedIn){
