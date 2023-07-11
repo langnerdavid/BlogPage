@@ -102,11 +102,11 @@ header {
     width: 150px;
 }
 .search-input-animation{
-    animation: searchBarAnimation 0.4s forwards;
+    animation: search-bar-animation  0.4s forwards;
 }
 
 .search-input-animation-rev{
-    animation: searchBarAnimation 0.4s forwards;
+    animation: search-bar-animation  0.4s forwards;
     animation-direction: reverse;
 }
 @keyframes search-bar-animation {
