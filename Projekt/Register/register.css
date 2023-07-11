@@ -8,7 +8,7 @@
     flex-wrap: wrap;
   }
   
-  #mainContentRegister {
+  #main-content-register {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,17 +16,17 @@
     width: 100vw;
   }
   
-  .RegisterForm {
+  .register-form {
     width: 350px;
     padding: 40px;
     background: #f0f0f0;
     border-radius: 10px;
   }
   
-  .RegisterForm input[type="text"],
-  .RegisterForm input[type="password"],
-  .RegisterForm input[type="displayname"],
-  .RegisterForm textarea[name="description"] {
+  .register-form input[type="text"],
+  .register-form input[type="password"],
+  .register-form input[type="displayname"],
+  .register-form textarea[name="description"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -34,11 +34,11 @@
     border-radius: 3px;
   }
   
-  .RegisterForm textarea[name="description"] {
+  .register-form textarea[name="description"] {
     resize: vertical;
   }
   
-  .RegisterForm input[type="submit"] {
+  .register-form input[type="submit"] {
     width: 100%;
     padding: 10px;
     background: #4CAF50;
@@ -48,7 +48,7 @@
     cursor: pointer;
   }
   
-  .RegisterForm input[type="submit"]:hover {
+  .register-form input[type="submit"]:hover {
     background: #45a049;
   }
   

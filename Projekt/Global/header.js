@@ -1,9 +1,9 @@
-const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton');
-const signInButton = document.getElementById('signInButton');
-const registerButton = document.getElementById('registerButton');
-const profileButton = document.getElementById('profileButton');
-const profileToggleDiv = document.getElementById('profileToggleDiv');
+const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById('search-button');
+const signInButton = document.getElementById('sign-in-button');
+const registerButton = document.getElementById('register-button');
+const profileButton = document.getElementById('profile-button');
+const profileToggleDiv = document.getElementById('profile-toggle-div');
 let isSearchInputOpen = false;
 let isUserSignedIn = false; //statischer Input, ob User angemeldet ist
 
@@ -23,12 +23,12 @@ function addAnimation(){
     console.log("function");
     event.stopPropagation();
     if(!isSearchInputOpen){
-        searchInput.classList.remove('searchInputNarrow');
-        searchInput.classList.add('searchInputAnimation');
+        searchInput.classList.remove('search-input-narrow');
+        searchInput.classList.add('search-input-animation');
         searchInput.focus();
         setTimeout(() => {
-            searchInput.classList.remove('searchInputAnimation');
-            searchInput.classList.add('searchInputExtended');
+            searchInput.classList.remove('search-input-animation');
+            searchInput.classList.add('search-input-extended');
             searchInput.addEventListener('blur', addAnimation);
             }, 400);
         isSearchInputOpen = true;
@@ -36,12 +36,12 @@ function addAnimation(){
         if(searchInput.value){
             search();
         }else{
-            searchInput.classList.remove('searchInputExtended');
-            searchInput.classList.add('searchInputAnimationRev');
+            searchInput.classList.remove('search-input-extended');
+            searchInput.classList.add('search-input-animation-rev');
             searchInput.blur();
             setTimeout(() => {
-                searchInput.classList.remove('searchInputAnimationRev');
-                searchInput.classList.add('searchInputNarrow');
+                searchInput.classList.remove('search-input-animation-rev');
+                searchInput.classList.add('search-input-narrow');
             }, 400);
             isSearchInputOpen = false;
         }

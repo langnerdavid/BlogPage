@@ -4,14 +4,14 @@ body{
     flex-wrap: wrap;
 }
 
-#mainContentDiv{
+#main-content-div{
     width: 100%;
     height:100vh;
     background-color: yellow;
     display: flex;
 }
 
-#blogDiv{
+#blog-div{
     flex-basis: 70%;
     height: 100%;
     background-color: red;
@@ -36,7 +36,7 @@ article > img{
     width: 200px;
     height: 150px;
 }
-.articleTextDiv{
+.article-text-div{
     flex-basis: 65%;
     display: flex;
     flex-direction: column;
@@ -48,28 +48,28 @@ h2{
     margin:0px;
     margin-bottom: auto;
 }
-.articleSubTextP{
+.article-sub-text-p{
     font-size: 15px;
     font-weight: normal;
     margin:0px;
 }
 
-.articleFooterDiv{
+.article-footer-div{
     display: flex;
     margin-top: auto;
 }
 
-.articlePublishingDate{
+.article-publishing-date{
     margin:0px;
     margin-right: 10px;
 }
 
-.articlePublisher{
+.article-publisher{
     margin:0px;
     margin-left: 10px;
 }
 
-.centeredLine{
+.centered-line{
     display: block;
     width: 10px;
     height: 1px;

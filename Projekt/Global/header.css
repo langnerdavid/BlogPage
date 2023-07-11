@@ -8,14 +8,14 @@ header {
     position: relative;
 }
 
-#logoDiv {
+#logo-div {
     width: 100px;
     Height: 60px;
     background-color: white;
     margin-left: 10%
 }
 
-#navBar {
+#nav-bar {
     margin-left: 10px;
     position: absolute;
     left:0px;
@@ -24,7 +24,7 @@ header {
 
 }
 
-  .navButton {
+  .nav-button {
       width: 100px;
       padding: 10px;
       background: #4CAF50;
@@ -34,36 +34,36 @@ header {
       cursor: pointer;
       margin:5px;
   }
-  .navButton:hover {
+  .nav-button:hover {
       background: #45a049;
   }
-  #profileButton{
+  #profile-button{
     background-color: transparent;
     border:none;
   }
-  #profileIcon{
+  #profile-icon{
     font-size: 40px;
     color: white;
   }
   .hidden{
     display: none;
   }
-#profileToggleDiv{
+#profile-toggle-div{
     background-color:white;
     width: 75px;
     position: absolute;
     left:0px;
     top: 40px;
 }
-#profileToggleDiv > p{
+#profile-toggle-div > p{
     line-height: 270%;
     margin:0px;
     padding-left: 10px;
 }
-#profileToggleDiv>p:hover {
+#profile-toggle-div>p:hover {
     background-color: rgb(206, 205, 205);
 }
-#searchWrapperDiv{
+#search-wrapper-div{
     position: absolute;
     right: 0px;
     display: flex;
@@ -71,7 +71,7 @@ header {
     align-items: center;
 }
 
-#searchButton{
+#search-button{
     border-radius: 0px;
     border:none;
     height: 40px;
@@ -84,32 +84,32 @@ header {
     margin-right: 10px; 
 }
 
-#searchIcon{
+#search-icon{
     margin:auto;
     font-size: 15px;
 }
 
-#searchInput{
+#search-input{
     height: 40px;
     padding: 0px;
     margin: 0px;
     border:none;
 }
-.searchInputNarrow {
+.search-input-narrow {
     width: 0px;
 }
-.searchInputExtended{
+.search-input-extended{
     width: 150px;
 }
-.searchInputAnimation{
+.search-input-animation{
     animation: searchBarAnimation 0.4s forwards;
 }
 
-.searchInputAnimationRev{
+.search-input-animation-rev{
     animation: searchBarAnimation 0.4s forwards;
     animation-direction: reverse;
 }
-@keyframes searchBarAnimation {
+@keyframes search-bar-animation {
     from {width: 0px;}
     to {width: 150px;}
 }
