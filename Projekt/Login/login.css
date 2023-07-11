@@ -8,7 +8,7 @@ body{
     flex-wrap: wrap;
 }
 
-#mainContentLogin {
+#main-content-login {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,15 +16,15 @@ body{
     width: 1000vw;
 }
 
-.loginForm {
+.login-form {
     width: 350px;
     padding: 40px;
     background: #f0f0f0;
     border-radius: 10px;
 }
 
-.loginForm input[type="text"],
-.loginForm input[type="password"] {
+.login-form input[type="text"],
+.login-form input[type="password"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -32,7 +32,7 @@ body{
     border-radius: 3px;
 }
 
-.loginForm input[type="submit"] {
+.login-form input[type="submit"] {
     width: 100%;
     padding: 10px;
     background: #4CAF50;
@@ -42,6 +42,6 @@ body{
     cursor: pointer;
 }
 
-.loginForm input[type="submit"]:hover {
+.login-form input[type="submit"]:hover {
     background: #45a049;
 }
