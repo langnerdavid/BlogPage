@@ -7,13 +7,37 @@ body{
     margin:0px;
     flex-wrap: wrap;
 }
+.hiddern{
+    visibility: hidden;
+}
+#login-error-div{
+    width: 400px;
+    height: 70px;
+    border: 2px solid red;
+    position: absolute;
+    left:calc(50% - 200px);
+    border-radius: 10px;
+    top: 160px;
+    padding-left: 10px;
+    padding-top:10px;
+
+}
+#login-error-div > h2{
+    color: red;
+    font-size: 20px;
+    margin:0px;
+}
+#login-error-div > p{
+    margin:0px;
+    margin-top: 5px;
+}
 
 #main-content-login {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80vh;
-    width: 1000vw;
+    width: 100vw;
 }
 
 .login-form {
@@ -45,3 +69,28 @@ body{
 .login-form input[type="submit"]:hover {
     background: #45a049;
 }
+
+.password-input-animation{
+    animation-name: shake, glow-red;
+    animation-duration: 0.7s, 1.0s;
+    animation-iteration-count: 1, 1;
+}
+
+@keyframes shake {
+    0%, 20%, 40%, 60%, 80% {
+      transform: translateX(4px);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translateX(-4px);
+    }
+  }
+  
+  @keyframes glow-red {
+    50% {
+      border-color: indianred;
+    }
+  }

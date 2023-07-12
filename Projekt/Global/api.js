@@ -1,39 +1,8 @@
 const apiKey = "fmkmna4j";
+let groupKey = apiKey;
 
-const user={
-    username: "Test",
-    password: "Test12",
-    profile:{
-        displayName: "Test",
-        description: "Test"
-    }
-}
+console.log(getUsers());
 
-let authHeader = apiKey;
-postUsers();
-loginUser('Test', 'Test12');
-init();
-
-
-async function init() {
-    try {
-        const response = await fetch(
-            'https://lukas.rip/api/users',
-            {
-                method: 'GET',
-                headers: {
-                    'group-key': authHeader
-                },
-            }
-        );
-        const data = await response.text();
-        console.log(data);
-        
-    } catch (error) {
-        console.error(error);
-        return;
-    }
-}
 
 async function getUsers() {
     try {
@@ -42,8 +11,8 @@ async function getUsers() {
             {
                 method: 'GET',
                 headers: {
-                    'group-key': authHeader
-                },
+                    'group-key': groupKey
+                }
             }
         );
         const data = await response.text();
@@ -62,8 +31,8 @@ async function getUser(user) {
             {
                 method: 'GET',
                 headers: {
-                    'group-key': authHeader
-                },
+                    'group-key': groupKey
+                }
             }
         );
         const data = await response.text();
@@ -82,8 +51,8 @@ async function getUserPosts(user) {
             {
                 method: 'GET',
                 headers: {
-                    'group-key': authHeader
-                },
+                    'group-key': groupKey
+                }
             }
         );
         const data = await response.text();
@@ -96,30 +65,35 @@ async function getUserPosts(user) {
 }
 
 async function loginUser(user, pswd) {
-    let credentials = user + ':' +pswd;
+    //let credentials = user + ':' +pswd;
+    let credentials = 'lukas:abc123';
     let encoded = btoa(credentials);
-    let OAuthHeader = `Basic ${encoded}`;
+    let authHeader = `Basic ${encoded}`;
+    console.log(encoded);
     try {
         const response = await fetch(
             'https://lukas.rip/api/users/'+user+'/posts',
             {
                 method: 'GET',
                 headers: {
-                    'Authorization': OAuthHeader,
-                    'group-key': authHeader
-                },
+                    'Authorization': authHeader,
+                    'group-key': groupKey
+                }
             }
         );
         const data = await response.text();
-        console.log(data);
+        console.log(response);
+        return response.ok;
         
     } catch (error) {
         console.error(error);
-        return;
+        return response.status;
     }
 }
 
-async function postUsers() {
+async function postUsers(user) {
+    console.log("postUser");
+    console.log(user);
     try {
         const response = await fetch(
             'https://lukas.rip/api/users',
@@ -127,7 +101,7 @@ async function postUsers() {
                 method: 'POST',
                 headers: {
                     'Content-Type':'application/json',
-                    'group-key': authHeader
+                    'group-key': groupKey
                 },
 
                 body: JSON.stringify(user)
@@ -142,4 +116,148 @@ async function postUsers() {
     }
 }
 
-window.init = init;
+async function patchUsers(user) {
+    try {
+        const response = await fetch(
+            'https://lukas.rip/api/users/' + user.username,
+            {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type':'application/json',
+                    'group-key': groupKey
+                },
+
+                body: JSON.stringify(user)
+            }
+        );
+        const data = await response.text();
+        console.log(data);
+        
+    } catch (error) {
+        console.error(error);
+        return;
+    }
+}
+
+async function deleteUsers(username) {
+    try {
+        const response = await fetch(
+            'https://lukas.rip/api/users/' + username,
+            {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type':'application/json',
+                    'group-key': groupKey
+                }
+            }
+        );
+        const data = await response.text();
+        console.log(data);
+        
+    } catch (error) {
+        console.error(error);
+        return;
+    }
+}
+
+async function getPosts() {
+    try {
+        const response = await fetch(
+            'https://lukas.rip/api/posts',
+            {
+                method: 'GET',
+                headers: {
+                    'group-key': groupKey
+                }
+            }
+        );
+        const data = await response.text();
+        console.log(data);
+        
+    } catch (error) {
+        console.error(error);
+        return;
+    }
+}
+
+async function getOnePost(postid) {
+    try {
+        const response = await fetch(
+            'https://lukas.rip/api/posts/'+postid,
+            {
+                method: 'GET',
+                headers: {
+                    'group-key': groupKey
+                }
+            }
+        );
+        const data = await response.text();
+        console.log(data);
+        
+    } catch (error) {
+        console.error(error);
+        return;
+    }
+}
+
+async function getOnePost(post) {
+    try {
+        const response = await fetch(
+            'https://lukas.rip/api/posts',
+            {
+                method: 'POST',
+                headers: {
+                    'group-key': groupKey
+                },
+                body: JSON.stringify(post)
+            }
+        );
+        const data = await response.text();
+        console.log(data);
+        
+    } catch (error) {
+        console.error(error);
+        return;
+    }
+}
+
+async function putPost(post) {
+    try {
+        const response = await fetch(
+            'https://lukas.rip/api/posts/'+post.postid,
+            {
+                method: 'PUT',
+                headers: {  
+                    'group-key': groupKey
+                },
+                body: JSON.stringify(post)
+            }
+        );
+        const data = await response.text();
+        console.log(data);
+        
+    } catch (error) {
+        console.error(error);
+        return;
+    }
+}
+
+async function deletePost(postID) {
+    try {
+        const response = await fetch(
+            'https://lukas.rip/api/posts/'+postID,
+            {
+                method: 'DELETE',
+                headers: {
+                    'group-key': groupKey
+                }
+            }
+        );
+        const data = await response.text();
+        console.log(data);
+        
+    } catch (error) {
+        console.error(error);
+        return;
+    }
+}

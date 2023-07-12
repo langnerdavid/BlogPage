@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Global/header.css">
     <link rel="stylesheet" href="../Global/footer.css">
-    <link rel="stylesheet"
-        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="login.css">
+    <script src="login.js" defer></script>
+    <script src="../Global/api.js" defer></script>
     <title>Document</title>
 </head>
 <body>
@@ -26,13 +26,17 @@
             </ul>
         </nav>
     </header>
+    <div id="login-error-div" class="hidden">
+        <h2>Es gab ein Problem beim Login</h2>
+        <p>Username oder Password sind falsch</p>
+    </div>
     <div id="main-content-login">
-        <form class="login-form">
+        <form id="login-form" class="login-form">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <br>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input id="password-input" type="password" id="password" name="password" required>
             <br>
             <input type="submit" value="Login">
         </form>
