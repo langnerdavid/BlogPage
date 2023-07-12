@@ -3,6 +3,16 @@ let groupKey = apiKey;
 
 console.log(getUsers());
 
+/*const testUser ={
+    username: "testUser",
+    password: "testUser12",
+    profile:{
+        displayName: "testUser",
+        description: "lorem Ipsum"
+    }
+}
+
+loginUser("testUser", "testUser12");*/
 
 async function getUsers() {
     try {
@@ -65,14 +75,11 @@ async function getUserPosts(user) {
 }
 
 async function loginUser(user, pswd) {
-    //let credentials = user + ':' +pswd;
-    let credentials = 'lukas:abc123';
-    let encoded = btoa(credentials);
+    let encoded = btoa(`${user}:${pswd}`);
     let authHeader = `Basic ${encoded}`;
-    console.log(encoded);
     try {
         const response = await fetch(
-            'https://lukas.rip/api/users/'+user+'/posts',
+            'https://lukas.rip/api/users/login',
             {
                 method: 'GET',
                 headers: {
@@ -81,8 +88,6 @@ async function loginUser(user, pswd) {
                 }
             }
         );
-        const data = await response.text();
-        console.log(response);
         return response.ok;
         
     } catch (error) {
