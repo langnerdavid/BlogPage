@@ -7,8 +7,7 @@ const passwordInput = formInputs[1];
 
 (document.getElementById('login-form')).addEventListener('submit', (event)=> {
     event.preventDefault();
-    loginErrorDiv.classList.add('hidden');
-    passwordInput.classList.remove('password-input-animation');
+    loginErrorRemove();
     username = usernameInput.value;
     pswd = passwordInput.value;
     console.log(loginUser(username, pswd));
@@ -16,10 +15,9 @@ const passwordInput = formInputs[1];
     console.log(returnLogin);
     loginUser(username, pswd).then((res)=>{
         if(res){
-            alert("eingelogt");
+            loginSuccesful();
         }else{
-            passwordInput.classList.add('password-input-animation');
-            loginErrorDiv.classList.remove('hidden');
+            loginError();
         }
     }, (err)=>{
         alert("falsches pswd");
@@ -28,3 +26,19 @@ const passwordInput = formInputs[1];
 
 
 });
+
+
+function loginError(){
+    passwordInput.classList.add('password-input-animation');
+    loginErrorDiv.classList.remove('hidden');
+}
+
+function loginErrorRemove(){
+    loginErrorDiv.classList.add('hidden');
+    passwordInput.classList.remove('password-input-animation');
+}
+
+function loginSuccesful(){
+    sessionStorage.setItem('isUserSignedIn', 'true');
+    window.open('../index/index.html', '_self');
+}
