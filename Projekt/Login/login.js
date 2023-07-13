@@ -1,8 +1,10 @@
 const formInputs = (document.getElementById('login-form')).getElementsByTagName('input');
 const passwordLogin = document.getElementById('password-input');
 const loginErrorDiv = document.getElementById('login-error-div');
+const eyeShowPassword = document.getElementById('eye-show-password');
 const usernameInput = formInputs[0];
 const passwordInput = formInputs[1];
+const rememberMeInput = formInputs[2];
 
 
 (document.getElementById('login-form')).addEventListener('submit', (event)=> {
@@ -27,6 +29,11 @@ const passwordInput = formInputs[1];
 
 });
 
+eyeShowPassword.addEventListener("click", ()=>{
+  eyeShowPassword.classList.toggle("fa-eye-slash")
+  const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+  passwordInput.setAttribute("type", type)
+})
 
 function loginError(){
     passwordInput.classList.add('password-input-animation');
@@ -39,6 +46,10 @@ function loginErrorRemove(){
 }
 
 function loginSuccesful(){
-    sessionStorage.setItem('isUserSignedIn', 'true');
+    if(rememberMeInput.value){
+        localStorage.setItem('isUserSignedIn', 'true');
+    }else{
+        sessionStorage.setItem('isUserSignedIn', 'true');
+    }
     window.open('../index/index.html', '_self');
 }

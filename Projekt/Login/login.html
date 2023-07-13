@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../Global/header.css">
     <link rel="stylesheet" href="../Global/footer.css">
     <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="login.js" defer></script>
     <script src="../Global/api.js" defer></script>
     <title>Document</title>
@@ -35,9 +36,16 @@
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <br>
-            <label for="password">Password:</label>
-            <input id="password-input" type="password" id="password" name="password" required>
+            <div id="password-container">
+                <label for="password">Password:</label>
+                <input id="password-input" type="password" id="password" name="password" required>
+                <i class="fa-solid fa-eye" id="eye-show-password"></i>
+            </div>
             <br>
+            <div id="remember-me-container">
+                <input id="remember-login-checkbox" type="checkbox" name="remember-me">
+                <label for="remember-me">Angemeldet bleiben</label>
+            </div>
             <input type="submit" value="Login">
         </form>
     </div>
