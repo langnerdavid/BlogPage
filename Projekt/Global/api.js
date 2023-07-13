@@ -1,7 +1,7 @@
 const apiKey = "fmkmna4j";
 let groupKey = apiKey;
 
-console.log(getUsers());
+//console.log(getUsers());
 
 /*const testUser ={
     username: "testUser",
@@ -13,6 +13,37 @@ console.log(getUsers());
 }
 
 loginUser("testUser", "testUser12");*/
+const encodeTest = btoa('testUser:testUser12');
+const authHeaderTest = `Basic ${encodeTest}`;
+
+
+let sectionTitle1 = "This is 1. test section";
+
+const textContent = {
+    __type: "text",
+    data: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati adipisci saepe neque atque labore repellat asperiores voluptate corrupti consectetur ab! At, culpa quas optio quam ducimus libero repudiandae facere minima?",
+           
+}
+const imageContent = {
+    __type: "img",
+    url: "https://images4.alphacoders.com/115/thumb-1920-115716.jpg",
+    caption: "Ein Test Bild"
+}
+const objSection1 = {
+    sectionTitle: sectionTitle1,
+    content: [textContent, imageContent]
+}
+const testPost ={
+    title: "This is a test post",
+    content: [textContent, imageContent],
+    sections: [objSection1]
+}
+
+
+
+//postPost(testPost);
+//console.log(getOnePost('c461c844-890e-48f6-b7f8-9facc71f81cc'));
+
 
 async function getUsers() {
     try {
@@ -177,7 +208,8 @@ async function getPosts() {
             }
         );
         const data = await response.text();
-        console.log(data);
+        const jsonData = JSON.parse(data);
+        return jsonData;
         
     } catch (error) {
         console.error(error);
@@ -192,6 +224,7 @@ async function getOnePost(postid) {
             {
                 method: 'GET',
                 headers: {
+                    'Content-Type': 'application/json',
                     'group-key': groupKey
                 }
             }
@@ -205,13 +238,15 @@ async function getOnePost(postid) {
     }
 }
 
-async function getOnePost(post) {
+async function postPost(post) {
     try {
         const response = await fetch(
             'https://lukas.rip/api/posts',
             {
                 method: 'POST',
                 headers: {
+                    'Authorization': authHeaderTest,
+                    'Content-Type': 'application/json',
                     'group-key': groupKey
                 },
                 body: JSON.stringify(post)
