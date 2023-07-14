@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="profile.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="profile.js" defer></script>
     <title>Document</title>
 </head>
 <body>
@@ -43,24 +44,26 @@
         </div>
         <aside>
             <div class="wrapper">
-                <div class="left">
-                    <img src="https://img.freepik.com/freie-ikonen/benutzer_318-159711.jpg" alt="user" width="100">
-                    <h4>displayname</h4>
-                    <p>username</p>
-                </div>
-                <div class="right">
-                    <div class="info">
-                        <h3>Information</h3>
-                        <div class="info_data">
-                            <div class="data">
-                                <h4>password</h4>
-                                <p>alex@gmail.com</p>
-                                <h4>Description</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. facilis illo, vitae aliquid.</p>
-                            </div>
-                        </div>
+                <div class="profile-card">
+                    <img id="avatar" src="https://img.freepik.com/freie-ikonen/benutzer_318-159711.jpg" alt="user" width="100">
+                    <div class="user-details">
+                        <h4 id="display-name">Displayname</h4>
+                        <h5 id="username">Username</h5>
+                        <br/>
                     </div>
                 </div>
+                <div class="info">
+                    <h3>Information</h3>
+                    <div class="info_data">
+                        <div class="data">
+                            <h4>Password</h4>
+                            <p id="password">123456789</p>
+                        </div>
+                        <div class="data">
+                            <h4>Description</h4>
+                            <p id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis illo, vitae aliquid.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </aside>
