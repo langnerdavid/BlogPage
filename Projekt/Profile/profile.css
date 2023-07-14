@@ -1,0 +1,81 @@
+html {
+    --primary-color: #01a9ac;
+    --secondary-color: #01dbdf;
+    --text-color: #353c4e;
+    --subtext-color: #919aa3;
+    --background-color: #f3f3f3;
+    --border-color: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+.wrapper {
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.wrapper img {
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-details {
+    text-align: center;
+}
+
+.user-details h4,
+.user-details h5 {
+    margin-bottom: 5px;
+}
+
+.info h3 {
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.info_data {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info_data .data {
+    width: 45%;
+}
+
+.info_data .data h4 {
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.info_data .data p {
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: var(--subtext-color);
+}
