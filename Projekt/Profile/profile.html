@@ -47,8 +47,8 @@
                 <div class="profile-card">
                     <img id="avatar" src="https://img.freepik.com/freie-ikonen/benutzer_318-159711.jpg" alt="user" width="100">
                     <div class="user-details">
-                        <h4 id="display-name">Displayname</h4>
-                        <h5 id="username">Username</h5>
+                        <h4 id="display-name" contenteditable="false">Displayname</h4>
+                        <h5 id="username" contenteditable="false">Username</h5>
                         <br/>
                     </div>
                 </div>
@@ -57,14 +57,15 @@
                     <div class="info_data">
                         <div class="data">
                             <h4>Password</h4>
-                            <p id="password">123456789</p>
+                            <p id="password" contenteditable="false">123456789</p>
                         </div>
                         <div class="data">
                             <h4>Description</h4>
-                            <p id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis illo, vitae aliquid.</p>
+                            <p id="description" contenteditable="false">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis illo, vitae aliquid.</p>
                         </div>
                     </div>
                 </div>
+                <button class="edit-button" onclick="toggleEdit()">Edit Fields</button>
             </div>
         </aside>
     </div>
