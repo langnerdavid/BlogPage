@@ -4,8 +4,8 @@ let groupKey = apiKey;
 //console.log(getUsers());
 
 /*const testUser ={
-    username: "testUser",
-    password: "testUser12",
+    username: "testUser", test
+    password: "testUser12",test12
     profile:{
         displayName: "testUser",
         description: "lorem Ipsum"

@@ -46,10 +46,6 @@ function loginErrorRemove(){
 }
 
 function loginSuccesful(){
-    if(rememberMeInput.value){
-        localStorage.setItem('isUserSignedIn', 'true');
-    }else{
-        sessionStorage.setItem('isUserSignedIn', 'true');
-    }
+    sessionStorage.setItem('isUserSignedIn', 'true');
     window.open('../index/index.html', '_self');
 }
