@@ -10,8 +10,8 @@
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="../Global/header.js" defer></script>
     <script src="../Global/api.js" defer></script>
+    <script src="../Global/header.js" defer></script>
     <script src="index.js" defer></script>
     <title>Document</title>
 </head>
@@ -22,7 +22,7 @@
             <button id="register-button" class ="nav-button">Register</button>
             <button id="profile-button" ><i id="profile-icon" class="fa fa-user"></i></button>
             <div id="profile-toggle-div" class = "hidden">
-                <button id="profile-button">Profile</button>
+                <button id="profile-button-link">Profile</button>
                 <button id="log-out-button">Log Out</button>
             </div>
         </nav>
@@ -34,6 +34,7 @@
     </header>
     <div id="main-content-div">
         <div id="blog-div">
+            <button id="new-article-button" class ="nav-button">New Article</button>
             <div id = "article-wrapper">
                 <article id="article-1" class="article">
                     <img src="https://images4.alphacoders.com/115/thumb-1920-115716.jpg" alt="Bild">
@@ -46,10 +47,7 @@
                                 <p class="article-publisher">Username</p>
                             </div>
                     </div>
-                </article>
-                
-                
-                
+                </article>   
             </div>
         </div>
         <aside>
