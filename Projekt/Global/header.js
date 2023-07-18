@@ -22,10 +22,8 @@ function checkUserSignedIn(){
     isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
     console.log(isUserSignedIn);
     userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
-    console.log(userDataLocalStorage.rememberMe);
-    console.log(isUserSignedIn);
     
-    if(userDataLocalStorage.rememberMe && isUserSignedIn==='false'){
+    if(userDataLocalStorage?.rememberMe && isUserSignedIn==='false'){
         console.log("yes");
         loginUser(userDataLocalStorage.username, userDataLocalStorage.password, userDataLocalStorage.rememberMe).then(()=>{testSignedIn();sessionStorage.setItem('isUserSignedIn', true);});
     }
