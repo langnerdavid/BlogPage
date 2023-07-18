@@ -78,6 +78,7 @@ async function getUser(user) {
         );
         const data = await response.text();
         console.log(data);
+        return JSON.parse(data);
         
     } catch (error) {
         console.error(error);
@@ -111,7 +112,11 @@ async function loginUser(user, pswd, rememberMe) {
     let userData ={
         username: user,
         password: pswd,
-        rememberMe: rememberMe
+        rememberMe: rememberMe,
+        profile:{
+            displayName:"",
+            description:""
+        }
     }
     try {
         const response = await fetch(
@@ -157,7 +162,7 @@ async function postUsers(user) {
     }
 }
 
-async function patchUsers(user) {
+async function patchUser(user, authHeader) {
     try {
         const response = await fetch(
             'https://lukas.rip/api/users/' + user.username,
@@ -165,6 +170,7 @@ async function patchUsers(user) {
                 method: 'PATCH',
                 headers: {
                     'Content-Type':'application/json',
+                    'Authorization': authHeader,
                     'group-key': groupKey
                 },
 
@@ -173,6 +179,7 @@ async function patchUsers(user) {
         );
         const data = await response.text();
         console.log(data);
+        return;
         
     } catch (error) {
         console.error(error);

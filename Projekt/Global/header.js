@@ -11,6 +11,7 @@ let isSearchInputOpen = false;
 //let isUserSignedIn = false; //statischer Input, ob User angemeldet ist
 let isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
 let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
+console.log(userDataLocalStorage)
 
 searchButton.addEventListener('click', addAnimation);
 profileButtonLink.addEventListener('click', () =>{
@@ -21,11 +22,11 @@ checkUserSignedIn();
 function checkUserSignedIn(){
     isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
     console.log(isUserSignedIn);
-    userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
+    userDataLocalStorage = localStorage.getItem('userData');
     
     if(userDataLocalStorage?.rememberMe && (isUserSignedIn==='false' || isUserSignedIn==null)){
         console.log("yes");
-        loginUser(userDataLocalStorage.username, userDataLocalStorage.password, userDataLocalStorage.rememberMe).then(()=>{sessionStorage.setItem('isUserSignedIn', 'true');testSignedIn();});
+        loginUser(userDataLocalStorage.username, userDataLocalStorage.password, userDataLocalStorage.rememberMe).then(()=>{sessionStorage.setItem('isUserSignedIn', 'true'); testSignedIn();});
     }
     else{
         console.log(isUserSignedIn);
@@ -78,6 +79,7 @@ function logOut(){
 }
 
 function testSignedIn(){
+    isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
     if(isUserSignedIn==='true'){
         console.log("if true")
         profileButton.addEventListener('click', () =>{profileToggleDiv.classList.toggle('hidden');});

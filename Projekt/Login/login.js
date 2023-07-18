@@ -20,6 +20,9 @@ const rememberMeInput = formInputs[2];
         }else{
             loginError();
         }
+        getUser(username).then((res)=>{
+            console.log(res);
+        });
     }, (err)=>{
         alert("falsches pswd");
     });
