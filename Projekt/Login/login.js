@@ -6,24 +6,23 @@ const usernameInput = formInputs[0];
 const passwordInput = formInputs[1];
 const rememberMeInput = formInputs[2];
 
-
 (document.getElementById('login-form')).addEventListener('submit', (event)=> {
     event.preventDefault();
     loginErrorRemove();
-    username = usernameInput.value;
-    pswd = passwordInput.value;
-    console.log(loginUser(username, pswd));
-    let returnLogin = loginUser(username, pswd);
-    console.log(returnLogin);
-    loginUser(username, pswd).then((res)=>{
+    let username = usernameInput.value;
+    let pswd = passwordInput.value;
+    let rememberMe = rememberMeInput.checked;
+    console.log(rememberMe)
+    loginUser(username, pswd, rememberMe).then((res)=>{
+        console.log(res);
         if(res){
-            loginSuccesful();
+            loginSuccesful(res);
         }else{
             loginError();
         }
     }, (err)=>{
         alert("falsches pswd");
-    })
+    });
     //Hier muss noch die WEiterleitung nach erfolgreicher Registrierung/ Fehlermeldung hin
 
 
@@ -45,7 +44,10 @@ function loginErrorRemove(){
     passwordInput.classList.remove('password-input-animation');
 }
 
-function loginSuccesful(){
-    sessionStorage.setItem('isUserSignedIn', 'true');
+function loginSuccesful(res){
+    sessionStorage.setItem('isUserSignedIn', true);
+    localStorage.setItem('userData', JSON.stringify(res));
+    let json = JSON.parse(localStorage.getItem('userData'));
+    console.log(json.password);
     window.open('../index/index.html', '_self');
 }

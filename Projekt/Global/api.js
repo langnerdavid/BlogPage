@@ -105,9 +105,14 @@ async function getUserPosts(user) {
     }
 }
 
-async function loginUser(user, pswd) {
+async function loginUser(user, pswd, rememberMe) {
     let encoded = btoa(`${user}:${pswd}`);
     let authHeader = `Basic ${encoded}`;
+    let userData ={
+        username: user,
+        password: pswd,
+        rememberMe: rememberMe
+    }
     try {
         const response = await fetch(
             'https://lukas.rip/api/users/login',
@@ -119,11 +124,11 @@ async function loginUser(user, pswd) {
                 }
             }
         );
-        return response.ok;
+        return userData;
         
     } catch (error) {
         console.error(error);
-        return response.status;
+        return userData;
     }
 }
 

@@ -20,21 +20,14 @@ checkUserSignedIn();
 function checkUserSignedIn(){
     isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
     console.log(isUserSignedIn);
-    if(isUserSignedIn==='true'){
-        console.log("if true")
-        profileButton.addEventListener('click', () =>{profileToggleDiv.classList.toggle('hidden');});
-        logOutButton.addEventListener('click', logOut);
-        addNewArticle.addEventListener('click', () =>{window.open("../NewArticle/newArticle.html","_self");});
-        
-        signInButton.classList.add('hidden');
-        registerButton.classList.add('hidden');
-    }else{
-        console.log("if false");
-        signInButton.addEventListener('click', () =>{window.open("../Login/login.html","_self");});
-        registerButton.addEventListener('click', () =>{window.open("../Register/register.html","_self");});
-        profileButton.classList.add('hidden');
-        addNewArticle.classList.add('hidden');
-        
+    let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
+    console.log(userDataLocalStorage);
+    
+    if(userDataLocalStorage.rememberMe && !sessionStorage.getItem('isUserSignedIn')){
+        loginUser(userDataLocalStorage.username, userDataLocalStorage.password, userDataLocalStorage.rememberMe).then(()=>{testSignedIn();sessionStorage.setItem('isUserSignedIn', true);});
+    }
+    else{
+        testSignedIn();
     }
 }
 
@@ -74,4 +67,23 @@ function search(){
 function logOut(){
     sessionStorage.setItem('isUserSignedIn', 'false');
     window.open('index.html', '_self');
+}
+
+function testSignedIn(){
+    if(isUserSignedIn==='true'){
+        console.log("if true")
+        profileButton.addEventListener('click', () =>{profileToggleDiv.classList.toggle('hidden');});
+        logOutButton.addEventListener('click', logOut);
+        addNewArticle.addEventListener('click', () =>{window.open("../NewArticle/newArticle.html","_self");});
+        
+        signInButton.classList.add('hidden');
+        registerButton.classList.add('hidden');
+    }else{
+        console.log("if false");
+        signInButton.addEventListener('click', () =>{window.open("../Login/login.html","_self");});
+        registerButton.addEventListener('click', () =>{window.open("../Register/register.html","_self");});
+        profileButton.classList.add('hidden');
+        addNewArticle.classList.add('hidden');
+        
+    }
 }
