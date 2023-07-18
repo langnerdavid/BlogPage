@@ -34,7 +34,7 @@ article{
     width: 100%;
 }
 
-.publishing-details{
+#publishing-details{
     margin-top: 5px;
     margin-bottom: 20px;
     display: flex;

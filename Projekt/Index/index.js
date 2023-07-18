@@ -33,27 +33,3 @@ function setArticlepreview(i){
     articles[i].getElementsByClassName('article-sub-text-p')[0].innerHTML = content;  
     articles[i].getElementsByTagName('img')[0].src = contentImgaeUrl;    
 }
-
-function formatTimeSinceCreation(createdAt) {
-  const now = new Date();
-  const createdDate = new Date(createdAt);
-  const timeDiff = now - createdDate;
-
-  // Anzahl der vergangenen Minuten berechnen
-  const minutes = Math.floor(timeDiff / (1000 * 60));
-
-  if (minutes < 60) {
-    return 'Vor ' + minutes + (minutes === 1 ? ' Minute' : ' Minuten');
-  }
-
-  // Anzahl der vergangenen Stunden berechnen
-  const hours = Math.floor(timeDiff / (1000 * 60 * 60));
-
-  if (hours < 24) {
-    return 'Vor ' + hours + (hours === 1 ? ' Stunde' : ' Stunden');
-  }
-
-  // Anzahl der vergangenen Tage berechnen
-  const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-  return 'Vor ' + days + (days === 1 ? ' Tag' : ' Tage');
-}

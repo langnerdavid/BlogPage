@@ -4,14 +4,14 @@ let groupKey = apiKey;
 //console.log(getUsers());
 
 /*const testUser ={
-    username: "testUser", test
-    password: "testUser12",test12
+    username: "testUser1", 
+    password: "testUser12",
     profile:{
         displayName: "testUser",
         description: "lorem Ipsum"
     }
 }
-
+postUsers(testUser);
 loginUser("testUser", "testUser12");*/
 const encodeTest = btoa('testUser:testUser12');
 const authHeaderTest = `Basic ${encodeTest}`;
@@ -76,9 +76,14 @@ async function getUser(user) {
                 }
             }
         );
-        const data = await response.text();
+        let data = await response.json();
         console.log(data);
-        return JSON.parse(data);
+
+         if(response.ok){
+            return data;
+        }else{
+            return null;
+        }
         
     } catch (error) {
         console.error(error);
@@ -129,11 +134,15 @@ async function loginUser(user, pswd, rememberMe) {
                 }
             }
         );
-        return userData;
+        if(response.ok){
+            return userData;
+        }else{
+            return null;
+        }
         
     } catch (error) {
         console.error(error);
-        return userData;
+        return null;
     }
 }
 
@@ -187,7 +196,16 @@ async function patchUser(user, authHeader) {
     }
 }
 
-async function deleteUsers(username) {
+async function deleteUsers(username,authHeader) {
+    let userData ={
+        username: "",
+        password: "",
+        rememberMe: "false",
+        profile:{
+            displayName:"",
+            description:""
+        }
+    }
     try {
         const response = await fetch(
             'https://lukas.rip/api/users/' + username,
@@ -195,12 +213,12 @@ async function deleteUsers(username) {
                 method: 'DELETE',
                 headers: {
                     'Content-Type':'application/json',
+                    'Authorization': authHeader,
                     'group-key': groupKey
                 }
             }
         );
-        const data = await response.text();
-        console.log(data);
+        return userData;
         
     } catch (error) {
         console.error(error);

@@ -104,3 +104,13 @@ body {
     margin-bottom: 20px;
   }
   
+  .focused{
+    background-color: rgba(0, 255, 0, 0.4);
+    border-radius: 5px;
+  }
+
+  #delete-toggle-div{
+    width: 100px;
+    height: 80px;
+    background-color: red;
+  }
