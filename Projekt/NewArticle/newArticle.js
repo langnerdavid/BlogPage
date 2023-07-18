@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
       removeSectionButton.textContent = 'Remove Section';
       removeSectionButton.addEventListener('click', function() {
         sectionDiv.remove();
-        renumberSections();
+        sectionCount--;
       });
   
       sectionDiv.appendChild(sectionHeadingLabel);
