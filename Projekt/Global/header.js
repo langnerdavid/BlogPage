@@ -10,6 +10,7 @@ const addNewArticle = document.getElementById('new-article-button');
 let isSearchInputOpen = false;
 //let isUserSignedIn = false; //statischer Input, ob User angemeldet ist
 let isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
+let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
 
 searchButton.addEventListener('click', addAnimation);
 profileButtonLink.addEventListener('click', () =>{
@@ -20,13 +21,16 @@ checkUserSignedIn();
 function checkUserSignedIn(){
     isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
     console.log(isUserSignedIn);
-    let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
-    console.log(userDataLocalStorage);
+    userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
+    console.log(userDataLocalStorage.rememberMe);
+    console.log(isUserSignedIn);
     
-    if(userDataLocalStorage.rememberMe && !sessionStorage.getItem('isUserSignedIn')){
+    if(userDataLocalStorage.rememberMe && isUserSignedIn==='false'){
+        console.log("yes");
         loginUser(userDataLocalStorage.username, userDataLocalStorage.password, userDataLocalStorage.rememberMe).then(()=>{testSignedIn();sessionStorage.setItem('isUserSignedIn', true);});
     }
     else{
+        console.log(isUserSignedIn);
         testSignedIn();
     }
 }
@@ -65,7 +69,13 @@ function search(){
 }
 
 function logOut(){
+    let userData={
+        username: userDataLocalStorage.username,
+        password: userDataLocalStorage.password,
+        rememberMe: 'false'
+    }
     sessionStorage.setItem('isUserSignedIn', 'false');
+    localStorage.setItem('userData', JSON.stringify('userData'));
     window.open('index.html', '_self');
 }
 

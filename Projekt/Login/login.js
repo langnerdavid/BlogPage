@@ -37,6 +37,7 @@ eyeShowPassword.addEventListener("click", ()=>{
 function loginError(){
     passwordInput.classList.add('password-input-animation');
     loginErrorDiv.classList.remove('hidden');
+    sessionStorage.setItem('isUserSignedIn', false);
 }
 
 function loginErrorRemove(){
