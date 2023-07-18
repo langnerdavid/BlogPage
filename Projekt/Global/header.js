@@ -5,11 +5,15 @@ const registerButton = document.getElementById('register-button');
 const profileButton = document.getElementById('profile-button');
 const logOutButton = document.getElementById('log-out-button');
 const profileToggleDiv = document.getElementById('profile-toggle-div');
+const profileButtonLink = document.getElementById('profile-button-link');
 let isSearchInputOpen = false;
 //let isUserSignedIn = false; //statischer Input, ob User angemeldet ist
 let isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
 
 searchButton.addEventListener('click', addAnimation);
+profileButtonLink.addEventListener('click', () =>{
+    window.open('../profile/profile.html', '_self');
+});
 checkUserSignedIn();
 
 function checkUserSignedIn(){
