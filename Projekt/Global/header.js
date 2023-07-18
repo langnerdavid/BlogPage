@@ -6,6 +6,7 @@ const profileButton = document.getElementById('profile-button');
 const logOutButton = document.getElementById('log-out-button');
 const profileToggleDiv = document.getElementById('profile-toggle-div');
 const profileButtonLink = document.getElementById('profile-button-link');
+const addNewArticle = document.getElementById('new-article-button');
 let isSearchInputOpen = false;
 //let isUserSignedIn = false; //statischer Input, ob User angemeldet ist
 let isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
@@ -23,6 +24,8 @@ function checkUserSignedIn(){
         console.log("if true")
         profileButton.addEventListener('click', () =>{profileToggleDiv.classList.toggle('hidden');});
         logOutButton.addEventListener('click', logOut);
+        addNewArticle.addEventListener('click', () =>{window.open("../NewArticle/newArticle.html","_self");});
+        
         signInButton.classList.add('hidden');
         registerButton.classList.add('hidden');
     }else{
@@ -30,6 +33,8 @@ function checkUserSignedIn(){
         signInButton.addEventListener('click', () =>{window.open("../Login/login.html","_self");});
         registerButton.addEventListener('click', () =>{window.open("../Register/register.html","_self");});
         profileButton.classList.add('hidden');
+        addNewArticle.classList.add('hidden');
+        
     }
 }
 
