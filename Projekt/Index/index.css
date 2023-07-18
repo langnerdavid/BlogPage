@@ -51,12 +51,14 @@ h2{
     font-size: 15px;
     font-weight: normal;
     margin:0px;
+    
 }
 
 .article-footer-div{
     display: flex;
     margin-top: auto;
 }
+
 
 .article-publishing-date{
     margin:0px;
