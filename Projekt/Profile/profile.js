@@ -14,7 +14,7 @@ function toggleEdit() {
       });
       saveData();
     }
-  }
+}
   
   
 function saveData() {
