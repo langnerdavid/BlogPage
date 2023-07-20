@@ -17,6 +17,9 @@ const rememberMeInput = formInputs[2];
         console.log(res);
         if(res){
             loginSuccesful(res);
+            getUser(username).then((res)=>{
+                console.log(res);
+            });
         }else{
             loginError();
         }
@@ -48,7 +51,7 @@ function loginErrorRemove(){
 function loginSuccesful(res){
     sessionStorage.setItem('isUserSignedIn', true);
     localStorage.setItem('userData', JSON.stringify(res));
-    let json = JSON.parse(localStorage.getItem('userData'));
-    console.log(json.password);
+    //let json = JSON.parse(localStorage.getItem('userData'));
+    //console.log(json);
     window.open('../index/index.html', '_self');
 }

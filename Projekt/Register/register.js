@@ -15,8 +15,9 @@ const descrpitionInput = formInputs[3];
             description: descrpitionInput.value
         }
     }
-    console.log(userPost.username);
-    //postUsers(userPost);
+    postUsers(userPost).then(()=>{
+        
+    });
     //Hier muss noch die WEiterleitung nach erfolgreicher Registrierung/ Fehlermeldung hin
 
 

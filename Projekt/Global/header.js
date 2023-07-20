@@ -11,6 +11,7 @@ let isSearchInputOpen = false;
 //let isUserSignedIn = false; //statischer Input, ob User angemeldet ist
 let isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
 let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
+console.log(userDataLocalStorage)
 
 searchButton.addEventListener('click', addAnimation);
 profileButtonLink.addEventListener('click', () =>{
@@ -21,11 +22,11 @@ checkUserSignedIn();
 function checkUserSignedIn(){
     isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
     console.log(isUserSignedIn);
-    userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
+    userDataLocalStorage = localStorage.getItem('userData');
     
     if(userDataLocalStorage?.rememberMe && (isUserSignedIn==='false' || isUserSignedIn==null)){
         console.log("yes");
-        loginUser(userDataLocalStorage.username, userDataLocalStorage.password, userDataLocalStorage.rememberMe).then(()=>{sessionStorage.setItem('isUserSignedIn', 'true');testSignedIn();});
+        loginUser(userDataLocalStorage.username, userDataLocalStorage.password, userDataLocalStorage.rememberMe).then(()=>{sessionStorage.setItem('isUserSignedIn', 'true'); testSignedIn();});
     }
     else{
         console.log(isUserSignedIn);
@@ -78,6 +79,7 @@ function logOut(){
 }
 
 function testSignedIn(){
+    isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
     if(isUserSignedIn==='true'){
         console.log("if true")
         profileButton.addEventListener('click', () =>{profileToggleDiv.classList.toggle('hidden');});
@@ -94,4 +96,29 @@ function testSignedIn(){
         addNewArticle.classList.add('hidden');
         
     }
+}
+
+
+function formatTimeSinceCreation(createdAt) {
+  const now = new Date();
+  const createdDate = new Date(createdAt);
+  const timeDiff = now - createdDate;
+
+  // Anzahl der vergangenen Minuten berechnen
+  const minutes = Math.floor(timeDiff / (1000 * 60));
+
+  if (minutes < 60) {
+    return 'Vor ' + minutes + (minutes === 1 ? ' Minute' : ' Minuten');
+  }
+
+  // Anzahl der vergangenen Stunden berechnen
+  const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+
+  if (hours < 24) {
+    return 'Vor ' + hours + (hours === 1 ? ' Stunde' : ' Stunden');
+  }
+
+  // Anzahl der vergangenen Tage berechnen
+  const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+  return 'Vor ' + days + (days === 1 ? ' Tag' : ' Tagen');
 }
