@@ -28,6 +28,7 @@ body {
     padding: 20px 30px;
     border-radius: 5px;
     background-color: #fff;
+    position: relative;
 }
 
 .wrapper img {
@@ -114,3 +115,27 @@ body {
     height: 80px;
     background-color: red;
   }
+
+.delete-toggle-button {
+    background-color: #ff5c5c;
+    top: 5px;
+    right: 5px;
+    position: absolute;
+    color: #ffffff; 
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #ff5c5c; 
+    transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.delete-toggle-button:hover {
+    background-color: #ff7878;
+}
+
+.delete-toggle-button:active {
+    background-color: #ff4141;
+    border-color: #ff4141;
+    transform: scale(0.95); 
+}

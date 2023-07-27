@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="profile.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="../Global/api.js" defer></script>    
     <script src="profile.js" defer></script>
     <title>Document</title>
@@ -45,11 +46,12 @@
         </div>
         <aside>
             <div class="wrapper">
-                <button id="delete-toggle-button">Konto Löschen</button>
+                <button class="delete-toggle-button"><i class="fa fa-trash"></i></button>
+                
                 <div id="delete-toggle-div" class="hidden">
-                    <p>Wirklich löschen?</p>
-                    <button id="delete-cancel-button">Nein</button>
-                    <button id="delete-confirm-button">Ja</button>
+                    <p>Confirm delete</p>
+                    <button id="delete-cancel-button">No</button>
+                    <button id="delete-confirm-button">Yes</button>
                 </div>
                 <div class="profile-card">
                     <img id="avatar" src="https://img.freepik.com/freie-ikonen/benutzer_318-159711.jpg" alt="user" width="100">
