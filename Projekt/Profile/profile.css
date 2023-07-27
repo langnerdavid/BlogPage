@@ -116,7 +116,7 @@ body {
     background-color: red;
   }
 
-.delete-toggle-button {
+.delete-button {
     background-color: #ff5c5c;
     top: 5px;
     right: 5px;
@@ -130,11 +130,11 @@ body {
     transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
 }
 
-.delete-toggle-button:hover {
+.delete-button:hover {
     background-color: #ff7878;
 }
 
-.delete-toggle-button:active {
+.delete-button:active {
     background-color: #ff4141;
     border-color: #ff4141;
     transform: scale(0.95); 
