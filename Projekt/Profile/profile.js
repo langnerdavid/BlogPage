@@ -6,6 +6,7 @@ const deleteConfirmButton = document.getElementById('delete-confirm-button');
 const deleteCancelButton = document.getElementById('delete-cancel-button');
 const deleteToggleButton = document.getElementById('delete-toggle-button');
 const deleteToggleDiv = document.getElementsByClassName('delete-toggle-div')[0];
+const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{4,12}$/; 
 
 
 
@@ -41,12 +42,36 @@ function toggleEdit() {
       field.classList.add('focused');
     });
   } else {
+    displayName = document.getElementById('display-name').innerText;
+    password = document.getElementById('password').innerText;
+    description = document.getElementById('description').textContent;
+
+
+    if (displayName.length < 4 || displayName.length > 30) {
+      alert('Dispalyname must be between 4-30 characters!');
+      return;
+    }
+
+    if (!passwordRegex.test(password)) {
+      alert('Password needs to be between 4 and 12 characters long, at least one number and one digit must be provided.');
+      return;
+    }
+
+    console.log(description.length);
+
+    if (description.length > 300) {
+      alert('Description has a maximum of 300 characters.');
+      return;
+    }
+
+    saveData();
+
     editButton.innerText = 'Edit Fields';
     fields.forEach(function(field) {
       field.contentEditable = 'false';
       field.classList.remove('focused');
     });
-    saveData();
+    
   }
 }
 
