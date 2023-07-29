@@ -5,7 +5,7 @@ let description;
 const deleteConfirmButton = document.getElementById('delete-confirm-button');
 const deleteCancelButton = document.getElementById('delete-cancel-button');
 const deleteToggleButton = document.getElementById('delete-toggle-button');
-const deleteToggleDiv = document.getElementById('delete-toggle-div');
+const deleteToggleDiv = document.getElementsByClassName('delete-toggle-div')[0];
 
 
 
