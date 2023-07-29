@@ -35,7 +35,7 @@
                 oninvalid="this.setCustomValidity('4-10 characters, only letters and numbers!')" oninput="this.setCustomValidity('')">
             <br>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required pattern="^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$" placeholder="6-12 characters, at least one letter and one number" 
+            <input type="password" id="password" name="password" required pattern="^(?=.*[A-Za-z])(?=.*\d).{4,12}$" placeholder="6-12 characters, at least one letter and one number" 
                 oninvalid="this.setCustomValidity('6-12 characters, at least one letter and one number!')" oninput="this.setCustomValidity('')">
             <br>
             <label for="displayname">Display Name:</label>
