@@ -56,8 +56,8 @@ async function getUsers() {
                 }
             }
         );
-        const data = await response.text();
-        console.log(data);
+        const data = await response.json();
+        return data;
         
     } catch (error) {
         console.error(error);
