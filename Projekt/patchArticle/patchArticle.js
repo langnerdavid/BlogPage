@@ -78,7 +78,7 @@ function getPost(e){
     const encode = btoa(test.username+':'+test.password);
     const authHeader = `Basic ${encode}`;
     console.log(testPost);
-    postPost(testPost, authHeader).then(()=>{
+    putPost(testPost, sessionStorage.getItem('patchedPost'), authHeader).then(()=>{
         window.open('../index/index.html', '_self');
     });
 

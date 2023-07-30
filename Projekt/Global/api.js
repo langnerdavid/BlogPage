@@ -297,13 +297,15 @@ async function postPost(post, authHeader) {
     }
 }
 
-async function putPost(post) {
+async function putPost(post, postid, authHeader) {
     try {
         const response = await fetch(
-            'https://lukas.rip/api/posts/'+post.postid,
+            'https://lukas.rip/api/posts/'+postid,
             {
                 method: 'PUT',
                 headers: {  
+                    'Authorization': authHeader,
+                    'Content-Type': 'application/json',
                     'group-key': groupKey
                 },
                 body: JSON.stringify(post)

@@ -1,11 +1,17 @@
 const readingTimeP = document.getElementById('reading-time');
 const mainSectionDiv = document.getElementById('main-section-div');
+const mainContentDiv = document.getElementById('main-content-div');
 const articleHeading = document.getElementById('article-heading');
 const publishingDetails = document.getElementById('publishing-details');
 const publishingDetailsP = publishingDetails.getElementsByTagName('p');
 const sectionTemplate = document.getElementById('section-template');
-const sectionWrapper = document.querySelector('.section-wrapper');
 const articlePicture = document.getElementsByClassName('article-picture');
+const contentWrapper = document.getElementById('content-wrapper');
+const contentText = contentWrapper.getElementsByTagName('p')[0];
+
+const heading = mainSectionDiv.getElementsByTagName('h2');
+const content = mainSectionDiv.getElementsByTagName('p');
+const img = mainSectionDiv.getElementsByTagName('img');
 
 let mainTextDivP;
 let mainTextDivH2;
@@ -21,23 +27,20 @@ getOnePost(sessionStorage.getItem('clickedPost')).then((res)=>{
     publishingDetailsP[0].textContent = onePost.username;
     publishingDetailsP[1].textContent = formatTimeSinceCreation(onePost.createdAt);
     articlePicture[0].src = onePost.content[1].url;
+    contentText.textContent = onePost?.content[0]?.data;
 
-    for(i=0; i<onePost.content.length; i++){
+    for(i=0; i<onePost.sections.length; i++){
         const clone = sectionTemplate.content.cloneNode(true);
-        const heading = clone.querySelector('h2');
-        const content = clone.querySelector('p');
-        heading.textContent = onePost?.sections[i]?.sectionTitle;
-        if(onePost?.content[i]?.data){
-            content.textContent = onePost.content[i].data;
-        }else{
-            contentImgaeUrl = onePost.content[i].url;
-            continue;
-        }
         mainSectionDiv.appendChild(clone);
+        console.log(onePost?.sections[i]?.content);
+        heading[i].textContent = onePost?.sections[i]?.sectionTitle;
+        content[i].textContent = onePost?.sections[i]?.content[0]?.data;
+        img[i].src = onePost?.sections[i]?.content[1].url;
+
     }
 
-    mainTextDivP = mainSectionDiv.getElementsByTagName('p');
-    mainTextDivH2 = mainSectionDiv.getElementsByTagName('h2');
+    mainTextDivP = mainContentDiv.getElementsByTagName('p');
+    mainTextDivH2 = mainContentDiv.getElementsByTagName('h2');
     countWordElements(mainTextDivP, mainTextDivH2);
     readingTimeP.innerHTML= calcReadingTime();
     
@@ -52,7 +55,7 @@ function countWords(str) {
 }
 
 function countWordElements(ps, h2){
-    for(i=0; i<ps.length; i++){
+    for(i=4; i<ps.length; i++){
         wordCount+=countWords(ps[i].innerHTML);
     }
     for(i=0; i<h2.length; i++){

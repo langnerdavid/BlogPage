@@ -64,5 +64,5 @@ function articleFunction(num){
 
 function patchArticle(num){
     sessionStorage.setItem('patchedPost', lastTenPosts[num].id);
-    window.open("../Articles/patchArticle", "_self");
+    window.open("../patchArticle/patchArticle", "_self");
 }

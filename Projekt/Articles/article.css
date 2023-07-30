@@ -58,3 +58,11 @@ article{
     display: inline;
 }
 
+.section-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+.section-wrapper > img{
+    height: 100px;
+}
+
