@@ -65,6 +65,17 @@ function addAnimation(){
 
 function search(){
     console.log("Hier jetzt Suche");
+    const searchRequest = searchInput.value.toLowerCase();
+    getUsers().then((res)=>{
+        console.log(res);
+        for(i=0; i<res.length; i++){
+            let displayName = JSON.stringify(res[i].profile.displayName).toLowerCase();
+            let username = JSON.stringify(res[i].username).toLowerCase();
+            if(displayName.includes(searchRequest)||username.includes(searchRequest)){
+                console.log(res[i]);
+            }
+        }
+    });
 }
 
 function logOut(){

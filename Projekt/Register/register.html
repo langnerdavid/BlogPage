@@ -35,15 +35,15 @@
                 oninvalid="this.setCustomValidity('4-10 characters, only letters and numbers!')" oninput="this.setCustomValidity('')">
             <br>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required pattern="^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$" placeholder="6-12 characters, at least one letter and one number" 
+            <input type="password" id="password" name="password" required pattern="^(?=.*[A-Za-z])(?=.*\d).{6,12}$" placeholder="6-12 characters, at least one letter and one number" 
                 oninvalid="this.setCustomValidity('6-12 characters, at least one letter and one number!')" oninput="this.setCustomValidity('')">
             <br>
             <label for="displayname">Display Name:</label>
-            <input type="text" id="display-name" name="display-name" required placeholder="4-30 characters"
+            <input type="text" id="display-name" name="display-name" required placeholder="4-30 characters" pattern=".{4,30}"
                 oninvalid="this.setCustomValidity('4-30 characters!')" oninput="this.setCustomValidity('')">
             <br>
             <label for="description">Description:</label>
-            <textarea type="text" id="description" name="description" placeholder="optional, maximum 300 characters" rows="8"></textarea>
+            <textarea type="text" id="description" name="description" placeholder="optional, maximum 300 characters" rows="8" pattern=".{,300}"></textarea>
             <br>
             <input type="submit" value="Register">
         </form>

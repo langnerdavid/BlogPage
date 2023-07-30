@@ -28,6 +28,7 @@ body {
     padding: 20px 30px;
     border-radius: 5px;
     background-color: #fff;
+    position: relative;
 }
 
 .wrapper img {
@@ -109,8 +110,52 @@ body {
     border-radius: 5px;
   }
 
-  #delete-toggle-div{
-    width: 100px;
-    height: 80px;
-    background-color: red;
-  }
+
+.delete-button {
+    background-color: #ff5c5c;
+    top: 5px;
+    right: 5px;
+    position: absolute;
+    color: #ffffff; 
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid #ff5c5c; 
+    transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #ff7878;
+}
+
+.delete-button:active {
+    background-color: #ff4141;
+    border-color: #ff4141;
+    transform: scale(0.95); 
+}
+
+#delete-cancel-button {
+    background-color: #ff5c5c; 
+    color: #ffffff; 
+    border: 2px solid #ff5c5c;
+}
+
+  
+#delete-confirm-button {
+    background-color: #58cc58;
+    color: #ffffff;
+    border: 2px solid #58cc58;
+}
+
+.delete-toggle-div{
+    text-align: center;
+    color: var(--text-color);
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.hidden{
+    visibility: hidden;
+}
