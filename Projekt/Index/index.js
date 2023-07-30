@@ -45,10 +45,24 @@ function setArticlepreview(i){
     articles[i].getElementsByClassName('article-publishing-date')[0].innerHTML = formatTimeSinceCreation(lastTenPosts[i].createdAt);
     articles[i].getElementsByClassName('article-publisher')[0].innerHTML = lastTenPosts[i].username;  
     articles[i].getElementsByClassName('article-sub-text-p')[0].innerHTML = lastTenPosts[i].content[0].data;  
-    articles[i].getElementsByTagName('img')[0].src = lastTenPosts[i].content[1].url;    
+    articles[i].getElementsByTagName('img')[0].src = lastTenPosts[i].content[1].url;
+    let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));   
+    if(lastTenPosts[i].username===userDataLocalStorage.username.toLowerCase()){
+        articles[i].getElementsByClassName('change-article-button')[0].classList.remove('hidden');
+        articles[i].getElementsByClassName('change-article-button')[0].addEventListener('click', function(e) {
+            e.stopPropagation();
+            patchArticle(i);
+            
+        });
+    } 
 }
 
 function articleFunction(num){
     sessionStorage.setItem('clickedPost', lastTenPosts[num].id);
     window.open("../Articles/article.html", "_self");
+}
+
+function patchArticle(num){
+    sessionStorage.setItem('patchedPost', lastTenPosts[num].id);
+    window.open("../Articles/patchArticle", "_self");
 }

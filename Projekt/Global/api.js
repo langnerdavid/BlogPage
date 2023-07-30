@@ -103,7 +103,7 @@ async function getUserPosts(user) {
             }
         );
         const data = await response.text();
-        console.log(data);
+        return JSON.parse(data);
         
     } catch (error) {
         console.error(error);

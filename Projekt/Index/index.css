@@ -31,6 +31,7 @@ article{
     margin:auto;
     margin-top: 20px;
     cursor: pointer;
+    position: relative;
 }
 article > img{
     width: 200px;
@@ -79,5 +80,17 @@ h2{
     margin-top: 10px;
 }
 .change-article-button{
-    background-color: red;
+    background-color: var(--special-button-background);
+    border:none;
+    position: absolute;
+    right: 3px;
+    top:3px;
+    width: 25px;
+    height: 25px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.hidden{
+    visibility: hidden;
 }
