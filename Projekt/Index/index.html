@@ -35,19 +35,25 @@
     <div id="main-content-div">
         <div id="blog-div">
             <button id="new-article-button" class ="nav-button">New Article</button>
-            <div id = "article-wrapper">
-                <article id="article-1" class="article">
-                    <img src="https://images4.alphacoders.com/115/thumb-1920-115716.jpg" alt="Bild">
-                    <div class ="article-text-div">
-                        <h2>Lorem, ipsum dolor sit amet consectetur</h2>
-                            <p class="article-sub-text-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. facilis illo, vitae aliquid.</p>
-                            <div class="article-footer-div">
-                                <p class="article-publishing-date">Zeitstempel</p>
-                                <div class="centered-line"></div>
-                                <p class="article-publisher">Username</p>
+            <div id = "article-preview-list">
+                <template id="article-preview-template">
+                    <div class="article-wrapper">
+                        <article id="article-1" class="article">
+                            <img src="https://images4.alphacoders.com/115/thumb-1920-115716.jpg" alt="Bild">
+                            <div class="article-text-div">
+                                <h2>Lorem, ipsum dolor sit amet consectetur</h2>
+                                <p class="article-sub-text-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. facilis illo,
+                                    vitae
+                                    aliquid.</p>
+                                <div class="article-footer-div">
+                                    <p class="article-publishing-date">Zeitstempel</p>
+                                    <div class="centered-line"></div>
+                                    <p class="article-publisher">Username</p>
+                                </div>
                             </div>
+                        </article>
                     </div>
-                </article>   
+                </template>
             </div>
         </div>
         <aside>

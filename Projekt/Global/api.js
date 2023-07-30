@@ -79,7 +79,7 @@ async function getUser(user) {
         let data = await response.json();
         console.log(data);
 
-         if(response.ok){
+        if(response.ok){
             return data;
         }else{
             return null;
@@ -163,7 +163,12 @@ async function postUsers(user) {
             }
         );
         const data = await response.text();
-        console.log(data);
+        if(response.ok){
+            return data;
+        }else{
+            return null;
+        }
+        
         
     } catch (error) {
         console.error(error);
@@ -260,7 +265,8 @@ async function getOnePost(postid) {
             }
         );
         const data = await response.text();
-        console.log(data);
+        const jsonData = JSON.parse(data);
+        return jsonData;
         
     } catch (error) {
         console.error(error);
@@ -268,14 +274,14 @@ async function getOnePost(postid) {
     }
 }
 
-async function postPost(post) {
+async function postPost(post, authHeader) {
     try {
         const response = await fetch(
             'https://lukas.rip/api/posts',
             {
                 method: 'POST',
                 headers: {
-                    'Authorization': authHeaderTest,
+                    'Authorization': authHeader,
                     'Content-Type': 'application/json',
                     'group-key': groupKey
                 },

@@ -23,7 +23,7 @@ deleteConfirmButton.addEventListener('click', () => {
 });
 
 
-getUser('test').then((res)=>{
+getUser(userDataLocalStorage.username).then((res)=>{
   console.log(userDataLocalStorage.username);
   userDataLocalStorage.profile.displayName = res.profile.displayName;
   userDataLocalStorage.profile.description = res.profile.description;

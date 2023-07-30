@@ -51,9 +51,16 @@ function getPost(e){
             sections: getSections()
         }
     }
+    let test = JSON.parse(localStorage.getItem('userData'));
+    console.log(test.password);
+    const encode = btoa(test.username+':'+test.password);
+    const authHeader = `Basic ${encode}`;
     console.log(testPost);
-    postPost(testPost);
-}
+    postPost(testPost, authHeader).then(()=>{
+        window.open('../index/index.html', '_self');
+    });
+
+};
 
 function getSections(){
     const sectionList = document.getElementsByClassName('section-wrapper');

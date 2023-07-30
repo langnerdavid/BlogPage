@@ -5,30 +5,33 @@ const publishingDetails = document.getElementById('publishing-details');
 const publishingDetailsP = publishingDetails.getElementsByTagName('p');
 const sectionTemplate = document.getElementById('section-template');
 const sectionWrapper = document.querySelector('.section-wrapper');
+const articlePicture = document.getElementsByClassName('article-picture');
 
 let mainTextDivP;
 let mainTextDivH2;
 
 let wordCount = 0;
 const wordsPerMinute = 250;
+sessionStorage.getItem('clickedPost');
 
-getPosts().then((res)=>{
-    let lastTenPosts = res;
-    console.log(lastTenPosts[0]);
-    articleHeading.textContent = lastTenPosts[0].title;
-    publishingDetailsP[0].textContent = lastTenPosts[0].username;
-    publishingDetailsP[1].textContent = formatTimeSinceCreation(lastTenPosts[0].createdAt);
+articlePicture
+getOnePost(sessionStorage.getItem('clickedPost')).then((res)=>{
+    let onePost = res;
+    console.log(onePost);
+    articleHeading.textContent = onePost.title;
+    publishingDetailsP[0].textContent = onePost.username;
+    publishingDetailsP[1].textContent = formatTimeSinceCreation(onePost.createdAt);
+    articlePicture[0].src = onePost.content[1].url;
 
-
-    for(i=0; i<lastTenPosts[0].content.length; i++){
+    for(i=0; i<onePost.content.length; i++){
         const clone = sectionTemplate.content.cloneNode(true);
         const heading = clone.querySelector('h2');
         const content = clone.querySelector('p');
-        heading.textContent = lastTenPosts[0]?.sections[i]?.sectionTitle;
-        if(lastTenPosts[0]?.content[i]?.data){
-            content.textContent = lastTenPosts[0].content[i].data;
+        heading.textContent = onePost?.sections[i]?.sectionTitle;
+        if(onePost?.content[i]?.data){
+            content.textContent = onePost.content[i].data;
         }else{
-            contentImgaeUrl = lastTenPosts[0].content[i].url;
+            contentImgaeUrl = onePost.content[i].url;
             continue;
         }
         mainSectionDiv.appendChild(clone);
