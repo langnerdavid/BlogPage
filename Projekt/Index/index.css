@@ -6,13 +6,14 @@ body{
 
 #main-content-div{
     width: 100%;
-    min-height:calc(100vh - 200px);
+    min-height:calc(100vh - 220px);
     background-color: yellow;
     display: flex;
 }
 
 #blog-div{
     flex-basis: 70%;
+    padding-bottom: 20px;
     background-color: red;
 }
 
