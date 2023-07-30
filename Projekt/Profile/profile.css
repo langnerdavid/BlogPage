@@ -1,22 +1,3 @@
-html {
-    --primary-color: #01a9ac;
-    --secondary-color: #01dbdf;
-    --text-color: #353c4e;
-    --subtext-color: #919aa3;
-    --background-color: #f3f3f3;
-    --border-color: #e0e0e0;
-    --edit-button-background: #4caf50;
-    --edit-buton-active: #0000ff;
-    --focused: rgba(0, 255, 0, 0.4);
-    --delete-button: #ff5c5c;
-    --delete-cancel-button: #ff5c5c;
-    --delete-confirm-button: #58cc58;
-    --delete-toggle-div-border: #ccc;
-    --delete-button-active: #ff4141;
-    --delete-button-hover: #ff7878;
-    --button-color: white;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -93,7 +74,7 @@ body {
 
 
 .edit-button {
-    background-color: var(--edit-button-background);
+    background-color: var(--special-button-background);
     color: var(--button-color);
     border: none;
     padding: 6px 12px;
