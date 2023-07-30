@@ -57,8 +57,6 @@ function toggleEdit() {
       return;
     }
 
-    console.log(description.length);
-
     if (description.length > 300) {
       alert('Description has a maximum of 300 characters.');
       return;
@@ -78,7 +76,6 @@ function toggleEdit() {
 
 function saveData() {
   userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
-  console.log(userDataLocalStorage.password);
   //let encoded = btoa(`${userDataLocalStorage.username}:${'test12'}`);
   let encoded = btoa(`${userDataLocalStorage.username}:${userDataLocalStorage.password}`);
   let authHeader = `Basic ${encoded}`;
