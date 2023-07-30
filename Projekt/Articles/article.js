@@ -14,7 +14,6 @@ let wordCount = 0;
 const wordsPerMinute = 250;
 sessionStorage.getItem('clickedPost');
 
-articlePicture
 getOnePost(sessionStorage.getItem('clickedPost')).then((res)=>{
     let onePost = res;
     console.log(onePost);

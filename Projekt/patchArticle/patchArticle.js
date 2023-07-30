@@ -10,8 +10,9 @@ let sectionNumbers = 0;
 
 
 getOnePost(sessionStorage.getItem('patchedPost')).then((res)=>{
-    
-})
+    blogpostTitle.value = res.title;
+    console.log(res.title);
+});
 
 const form = document.getElementById("blogpost-form");
 form.addEventListener("submit", getPost);

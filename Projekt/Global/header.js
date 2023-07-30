@@ -95,7 +95,7 @@ function testSignedIn(){
         console.log("if true")
         profileButton.addEventListener('click', () =>{profileToggleDiv.classList.toggle('hidden');});
         logOutButton.addEventListener('click', logOut);
-        addNewArticle.addEventListener('click', () =>{window.open("../NewArticle/newArticle.html","_self");});
+        addNewArticle?.addEventListener('click', () =>{window.open("../NewArticle/newArticle.html","_self");});
         
         signInButton.classList.add('hidden');
         registerButton.classList.add('hidden');
@@ -104,7 +104,7 @@ function testSignedIn(){
         signInButton.addEventListener('click', () =>{window.open("../Login/login.html","_self");});
         registerButton.addEventListener('click', () =>{window.open("../Register/register.html","_self");});
         profileButton.classList.add('hidden');
-        addNewArticle.classList.add('hidden');
+        addNewArticle?.classList.add('hidden');
         
     }
 }
