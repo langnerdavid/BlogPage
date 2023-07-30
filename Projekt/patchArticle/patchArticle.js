@@ -8,6 +8,11 @@ const blogpostText = document.getElementsByClassName('text-content')[0];
 
 let sectionNumbers = 0;
 
+
+getOnePost(sessionStorage.getItem('patchedPost')).then((res)=>{
+    
+})
+
 const form = document.getElementById("blogpost-form");
 form.addEventListener("submit", getPost);
 
