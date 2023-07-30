@@ -6,12 +6,28 @@ const blogpostTitle = document.getElementById('blogpost-title');
 const blogpostImage = document.getElementsByClassName('image-content')[0];
 const blogpostText = document.getElementsByClassName('text-content')[0];
 
+const blogpostSectionImages = document.getElementsByClassName('image-content');
+const blogpostSectionTexts = document.getElementsByClassName('section-text-content-class');
+const blogpostSectionTitles = document.getElementsByClassName('section-title-class');
+
+
 let sectionNumbers = 0;
 
 
 getOnePost(sessionStorage.getItem('patchedPost')).then((res)=>{
     blogpostTitle.value = res.title;
-    console.log(res.title);
+    console.log(res);
+    blogpostText.value = res.content[0].data;
+    blogpostImage.value = res.content[1].url;
+    for(let i=0; i<res.sections.length; i++){
+        const clone = sectionTemplate.content.cloneNode(true);
+        const sectionWrapper = clone.querySelector('.section-wrapper');
+        sectionList.appendChild(clone);
+        sectionNumbers+=1;
+        blogpostSectionImages[i+1].value = res.sections[i].content[1].url;
+        blogpostSectionTexts[i].value = res.sections[i].content[0].data;
+        blogpostSectionTitles[i].value = res.sections[i].sectionTitle;
+    }
 });
 
 const form = document.getElementById("blogpost-form");

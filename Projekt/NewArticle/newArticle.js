@@ -58,6 +58,8 @@ function getPost(e){
     console.log(testPost);
     postPost(testPost, authHeader).then(()=>{
         window.open('../index/index.html', '_self');
+    }).catch(()=>{
+        alert("irgendwas hat nicht geklappt");
     });
 
 };
