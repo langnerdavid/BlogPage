@@ -2,8 +2,8 @@ html{
     --form-background: #f0f0f0;
     --form-border : #ccc;
     --button-color: white;
-    --special-button-background: #4CAF50;
-    --special-button-hover: #45a049;
+    --submit-button-background: #4CAF50;
+    --submit-button-hover: #45a049;
     --add-section-background: #4CAF50;
     --add-section-hover: #45a049;
 
@@ -13,6 +13,7 @@ html{
     --subtext-color: #919aa3;
     --background-color: #f3f3f3;
     --border-color: #e0e0e0;
+    --wrapper-background-color: white;
 
     --edit-buton-active: #0000ff;
     --focused: rgba(0, 255, 0, 0.4);
@@ -26,4 +27,30 @@ html{
     --blogpost-background: #f5f5f5;
     --remove-section-hover: #d32f2f;
     --remove-section-background: #f44336;
+
+    /*Header*/
+    --header-background: blue;
+    --logo-background: white;
+    --nav-button-color: white;
+    --nav-button-background: #4caf50;
+    --nav-button-hover: #45a049;
+    --profile-icon-color: white;
+    --profile-toggle-background: white;
+    --profile-toggle-button-background: white;
+    --profile-toggle-button-background-hover: rgb(206, 205, 205);
+
+    /*Footer*/
+    --footer-background-color: gray;
+
+    /*Login*/
+    --login-error-border: red;
+    --login-error-h2: red;
+    --animation-key-frames: indianred;
+
+    /*Index*/
+    --blog-div-background: red;
+    --aside-background: pink;
+    --article-background: gray;
+    --cenntered-line-background: black;
+    --fa-eye-color: lightgray;
 }

@@ -41,7 +41,7 @@ body {
 .register-form input[type="submit"] {
   width: 100%;
   padding: 10px;
-  background: var(--special-button-background);
+  background: var(--submit-button-background);
   color: var(--button-color);
   border: 1px solid var(--form-border);
   border-radius: 3px;
@@ -49,6 +49,6 @@ body {
 }
 
 .register-form input[type="submit"]:hover {
-  background: var(--special-button-hover);
+  background: var(--submit-button-hover);
 }
   
