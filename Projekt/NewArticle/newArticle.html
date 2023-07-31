@@ -44,7 +44,7 @@
     <div id="main-content-div">
       <form id="blogpost-form">
         <label for="blogpost-title">Title:</label>
-        <input type="text" id="blogpost-title" name="title" class="input-field" required />
+        <input type="text" id="blogpost-title" name="title" class="input-field" pattern=".{4,60}" required />
 
         <label for="text-content">Text Content:</label>
         <textarea class="text-content input-field" name="content" rows="10"></textarea>
@@ -59,7 +59,7 @@
             <button type="button" class="remove-section-button">Remove Section</button>
             <br/>
 
-            <input type="text" id="section-title" name="title" class="input-field section-title-class" required />
+            <input type="text" id="section-title" name="title" class="input-field section-title-class" pattern=".{4,60}" required/>
 
             <label for="section-text-content">Section Text Content:</label>
             <textarea
