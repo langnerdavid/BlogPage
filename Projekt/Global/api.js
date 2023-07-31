@@ -320,13 +320,14 @@ async function putPost(post, postid, authHeader) {
     }
 }
 
-async function deletePost(postID) {
+async function deletePost(postID, authHeader) {
     try {
         const response = await fetch(
             'https://lukas.rip/api/posts/'+postID,
             {
                 method: 'DELETE',
                 headers: {
+                    'Authorization': authHeader,
                     'group-key': groupKey
                 }
             }

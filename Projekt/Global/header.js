@@ -77,9 +77,10 @@ function search(){
         let j = 0;
         for(i=0; i<res.length; i++){
             let displayName = res[i].profile.displayName.toLowerCase();
-            let username = res[i].username.toLowerCase();
-            if(displayName.includes(searchRequest)||username.includes(searchRequest)){
-                foundUsers.users[i] = username;
+            let usernameLowercase = res[i].username.toLowerCase();
+            console.log(usernameLowercase);
+            if((displayName.includes(searchRequest)||usernameLowercase.includes(searchRequest)) && !(usernameLowercase == JSON.parse(userDataLocalStorage).username.toLowerCase())){
+                foundUsers.users[i] = usernameLowercase;
                 j++;
             }
         }

@@ -20,12 +20,13 @@ body{
     text-align:left;
     width:60%
 }
-#user-result-div{
+.user-result-div{
     background-color: grey;
     width: 60%;
     display: flex;
     margin-bottom: 15px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .hidden{

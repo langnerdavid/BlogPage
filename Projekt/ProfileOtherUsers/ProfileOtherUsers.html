@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="../Global/header.css">
     <link rel="stylesheet" href="../Global/footer.css">
     <link rel="stylesheet" href="../Index/index.css">
-    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="ProfileOtherUsers.css">
     <link rel="stylesheet" href="../Global/color.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="../Global/api.js" defer></script>   
     <script src="../Global/header.js" defer></script>
-    <script src="profile.js" defer></script>
+    <script src="ProfileOtherUsers.js" defer></script>
     <title>Document</title>
 </head>
 <body>
@@ -36,28 +36,13 @@
     </header>
     <div id="main-content-div">
         <div id="blog-div">
-            <button id="new-article-button" class="nav-button">New Article</button>
             <div id="article-preview-list">
-                <p class="hidden">Du hast noch keine Posts.</p>
+                <p class="hidden">Dieser User hat noch keine Posts.</p>
                 <template id="article-preview-template">
                     <div class="article-wrapper">
                         <article id="article-1" class="article">
                             <img src="https://images4.alphacoders.com/115/thumb-1920-115716.jpg" alt="Bild">
                             <div class="article-text-div">
-                                <button class="change-article-button"><i class="fa fa-pencil"
-                                        aria-hidden="true"></i></i></button>
-
-                                <button class="delete-article-button"> <i class="fa fa-trash"></i> </button>
-                                <div class="delete-toggle-div-article hidden">
-                                    <p>Confirm delete</p>
-                                    <button class="delete-cancel-button-article">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                    <button class="delete-confirm-button-article">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                </div>
-
                                 <h2>Lorem, ipsum dolor sit amet consectetur</h2>
                                 <p class="article-sub-text-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. facilis illo,
                                     vitae
@@ -75,17 +60,6 @@
         </div>
         <aside>
             <div class="wrapper">
-                <button id="delete-toggle-button" class="delete-button"><i class="fa fa-trash"></i></button>
-                
-                <div class="delete-toggle-div hidden">
-                    <p>Confirm delete</p>
-                    <button id="delete-cancel-button">
-                      <i class="fa fa-times"></i>
-                    </button>
-                    <button id="delete-confirm-button">
-                      <i class="fa fa-check"></i>
-                    </button>
-                </div>
                 <div class="profile-card">
                     <img id="avatar" src="https://img.freepik.com/freie-ikonen/benutzer_318-159711.jpg" alt="user" width="100">
                     <div class="user-details">
@@ -95,19 +69,11 @@
                     </div>
                 </div>
                 <div class="info">
-                    <h3>Information</h3>
-                    <div class="info_data">
-                        <div class="data">
-                            <h4>Password</h4>
-                            <p id="password" contenteditable="false">123456789</p>
-                        </div>
-                        <div class="data">
-                            <h4>Description</h4>
-                            <p id="description" contenteditable="false">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis illo, vitae aliquid.</p>
-                        </div>
+                    <h3>Description</h3>
+                    <div class="data">
+                        <p id="description" contenteditable="false">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis illo, vitae aliquid.</p>
                     </div>
                 </div>
-                <button class="edit-button " onclick="toggleEdit()">Edit Fields</button>
             </div>
         </aside>
     </div>

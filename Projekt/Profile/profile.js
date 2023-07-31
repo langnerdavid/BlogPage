@@ -1,4 +1,6 @@
 userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
+let encoded = btoa(`${userDataLocalStorage.username}:${userDataLocalStorage.password}`);
+let authHeader = `Basic ${encoded}`;
 let displayName;
 let password;
 let description;
@@ -10,6 +12,9 @@ const articleTemplate = document.getElementById('article-preview-template');
 const articleList = document.getElementById('article-preview-list');
 const articles = document.getElementsByClassName('article');
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{4,12}$/; 
+
+
+const deleteArticleToggleDivs = document.getElementsByClassName('delete-toggle-div-article');
 
 
 
@@ -79,7 +84,6 @@ function toggleEdit() {
 
 function saveData() {
   userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
-  //let encoded = btoa(`${userDataLocalStorage.username}:${'test12'}`);
   let encoded = btoa(`${userDataLocalStorage.username}:${userDataLocalStorage.password}`);
   let authHeader = `Basic ${encoded}`;
   displayName = userDataLocalStorage.profile?.displayName;
@@ -114,8 +118,8 @@ function setInputValues(){
 function deleteUserButton(){
   userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
   console.log(userDataLocalStorage.password);
-  let encoded = btoa(`${userDataLocalStorage.username}:${userDataLocalStorage.password}`);
-  let authHeader = `Basic ${encoded}`;
+  encoded = btoa(`${userDataLocalStorage.username}:${userDataLocalStorage.password}`);
+  authHeader = `Basic ${encoded}`;
   deleteUsers(userDataLocalStorage.username, authHeader).then((res)=>{
     sessionStorage.setItem('isUserSignedIn', false);
     localStorage.setItem('userData', JSON.stringify(res));
@@ -124,28 +128,34 @@ function deleteUserButton(){
 }
 
 getUserPosts(userDataLocalStorage.username).then((res)=>{
-    lastTenPosts = res;
-    console.log(lastTenPosts[0]);
-    for(j=0; j<lastTenPosts.length; j++){
-        const clone = articleTemplate.content.cloneNode(true);
-        const articleWrapper = clone.querySelector('.article-wrapper');
-        articleList.appendChild(clone);
-        for(i=0; i<lastTenPosts[j].content.length; i++){
-            if(lastTenPosts[j].content[i].data){
-                content = lastTenPosts[0].content[i].data;
-                continue;
-            }else{
-                contentImgaeUrl = lastTenPosts[0].content[i].url;
-                continue;
-            }
-        }
-        setArticlepreview(j);
-    }
+    userPosts = res;
+    console.log(userPosts[0]);
+    if(res.length === 0){
+      articleList.getElementsByTagName('p')[0].classList.remove('hidden');
+    }else{
+      articleList.getElementsByTagName('p')[0].classList.add('hidden');
+      for(j=0; j<userPosts.length; j++){
+          const clone = articleTemplate.content.cloneNode(true);
+          const articleWrapper = clone.querySelector('.article-wrapper');
+          articleList.appendChild(clone);
+          for(i=0; i<userPosts[j].content.length; i++){
+              if(userPosts[j].content[i].data){
+                  content = userPosts[0].content[i].data;
+                  continue;
+              }else{
+                  contentImgaeUrl = userPosts[0].content[i].url;
+                  continue;
+              }
+          }
+          setArticlepreview(j);
+      }
 
-    for (let i = 0; i < articles.length; i++) {
-    articles[i]?.addEventListener('click', function() {
-        articleFunction(i);
-    });
+      for (let i = 0; i < articles.length; i++) {
+      articles[i]?.addEventListener('click', function() {
+          articleFunction(i);
+      });
+    }
+  }
 }
     
     
@@ -155,25 +165,54 @@ getUserPosts(userDataLocalStorage.username).then((res)=>{
 //
 
 function setArticlepreview(i){
-    articles[i].getElementsByTagName('h2')[0].innerHTML = lastTenPosts[i].title;
-    articles[i].getElementsByClassName('article-publishing-date')[0].innerHTML = formatTimeSinceCreation(lastTenPosts[i].createdAt);
-    articles[i].getElementsByClassName('article-publisher')[0].innerHTML = lastTenPosts[i].username;  
-    articles[i].getElementsByClassName('article-sub-text-p')[0].innerHTML = lastTenPosts[i].content[0].data;  
-    articles[i].getElementsByTagName('img')[0].src = lastTenPosts[i].content[1].url;
+    articles[i].getElementsByTagName('h2')[0].innerHTML = userPosts[i].title;
+    articles[i].getElementsByClassName('article-publishing-date')[0].innerHTML = formatTimeSinceCreation(userPosts[i].createdAt);
+    articles[i].getElementsByClassName('article-publisher')[0].innerHTML = userPosts[i].username;  
+    articles[i].getElementsByClassName('article-sub-text-p')[0].innerHTML = userPosts[i].content[0].data;  
+    articles[i].getElementsByTagName('img')[0].src = userPosts[i].content[1].url;
     let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));   
     articles[i].getElementsByClassName('change-article-button')[0].addEventListener('click', function(e) {
         e.stopPropagation();
         patchArticle(i);
         
     });
+    articles[i].getElementsByClassName('delete-article-button')[0].addEventListener('click', function(e) {
+        e.stopPropagation();
+        confirmDeleteArticle(i);
+        
+    });
 }
 
 function articleFunction(num){
-    sessionStorage.setItem('clickedPost', lastTenPosts[num].id);
+    sessionStorage.setItem('clickedPost', userPosts[num].id);
     window.open("../Articles/article.html", "_self");
 }
 
 function patchArticle(num){
-    sessionStorage.setItem('patchedPost', lastTenPosts[num].id);
+    sessionStorage.setItem('patchedPost', userPosts[num].id);
     window.open("../patchArticle/patchArticle.html", "_self");
+}
+
+function confirmDeleteArticle(num){
+  deleteArticleToggleDivs[num].classList.remove('hidden');
+  let deleteArticleCancelButton = deleteArticleToggleDivs[num].getElementsByClassName('delete-cancel-button-article')[0];
+  let deleteArticleConfirmButton = deleteArticleToggleDivs[num].getElementsByClassName('delete-confirm-button-article')[0];
+
+  deleteArticleCancelButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    deleteArticleToggleDivs[num].classList.add('hidden');
+  });
+
+  deleteArticleConfirmButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    deleteArticle(num);
+  });
+
+}
+
+function deleteArticle(num){
+  deletePost(userPosts[num].id, authHeader).then(()=>{
+    console.log("gelöscht?");
+    window.location.reload();
+  });
 }

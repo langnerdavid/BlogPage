@@ -79,7 +79,7 @@ h2{
     margin-top: 10px;
 }
 .change-article-button{
-    background-color: var(--special-button-background);
+    background-color: var(--submit-button-background);
     border:none;
     position: absolute;
     right: 3px;
