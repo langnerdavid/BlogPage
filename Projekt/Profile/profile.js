@@ -156,9 +156,6 @@ getUserPosts(userDataLocalStorage.username).then((res)=>{
       });
     }
   }
-}
-    
-    
 }).catch(error => {
     console.error(error);
 });
