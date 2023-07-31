@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="article.css">
     <link rel="stylesheet" href="../Global/header.css">
     <link rel="stylesheet" href="../Global/footer.css">
+    <link rel="stylesheet" href="../Global/color.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -33,8 +34,9 @@
         </div>
     </header>
     <div id="main-content-div">
-        <article>
+        <article id="article">
             <h1 id="article-heading">Hier steht die Überschrift</h1>
+            <button id="delete-article">Delete Article</button>
             <div class="heading-break"></div>
             <div id="publishing-details">
                 <p class="publisher-p">Publisher Name</p>
@@ -45,19 +47,34 @@
                 <p class = "reading-time-p">Geschätze Lesezeit: </p>
                 <p id="reading-time" class = "reading-time-p"></p>
             </div>
-            <div id="main-section-div"></div>
-            <template id="section-template">
-                <div class="section-wrapper">
-                    <h2>Überschrift 1</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus consectetur laborum impedit odit ab dolorem
-                        incidunt
-                        nulla sed nihil. Perferendis illo non incidunt. Corrupti fugiat totam deleniti cupiditate illo sapiente
-                        dolore
-                        suscipit maiores inventore. Saepe eius et, nihil aut recusandae fuga eveniet libero asperiores commodi
-                        dolorum,
-                        sequi delectus eligendi aliquam!</p>
-                </div>
-            </template>
+            <div id ="content-wrapper">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus consectetur laborum impedit odit ab dolorem
+                    incidunt
+                    nulla sed nihil. Perferendis illo non incidunt. Corrupti fugiat totam deleniti cupiditate illo sapiente
+                    dolore
+                    suscipit maiores inventore. Saepe eius et, nihil aut recusandae fuga eveniet libero asperiores commodi
+                    dolorum,
+                    sequi delectus eligendi aliquam!
+                </p>
+            </div>
+            <div id="main-section-div">
+                <template id="section-template">
+                    <div class="section-wrapper">
+                        <div class="section-text">
+                            <h2>Überschrift 1</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus consectetur laborum impedit odit ab dolorem
+                                incidunt
+                                nulla sed nihil. Perferendis illo non incidunt. Corrupti fugiat totam deleniti cupiditate illo sapiente
+                                dolore
+                                suscipit maiores inventore. Saepe eius et, nihil aut recusandae fuga eveniet libero asperiores commodi
+                                dolorum,
+                                sequi delectus eligendi aliquam!
+                            </p>
+                        </div>
+                        <img src="" alt="">
+                    </div>
+                </template>
+            </div>
             </div>
         </article>
     </div>

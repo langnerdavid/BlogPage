@@ -8,41 +8,57 @@
     <link rel="stylesheet" href="../Global/footer.css">
     <link rel="stylesheet" href="../Index/index.css">
     <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="../Global/color.css">
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="../Global/api.js" defer></script>    
+    <script src="../Global/api.js" defer></script>   
+    <script src="../Global/header.js" defer></script>
     <script src="profile.js" defer></script>
     <title>Document</title>
 </head>
 <body>
     <header id="header">
-        <div id = "logo-div">Logo</div>
-        <div>
-            <h1>Profile</h1>
-        </div>
-        <nav id = "nav-bar">
-            <ul>
-                <li><a href="../Index/index.html">Home</a></li>
-                <li><a href="../Profile/profile.html">Profile</a></li>
-                <li><a href="../Login/login.html">Login</a></li>
-                <li><a href="../Register/register.html">Register</a></li>
-            </ul>
+        <nav id="nav-bar">
+            <button id="sign-in-button" class="nav-button">Sign In</button>
+            <button id="register-button" class="nav-button">Register</button>
+            <button id="profile-button"><i id="profile-icon" class="fa fa-user"></i></button>
+            <div id="profile-toggle-div" class="hidden">
+                <button id="profile-button-link">Profile</button>
+                <button id="log-out-button">Log Out</button>
+            </div>
         </nav>
+        <div id="logo-div">Logo</div>
+        <div id="search-wrapper-div">
+            <input id="search-input" type="text" class="search-input-narrow">
+            <button id="search-button"><i id="search-icon" class="fa fa-search"></i></button>
+        </div>
     </header>
     <div id="main-content-div">
         <div id="blog-div">
-            <article>
-                <img src="https://images4.alphacoders.com/115/thumb-1920-115716.jpg" alt="Bild">
-                <div class ="article-text-div">
-                    <h2>Lorem, ipsum dolor sit amet consectetur</h2>
-                        <p class="article-sub-text-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. facilis illo, vitae aliquid.</p>
-                        <div class="article-footer-div">
-                            <p class="article-publishing-date">Jun24</p>
-                            <p class="article-genre">Landscape</p>
-                        </div>
-                </div>
-            </article>
+            <button id="new-article-button" class="nav-button">New Article</button>
+            <div id="article-preview-list">
+                <template id="article-preview-template">
+                    <div class="article-wrapper">
+                        <article id="article-1" class="article">
+                            <img src="https://images4.alphacoders.com/115/thumb-1920-115716.jpg" alt="Bild">
+                            <div class="article-text-div">
+                                <button class="change-article-button"><i class="fa fa-pencil"
+                                        aria-hidden="true"></i></i></button>
+                                <h2>Lorem, ipsum dolor sit amet consectetur</h2>
+                                <p class="article-sub-text-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. facilis illo,
+                                    vitae
+                                    aliquid.</p>
+                                <div class="article-footer-div">
+                                    <p class="article-publishing-date">Zeitstempel</p>
+                                    <div class="centered-line"></div>
+                                    <p class="article-publisher">Username</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </template>
+            </div>
         </div>
         <aside>
             <div class="wrapper">

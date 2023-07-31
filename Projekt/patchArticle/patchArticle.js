@@ -6,7 +6,29 @@ const blogpostTitle = document.getElementById('blogpost-title');
 const blogpostImage = document.getElementsByClassName('image-content')[0];
 const blogpostText = document.getElementsByClassName('text-content')[0];
 
+const blogpostSectionImages = document.getElementsByClassName('image-content');
+const blogpostSectionTexts = document.getElementsByClassName('section-text-content-class');
+const blogpostSectionTitles = document.getElementsByClassName('section-title-class');
+
+
 let sectionNumbers = 0;
+
+
+getOnePost(sessionStorage.getItem('patchedPost')).then((res)=>{
+    blogpostTitle.value = res.title;
+    console.log(res);
+    blogpostText.value = res.content[0].data;
+    blogpostImage.value = res.content[1].url;
+    for(let i=0; i<res.sections.length; i++){
+        const clone = sectionTemplate.content.cloneNode(true);
+        const sectionWrapper = clone.querySelector('.section-wrapper');
+        sectionList.appendChild(clone);
+        sectionNumbers+=1;
+        blogpostSectionImages[i+1].value = res.sections[i].content[1].url;
+        blogpostSectionTexts[i].value = res.sections[i].content[0].data;
+        blogpostSectionTitles[i].value = res.sections[i].sectionTitle;
+    }
+});
 
 const form = document.getElementById("blogpost-form");
 form.addEventListener("submit", getPost);
@@ -56,10 +78,8 @@ function getPost(e){
     const encode = btoa(test.username+':'+test.password);
     const authHeader = `Basic ${encode}`;
     console.log(testPost);
-    postPost(testPost, authHeader).then(()=>{
+    putPost(testPost, sessionStorage.getItem('patchedPost'), authHeader).then(()=>{
         window.open('../index/index.html', '_self');
-    }).catch(()=>{
-        alert("irgendwas hat nicht geklappt");
     });
 
 };

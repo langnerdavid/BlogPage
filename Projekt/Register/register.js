@@ -7,6 +7,7 @@ const descrpitionInput = formInputs[3];
 
 (document.getElementById('register-form')).addEventListener('submit', (event)=> {
     event.preventDefault();
+    localStorage.setItem('password', pswd);
     let userPost = {
         username: usernameInput.value,
         password: passwordInput.value,
@@ -16,7 +17,9 @@ const descrpitionInput = formInputs[3];
         }
     }
     postUsers(userPost).then(()=>{
-        
+        sessionStorage.setItem('isUserSignedIn', true);
+        localStorage.setItem('userData', JSON.stringify(userPost));
+        window.open('../index/index.html', '_self');
     });
     //Hier muss noch die WEiterleitung nach erfolgreicher Registrierung/ Fehlermeldung hin
 
