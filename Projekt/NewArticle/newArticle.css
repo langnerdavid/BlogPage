@@ -45,6 +45,7 @@
 
 .section-wrapper{
     position: relative;
+    display: block;
 }
 
 
