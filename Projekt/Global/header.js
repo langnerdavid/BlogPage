@@ -68,13 +68,24 @@ function search(){
     const searchRequest = searchInput.value.toLowerCase();
     getUsers().then((res)=>{
         console.log(res);
+        let foundUsers={
+            searchRequest : searchRequest,
+            users:[
+
+            ]
+        };
+        let j = 0;
         for(i=0; i<res.length; i++){
-            let displayName = JSON.stringify(res[i].profile.displayName).toLowerCase();
-            let username = JSON.stringify(res[i].username).toLowerCase();
+            let displayName = res[i].profile.displayName.toLowerCase();
+            let username = res[i].username.toLowerCase();
             if(displayName.includes(searchRequest)||username.includes(searchRequest)){
-                console.log(res[i]);
+                foundUsers.users[i] = username;
+                j++;
             }
         }
+        localStorage.setItem('foundUsers', JSON.stringify(foundUsers));
+        window.open("../searchResults/searchResults.html","_self");
+    
     });
 }
 
@@ -85,7 +96,7 @@ function logOut(){
         rememberMe: 'false'
     }
     sessionStorage.setItem('isUserSignedIn', 'false');
-    localStorage.setItem('userData', JSON.stringify('userData'));
+    localStorage.setItem('userData', JSON.stringify(userData));
     window.open('index.html', '_self');
 }
 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="searchResults.css">
+    <link rel="stylesheet" href="../Global/header.css">
+    <link rel="stylesheet" href="../Global/footer.css">
+    <link rel="stylesheet" href="../Global/color.css">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="../Global/api.js" defer></script>
+    <script src="../Global/header.js" defer></script>
+    <script src="searchResults.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <header id="header">
+        <nav id="nav-bar">
+            <button id="sign-in-button" class="nav-button">Sign In</button>
+            <button id="register-button" class="nav-button">Register</button>
+            <button id="profile-button"><i id="profile-icon" class="fa fa-user"></i></button>
+            <div id="profile-toggle-div" class="hidden">
+                <button id="profile-button-link">Profile</button>
+                <button id="log-out-button">Log Out</button>
+            </div>
+        </nav>
+        <div id="logo-div">Logo</div>
+        <div id="search-wrapper-div">
+            <input id="search-input" type="text" class="search-input-narrow">
+            <button id="search-button"><i id="search-icon" class="fa fa-search"></i></button>
+        </div>
+    </header>
+    <div id = "main-content-div">
+        <div id="search-results-wrapper">
+            <h2>Ergebnisse zu </h2>
+            <template id="user-results-template">
+                <div id="user-result-div">
+                    <img id="avatar" src="https://img.freepik.com/freie-ikonen/benutzer_318-159711.jpg" alt="user" width="100">
+                    <div class="user-details">
+                        <h4 class="display-name" contenteditable="false">Displayname</h4>
+                        <h5 class = "username">Username</h5>
+                        <br />
+                    </div>
+                    <div class="info_data">
+                        <div class="data">
+                            <h4>Description</h4>
+                            <p class="description" contenteditable="false">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+                                illo, vitae aliquid.</p>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <p id="nothing-found" class="hidden">Es gab leider keine passenden Suchergebnisse </p>
+        </div>
+    </div>
+    <footer>
+    </footer>
+</body>
+
+</html>
