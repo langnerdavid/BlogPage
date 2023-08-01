@@ -37,7 +37,7 @@ function getPost(e){
     const imageContent = {
         __type: "img",
         url: blogpostImage.value,
-        caption: blogpostImage.value
+        caption: blogpostImageTitle.value
     }
     let testPost
     if(sectionNumbers==0){

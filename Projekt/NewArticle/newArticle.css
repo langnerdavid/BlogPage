@@ -8,6 +8,7 @@
     padding: 20px;
     background-color: var(--blogpost-background);
     border-radius: 5px;
+    margin: 20px;
 }
   
 #blogpost-form label {

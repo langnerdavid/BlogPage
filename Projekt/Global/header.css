@@ -8,11 +8,9 @@ header {
     position: relative;
 }
 
-#logo-div {
+#logo-img {
     width: 100px;
-    Height: 60px;
-    background-color: var(--logo-background);
-    margin-left: 10%
+
 }
 
 #nav-bar {
