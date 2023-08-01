@@ -51,12 +51,12 @@
         <textarea class="text-content input-field" name="content" rows="10"></textarea>
 
         <label for="image-title">Image Title:</label>
-        <textarea class="image-title input-field" name="content" rows="1" pattern=".{10,100}"
-        oninvalid="this.setCustomValidity('Image title must be between 10 to 100 characters!')" oninput="this.setCustomValidity('')"></textarea>
+        <input type="text" class="image-title input-field" name="content" rows="1" pattern=".{10,100}"
+        oninvalid="this.setCustomValidity('Image title must be between 10 to 100 characters!')" oninput="this.setCustomValidity('')"/>
 
         <label for="image-content">Image Link:</label>
-        <textarea class="image-content input-field" name="content" rows="1" pattern="^https:\/\/\S+$"
-        oninvalid="this.setCustomValidity('Image link must start with https:// !')" oninput="this.setCustomValidity('')"></textarea>
+        <input type="text" class="image-content input-field" name="content" rows="1" pattern="^https:\/\/\S+$"
+        oninvalid="this.setCustomValidity('Image link must start with https:// !')" oninput="this.setCustomValidity('')"/>
 
         <div id="section-list"></div>
         <template id="section-template">
@@ -71,12 +71,12 @@
             <textarea id="section-text-content" name="content" rows="10" class="input-field section-text-content-class"></textarea>
 
             <label for="image-title">Section Image Title:</label>
-            <textarea class="image-title input-field" name="content" rows="1" pattern=".{10,100}"
-            oninvalid="this.setCustomValidity('Image title must be between 10 to 100 characters!')" oninput="this.setCustomValidity('')"></textarea>
+            <input type="text" class="image-title input-field" name="content" rows="1" pattern=".{10,100}"
+            oninvalid="this.setCustomValidity('Image title must be between 10 to 100 characters!')" oninput="this.setCustomValidity('')"/>
 
             <label for="section-image-content">Section Image Link:</label>
-            <textarea class="image-content input-field" name="content" rows="1" pattern="^https:\/\/\S+$"
-            oninvalid="this.setCustomValidity('Image link must start with https:// !')" oninput="this.setCustomValidity('')"></textarea>
+            <input type="text" class="image-content input-field" name="content" rows="1" pattern="^https:\/\/\S+$"
+            oninvalid="this.setCustomValidity('Image link must start with https:// !')" oninput="this.setCustomValidity('')"/>
           </div>
         </template>
 
