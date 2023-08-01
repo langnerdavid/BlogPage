@@ -29,12 +29,12 @@ html{
     --remove-section-background: #f44336;
 
     /*Header*/
-    --header-background: blue;
+    --header-background: f4f8f4;
     --logo-background: white;
     --nav-button-color: white;
     --nav-button-background: #4caf50;
     --nav-button-hover: #45a049;
-    --profile-icon-color: white;
+    --profile-icon-color: #353c4e;
     --profile-toggle-background: white;
     --profile-toggle-button-background: white;
     --profile-toggle-button-background-hover: rgb(206, 205, 205);
