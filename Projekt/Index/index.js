@@ -18,10 +18,10 @@ getPosts().then((res)=>{
         articleList.appendChild(clone);
         for(i=0; i<lastTenPosts[j].content.length; i++){
             if(lastTenPosts[j].content[i].data){
-                content = lastTenPosts[0].content[i].data;
+                content = lastTenPosts[0]?.content[i]?.data;
                 continue;
             }else{
-                contentImgaeUrl = lastTenPosts[0].content[i].url;
+                contentImgaeUrl = lastTenPosts[0]?.content[i]?.url;
                 continue;
             }
         }
@@ -44,8 +44,16 @@ function setArticlepreview(i){
     articles[i].getElementsByTagName('h2')[0].innerHTML = lastTenPosts[i].title;
     articles[i].getElementsByClassName('article-publishing-date')[0].innerHTML = formatTimeSinceCreation(lastTenPosts[i].createdAt);
     articles[i].getElementsByClassName('article-publisher')[0].innerHTML = lastTenPosts[i].username;  
-    articles[i].getElementsByClassName('article-sub-text-p')[0].innerHTML = lastTenPosts[i].content[0].data;  
-    articles[i].getElementsByTagName('img')[0].src = lastTenPosts[i].content[1].url;
+    const textElement = articles[i].getElementsByClassName('article-sub-text-p')[0];
+    const newText = lastTenPosts[i]?.content[0]?.data;
+    if (newText) {
+        textElement.innerHTML = newText;
+    }
+    const imgElement = articles[i].getElementsByTagName('img')[0];
+    const newUrl = lastTenPosts[i]?.content[1]?.url;
+    if (newUrl) {
+        imgElement.src = newUrl;
+    }
     let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));   
     if(lastTenPosts[i].username===userDataLocalStorage?.username?.toLowerCase()){
         articles[i].getElementsByClassName('change-article-button')[0].classList.remove('hidden');

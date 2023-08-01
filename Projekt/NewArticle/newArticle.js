@@ -30,20 +30,42 @@ addSectionButton.addEventListener('click', () => {
 
 function getPost(e){
     e.preventDefault();
-    let textContent = {
-        __type: "text",
-        data:blogpostText.value
-    }
-    const imageContent = {
-        __type: "img",
-        url: blogpostImage.value,
-        caption: blogpostImageTitle.value
-    }
     let testPost
     if(sectionNumbers==0){
-        testPost ={
-            title: blogpostTitle.value,
-            content: [textContent, imageContent]
+        if(blogpostImage.value && blogpostText.value){
+            let imageContent = {
+                __type: "img",
+                url: blogpostImage.value,
+                caption: blogpostImageTitle.value
+            }
+            let textContent = {
+                __type: "text",
+                data:blogpostText.value
+            }
+            testPost ={
+                title: blogpostTitle.value,
+                content: [textContent, imageContent]
+            }
+
+        }else if(!blogpostImage.value){
+            let textContent = {
+                __type: "text",
+                data:blogpostText.value
+            }
+            testPost ={
+                title: blogpostTitle.value,
+                content: [textContent]
+            }
+        }else{
+            let imageContent = {
+                __type: "img",
+                url: blogpostImage.value,
+                caption: blogpostImageTitle.value
+            }
+            testPost ={
+                title: blogpostTitle.value,
+                content: [imageContent]
+            }
         }
     }else{
         testPost ={
@@ -58,7 +80,7 @@ function getPost(e){
     const authHeader = `Basic ${encode}`;
     console.log(testPost);
     postPost(testPost, authHeader).then(()=>{
-        window.open('../index/index.html', '_self');
+        //window.open('../index/index.html', '_self');
     }).catch(()=>{
         alert("irgendwas hat nicht geklappt");
     });
@@ -70,22 +92,42 @@ function getSections(){
     console.log(sectionList);
     let sections = new Array(sectionList.length);
     for (let i = 0; i < sectionList.length; i++) {
-        let imageContent={
-            __type: "img",
-            url: sectionList[i].getElementsByClassName('image-content')[0].value,
-            caption: sectionList[i].getElementsByClassName('image-title')[0].value
-        }
-        let textContent = {
-            __type: "text",
-            data: sectionList[i].getElementsByClassName('section-text-content-class')[0].value
-        }
-        sections[i] ={
-            sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
-            content: [textContent, imageContent]
-        }
-        console.log(i);
-    }
+        if(blogpostImage.value && blogpostText.value){
+            let imageContent = {
+                __type: "img",
+                url: sectionList[i].getElementsByClassName('image-content')[0].value,
+                caption: sectionList[i].getElementsByClassName('image-title')[0].value
+            }
+            let textContent = {
+                __type: "text",
+                data: sectionList[i].getElementsByClassName('section-text-content-class')[0].value
+            }
+            sections[i] ={
+                sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
+                content: [textContent, imageContent]
+            }
 
+        }else if(!blogpostImage.value){
+            let textContent = {
+                __type: "text",
+                data: sectionList[i].getElementsByClassName('section-text-content-class')[0].value
+            }
+            sections[i] ={
+                sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
+                content: [textContent]
+            }
+        }else{
+            let imageContent = {
+                __type: "img",
+                url: sectionList[i].getElementsByClassName('image-content')[0].value,
+                caption: sectionList[i].getElementsByClassName('image-title')[0].value
+            }
+            sections[i] ={
+                sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
+                content: [imageContent]
+            }
+        }
+    }
     return sections;
 }
 

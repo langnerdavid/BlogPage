@@ -6,8 +6,8 @@ body{
 
 #main-content-div{
     width: 100%;
-    min-height:calc(100vh - 220px);
-    background-color: yellow;
+    min-height:calc(100vh - 200px);
+    background-color: var(--background-color);
     display: flex;
     justify-content: center;
 }

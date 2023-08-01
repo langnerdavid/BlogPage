@@ -29,15 +29,15 @@ html{
     --remove-section-background: #f44336;
 
     /*Header*/
-    --header-background: f4f8f4;
+    --header-background: #c0c0c0;
     --logo-background: white;
     --nav-button-color: white;
     --nav-button-background: #4caf50;
     --nav-button-hover: #45a049;
     --profile-icon-color: #353c4e;
-    --profile-toggle-background: white;
-    --profile-toggle-button-background: white;
-    --profile-toggle-button-background-hover: rgb(206, 205, 205);
+    --profile-toggle-background: #c0c0c0;
+    --profile-toggle-button-background: #c0c0c0;
+    --profile-toggle-button-background-hover: #9b9999;
 
     /*Footer*/
     --footer-background-color: gray;
@@ -48,8 +48,8 @@ html{
     --animation-key-frames: indianred;
 
     /*Index*/
-    --blog-div-background: red;
-    --aside-background: pink;
+    --blog-div-background: #f3f3f3;
+    --aside-background: #ccc;
     --article-background: gray;
     --cenntered-line-background: black;
     --fa-eye-color: lightgray;
