@@ -88,3 +88,41 @@ function getSections(){
 
     return sections;
 }
+
+
+function validateForm() {
+    const textContent = blogpostText.value.trim();
+    const imageTitle = blogpostImageTitle.value.trim();
+    const imageContent = blogpostImage.value.trim();
+    const sectionWrappers = document.getElementsByClassName('section-wrapper');
+
+    const hasTextContent = textContent !== '';
+    const hasImageContent = imageTitle !== '' && imageContent !== '';
+    let hasSectionContent = false;
+
+    for (let i = 0; i < sectionWrappers.length; i++) {
+        const sectionTextContent = sectionWrappers[i].getElementsByClassName('section-text-content-class')[0].value.trim();
+        const sectionImageTitle = sectionWrappers[i].getElementsByClassName('image-title')[0].value.trim();
+        const sectionImageContent = sectionWrappers[i].getElementsByClassName('image-content')[0].value.trim();
+
+        const sectionTextContentFilled = sectionTextContent !== '';
+        const sectionImageContentFilled = sectionImageTitle !== '' && sectionImageContent !== '';
+
+        if (!sectionTextContentFilled && !sectionImageContentFilled) {
+            alert("Each section must fill at least one field: 'Section Text Content' or 'Section Image Title' and 'Section Image Link'.");
+            return false;
+        }
+
+        if (sectionTextContentFilled || sectionImageContentFilled) {
+            hasSectionContent = true;
+            break;
+        }
+    }
+
+    if (!hasTextContent && !hasImageContent && !hasSectionContent) {
+        alert("You must fill at least one content field: 'Text Content' or 'Image Title' and 'Image Link' or at least one section content.");
+        return false;
+    }
+
+    return true;
+}
