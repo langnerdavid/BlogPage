@@ -43,13 +43,15 @@ article > img{
     justify-content: center;
     padding-left: 5px;
     max-height: 160px;
+    overflow: hidden;
+    position: relative;
 }
 h2{
     font-size: 20px;
     margin:0px;
     margin-bottom: 10px;
     width: 65%;
-    overflow-wrap: anywhere;    
+    overflow-wrap: anywhere;   
 }
 .article-sub-text-p{
     width: 100%;
@@ -59,6 +61,7 @@ h2{
     content: "";
     position:relative;
     overflow-wrap: anywhere;
+    overflow: hidden;
 }
 
 .article-sub-text-p:before {
