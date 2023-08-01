@@ -98,7 +98,7 @@ function logOut(){
     }
     sessionStorage.setItem('isUserSignedIn', 'false');
     localStorage.setItem('userData', JSON.stringify(userData));
-    window.open('index.html', '_self');
+    window.open('../Index/index.html', '_self');
 }
 
 function testSignedIn(){

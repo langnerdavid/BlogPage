@@ -47,7 +47,7 @@ function setArticlepreview(i){
     articles[i].getElementsByClassName('article-sub-text-p')[0].innerHTML = lastTenPosts[i].content[0].data;  
     articles[i].getElementsByTagName('img')[0].src = lastTenPosts[i].content[1].url;
     let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));   
-    if(lastTenPosts[i].username===userDataLocalStorage.username.toLowerCase()){
+    if(lastTenPosts[i].username===userDataLocalStorage?.username?.toLowerCase()){
         articles[i].getElementsByClassName('change-article-button')[0].classList.remove('hidden');
         articles[i].getElementsByClassName('change-article-button')[0].addEventListener('click', function(e) {
             e.stopPropagation();

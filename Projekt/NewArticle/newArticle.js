@@ -4,6 +4,7 @@ const sectionTemplate = document.getElementById('section-template');
 
 const blogpostTitle = document.getElementById('blogpost-title');
 const blogpostImage = document.getElementsByClassName('image-content')[0];
+const blogpostImageTitle = document.getElementsByClassName('image-title')[0];
 const blogpostText = document.getElementsByClassName('text-content')[0];
 
 let sectionNumbers = 0;
@@ -36,7 +37,7 @@ function getPost(e){
     const imageContent = {
         __type: "img",
         url: blogpostImage.value,
-        caption: "Ein Test Bild"
+        caption: blogpostImage.value
     }
     let testPost
     if(sectionNumbers==0){
@@ -72,7 +73,7 @@ function getSections(){
         let imageContent={
             __type: "img",
             url: sectionList[i].getElementsByClassName('image-content')[0].value,
-            caption: "Ein Test Bild"
+            caption: sectionList[i].getElementsByClassName('image-title')[0].value
         }
         let textContent = {
             __type: "text",

@@ -22,47 +22,59 @@
   </head>
   <body>
     <header id="header">
-      <nav id="nav-bar">
-        <button id="sign-in-button" class="nav-button">Sign In</button>
-        <button id="register-button" class="nav-button">Register</button>
-        <button id="profile-button"><i id="profile-icon" class="fa fa-user"></i></button>
-        <div id="profile-toggle-div" class="hidden">
-          <button id="profile-button-link">Profile</button>
-          <button id="log-out-button">Log Out</button>
+        <nav id = "nav-bar">
+            <button id="sign-in-button" class ="nav-button">Sign In</button>
+            <button id="register-button" class ="nav-button">Register</button>
+            <button id="profile-button" ><i id="profile-icon" class="fa fa-user"></i></button>
+            <div id="profile-toggle-div" class = "hidden">
+                <button id="profile-button-link">Profile</button>
+                <button id="log-out-button">Log Out</button>
+            </div>
+        </nav>
+        <div id = "logo-div">Logo</div>
+        <div id="search-wrapper-div">
+            <input id="search-input" type="text" class = "search-input-narrow">
+            <button id="search-button"><i id="search-icon" class="fa fa-search"></i></button>
         </div>
-      </nav>
-      <div id="logo-div">Logo</div>
-      <div id="search-wrapper-div">
-        <input id="search-input" type="text" class="search-input-narrow">
-        <button id="search-button"><i id="search-icon" class="fa fa-search"></i></button>
-      </div>
     </header>
     <div id="main-content-div">
       <form id="blogpost-form">
         <label for="blogpost-title">Title:</label>
-        <input type="text" id="blogpost-title" name="title" class="input-field" required />
+        <input type="text" id="blogpost-title" name="title" class="input-field" pattern=".{4,60}" required 
+        oninvalid="this.setCustomValidity('Title must be between 4 to 60 characters!')" oninput="this.setCustomValidity('')"/>
 
         <label for="text-content">Text Content:</label>
         <textarea class="text-content input-field" name="content" rows="10"></textarea>
 
+        <label for="image-title">Image Title:</label>
+        <input type="text" class="image-title input-field" name="content" rows="1" pattern=".{10,100}"
+        oninvalid="this.setCustomValidity('Image title must be between 10 to 100 characters!')" oninput="this.setCustomValidity('')"/>
+
         <label for="image-content">Image Content:</label>
-        <textarea class="image-content input-field" name="content" rows="1"></textarea>
+        <input type="text" class="image-content input-field" name="content" rows="1" pattern="^https:\/\/\S+$"
+        oninvalid="this.setCustomValidity('Image link must start with https:// !')" oninput="this.setCustomValidity('')"/>
+
+        
 
         <div id="section-list"></div>
         <template id="section-template">
           <div class="section-wrapper">
             <label for="section-title">Section Title:</label>
             <button type="button" class="remove-section-button">Remove Section</button>
-            <br/>
 
-            <input type="text" id="section-title" name="title" class="input-field section-title-class" required />
+            <input type="text" id="section-title" name="title" class="input-field section-title-class" pattern=".{4,60}" required
+            oninvalid="this.setCustomValidity('Section title must be between 4 to 60 characters!')" oninput="this.setCustomValidity('')"/>
 
             <label for="section-text-content">Section Text Content:</label>
-            <textarea
-              id="section-text-content" name="content" rows="10" class="input-field section-text-content-class"></textarea>
+            <textarea id="section-text-content" name="content" rows="10" class="input-field section-text-content-class"></textarea>
 
-            <label for="section-image-content">Section Image Content:</label>
-            <textarea class="image-content input-field" name="content" rows="1"></textarea>
+            <label for="image-title">Section Image Title:</label>
+            <input type="text" class="image-title input-field" name="content" rows="1" pattern=".{10,100}"
+            oninvalid="this.setCustomValidity('Image title must be between 10 to 100 characters!')" oninput="this.setCustomValidity('')"/>
+
+            <label for="section-image-content">Section Image Link:</label>
+            <input type="text" class="image-content input-field" name="content" rows="1" pattern="^https:\/\/\S+$"
+            oninvalid="this.setCustomValidity('Image link must start with https:// !')" oninput="this.setCustomValidity('')"/>
           </div>
         </template>
 
