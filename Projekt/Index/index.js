@@ -55,7 +55,8 @@ function setArticlepreview(i){
         imgElement.src = newUrl;
     }
     let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));   
-    if(lastTenPosts[i].username===userDataLocalStorage?.username?.toLowerCase()){
+    isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
+    if(lastTenPosts[i].username===userDataLocalStorage?.username?.toLowerCase() && isUserSignedIn){
         articles[i].getElementsByClassName('change-article-button')[0].classList.remove('hidden');
         articles[i].getElementsByClassName('change-article-button')[0].addEventListener('click', function(e) {
             e.stopPropagation();

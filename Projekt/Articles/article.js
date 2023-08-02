@@ -26,8 +26,16 @@ getOnePost(sessionStorage.getItem('clickedPost')).then((res)=>{
     articleHeading.textContent = onePost.title;
     publishingDetailsP[0].textContent = onePost.username;
     publishingDetailsP[1].textContent = formatTimeSinceCreation(onePost.createdAt);
-    articlePicture[0].src = onePost.content[1].url;
-    contentText.textContent = onePost?.content[0]?.data;
+    if(onePost?.content[1]?.url){
+        articlePicture[0].src = onePost?.content[1]?.url;
+        articlePicture[0].alt = onePost?.content[1]?.caption;
+    }else{
+        articlePicture[0].classList.add('hidden');
+    }
+
+    if(onePost?.content[0]?.data){
+        contentText.textContent = onePost?.content[0]?.data;
+    }
 
     for(i=0; i<onePost.sections.length; i++){
         const clone = sectionTemplate.content.cloneNode(true);
@@ -36,6 +44,7 @@ getOnePost(sessionStorage.getItem('clickedPost')).then((res)=>{
         heading[i].textContent = onePost?.sections[i]?.sectionTitle;
         content[i].textContent = onePost?.sections[i]?.content[0]?.data;
         img[i].src = onePost?.sections[i]?.content[1].url;
+        img[i].alt = onePost?.sections[i]?.content[1].caption;
 
     }
 

@@ -68,10 +68,17 @@ function getPost(e){
             }
         }
     }else{
-        testPost ={
-            title: blogpostTitle.value,
-            content: [textContent, imageContent],
-            sections: getSections()
+        if(!blogpostImage.value && !blogpostText.value){
+            testPost ={
+                title: blogpostTitle.value,
+                sections: getSections()
+            }
+        }else{
+            testPost ={
+                title: blogpostTitle.value,
+                content: [textContent, imageContent],
+                sections: getSections()
+            }
         }
     }
     let test = JSON.parse(localStorage.getItem('userData'));
