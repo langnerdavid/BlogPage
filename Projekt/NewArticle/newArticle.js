@@ -158,7 +158,7 @@ function validateForm() {
         const sectionImageContentFilled = sectionImageTitle !== '' && sectionImageContent !== '';
 
         if (!sectionTextContentFilled && !sectionImageContentFilled) {
-            alert("Each section must fill at least one field: 'Section Text Content' or 'Section Image Title' and 'Section Image Link'.");
+            alert("One section must fill at least one field: 'Section Text Content' or 'Section Image Title' and 'Section Image Link'.");
             return false;
         }
 
