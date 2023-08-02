@@ -99,7 +99,9 @@ function getSections(){
     console.log(sectionList);
     let sections = new Array(sectionList.length);
     for (let i = 0; i < sectionList.length; i++) {
-        if(blogpostImage.value && blogpostText.value){
+        let sectionImage = sectionList[i].getElementsByClassName('image-content')[0];
+        let sectionText = sectionList[i].getElementsByClassName('section-text-content-class')[0];
+        if(sectionImage.value && sectionText.value){
             let imageContent = {
                 __type: "img",
                 url: sectionList[i].getElementsByClassName('image-content')[0].value,
@@ -114,7 +116,7 @@ function getSections(){
                 content: [textContent, imageContent]
             }
 
-        }else if(!blogpostImage.value){
+        }else if(!sectionImage.value){
             let textContent = {
                 __type: "text",
                 data: sectionList[i].getElementsByClassName('section-text-content-class')[0].value
