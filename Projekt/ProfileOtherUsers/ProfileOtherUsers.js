@@ -40,7 +40,7 @@ getUserPosts(clickedUser).then((res)=>{
                 continue;
             }
         }
-        setArticlepreview(j);
+        setArticlepreview(j, userPosts);
       }
 
     for (let i = 0; i < articles.length; i++) {
@@ -55,15 +55,6 @@ getUserPosts(clickedUser).then((res)=>{
     console.error(error);
 });
 //
-
-function setArticlepreview(i){
-    articles[i].getElementsByTagName('h2')[0].innerHTML = userPosts[i].title;
-    articles[i].getElementsByClassName('article-publishing-date')[0].innerHTML = formatTimeSinceCreation(userPosts[i].createdAt);
-    articles[i].getElementsByClassName('article-publisher')[0].innerHTML = userPosts[i].username;  
-    articles[i].getElementsByClassName('article-sub-text-p')[0].innerHTML = userPosts[i].content[0].data;  
-    articles[i].getElementsByTagName('img')[0].src = userPosts[i].content[1].url;
-    let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));   
-}
 
 function articleFunction(num){
     sessionStorage.setItem('clickedPost', userPosts[num].id);

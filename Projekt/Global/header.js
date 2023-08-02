@@ -44,7 +44,6 @@ function addAnimation(){
         setTimeout(() => {
             searchInput.classList.remove('search-input-animation');
             searchInput.classList.add('search-input-extended');
-            searchInput.addEventListener('blur', addAnimation);
             }, 400);
         isSearchInputOpen = true;
     }else{
@@ -64,7 +63,6 @@ function addAnimation(){
 }
 
 function search(){
-    console.log("Hier jetzt Suche");
     const searchRequest = searchInput.value.toLowerCase();
     getUsers().then((res)=>{
         console.log(res);

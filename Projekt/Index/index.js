@@ -25,7 +25,7 @@ getPosts().then((res)=>{
                 continue;
             }
         }
-        setArticlepreview(j);
+        setArticlepreview(j, lastTenPosts);
     }
 
     for (let i = 0; i < articles.length; i++) {
@@ -40,31 +40,6 @@ getPosts().then((res)=>{
 });
 //
 
-function setArticlepreview(i){
-    articles[i].getElementsByTagName('h2')[0].innerHTML = lastTenPosts[i].title;
-    articles[i].getElementsByClassName('article-publishing-date')[0].innerHTML = formatTimeSinceCreation(lastTenPosts[i].createdAt);
-    articles[i].getElementsByClassName('article-publisher')[0].innerHTML = lastTenPosts[i].username;  
-    const textElement = articles[i].getElementsByClassName('article-sub-text-p')[0];
-    const newText = lastTenPosts[i]?.content[0]?.data;
-    if (newText) {
-        textElement.innerHTML = newText;
-    }
-    const imgElement = articles[i].getElementsByTagName('img')[0];
-    const newUrl = lastTenPosts[i]?.content[1]?.url;
-    if (newUrl) {
-        imgElement.src = newUrl;
-    }
-    let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));   
-    isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
-    if(lastTenPosts[i].username===userDataLocalStorage?.username?.toLowerCase() && isUserSignedIn){
-        articles[i].getElementsByClassName('change-article-button')[0].classList.remove('hidden');
-        articles[i].getElementsByClassName('change-article-button')[0].addEventListener('click', function(e) {
-            e.stopPropagation();
-            patchArticle(i);
-            
-        });
-    } 
-}
 
 function articleFunction(num){
     sessionStorage.setItem('clickedPost', lastTenPosts[num].id);

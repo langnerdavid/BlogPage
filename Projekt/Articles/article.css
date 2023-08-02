@@ -6,7 +6,7 @@ body{
 
 #main-content-div{
     width: 100%;
-    min-height:calc(100vh - 200px);
+    min-height:calc(100vh - 170px);
     background-color: var(--background-color);
     display: flex;
     justify-content: center;
@@ -14,11 +14,12 @@ body{
 
 article{
     width: 70%;
-    background-color: rgb(217, 0, 255);
-    padding-top: 10px;
+    background-color: var(--aside-background);
+    padding: 10px;
     margin: 0 auto;
     position: relative;
     margin: 20px;
+    border-radius: 10px;
 }
 
 .article-heading{
@@ -41,7 +42,6 @@ article{
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;
-    background-color: orange;
 }
 
 .publisher-p{

@@ -26,14 +26,17 @@ getOnePost(sessionStorage.getItem('clickedPost')).then((res)=>{
     articleHeading.textContent = onePost.title;
     publishingDetailsP[0].textContent = onePost.username;
     publishingDetailsP[1].textContent = formatTimeSinceCreation(onePost.createdAt);
-    if(onePost?.content[1]?.url){
+    if(onePost?.content[0]?.url){
+        articlePicture[0].src = onePost?.content[0]?.url;
+        articlePicture[0].alt = onePost?.content[0]?.caption;
+    }else if (onePost?.content[1]?.url){
+        contentText.textContent = onePost?.content[0]?.data;
         articlePicture[0].src = onePost?.content[1]?.url;
         articlePicture[0].alt = onePost?.content[1]?.caption;
-    }else{
-        articlePicture[0].classList.add('hidden');
     }
-
-    if(onePost?.content[0]?.data){
+    
+    else{
+        articlePicture[0].classList.add('hidden');
         contentText.textContent = onePost?.content[0]?.data;
     }
 
@@ -42,9 +45,22 @@ getOnePost(sessionStorage.getItem('clickedPost')).then((res)=>{
         mainSectionDiv.appendChild(clone);
         console.log(onePost?.sections[i]?.content);
         heading[i].textContent = onePost?.sections[i]?.sectionTitle;
-        content[i].textContent = onePost?.sections[i]?.content[0]?.data;
-        img[i].src = onePost?.sections[i]?.content[1].url;
-        img[i].alt = onePost?.sections[i]?.content[1].caption;
+
+        //nur img, kein TextContent
+        if(onePost?.sections[i]?.content[0]?.url){
+            img[i].src = onePost?.sections[i]?.content[0].url;
+            img[i].alt = onePost?.sections[i]?.content[0].caption;
+        }
+        //sowohl TextContent als auch ImageContent
+        else if (onePost?.sections[i]?.content[1]?.url){
+            img[i].src = onePost?.sections[i]?.content[1].url;
+            img[i].alt = onePost?.sections[i]?.content[1].caption;
+            content[i].textContent = onePost?.sections[i]?.content[0]?.data;
+        }
+        // nur TextContent
+        else{
+            content[i].textContent = onePost?.sections[i]?.content[0]?.data;
+        }
 
     }
 
@@ -64,6 +80,8 @@ function countWords(str) {
 }
 
 function countWordElements(ps, h2){
+    console.log(ps);
+    console.log(h2);
     for(i=4; i<ps.length; i++){
         wordCount+=countWords(ps[i].innerHTML);
     }

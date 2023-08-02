@@ -139,15 +139,17 @@ getUserPosts(userDataLocalStorage.username).then((res)=>{
           const articleWrapper = clone.querySelector('.article-wrapper');
           articleList.appendChild(clone);
           for(i=0; i<userPosts[j].content.length; i++){
-              if(userPosts[j].content[i].data){
-                  content = userPosts[0].content[i].data;
-                  continue;
+            if(userPosts[j]?.content){
+              if(userPosts[j]?.content[i]?.data){
+                content = userPosts[0]?.content[i]?.data;
+                continue;
               }else{
-                  contentImgaeUrl = userPosts[0].content[i].url;
-                  continue;
+                contentImgaeUrl = userPosts[0]?.content[i]?.url;
+                continue;
               }
+            }
           }
-          setArticlepreview(j);
+          setArticlepreview(j, userPosts);
       }
 
       for (let i = 0; i < articles.length; i++) {
@@ -159,26 +161,7 @@ getUserPosts(userDataLocalStorage.username).then((res)=>{
 }).catch(error => {
     console.error(error);
 });
-//
-
-function setArticlepreview(i){
-    articles[i].getElementsByTagName('h2')[0].innerHTML = userPosts[i].title;
-    articles[i].getElementsByClassName('article-publishing-date')[0].innerHTML = formatTimeSinceCreation(userPosts[i].createdAt);
-    articles[i].getElementsByClassName('article-publisher')[0].innerHTML = userPosts[i].username;  
-    articles[i].getElementsByClassName('article-sub-text-p')[0].innerHTML = userPosts[i].content[0].data;  
-    articles[i].getElementsByTagName('img')[0].src = userPosts[i].content[1].url;
-    let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));   
-    articles[i].getElementsByClassName('change-article-button')[0].addEventListener('click', function(e) {
-        e.stopPropagation();
-        patchArticle(i);
-        
-    });
-    articles[i].getElementsByClassName('delete-article-button')[0].addEventListener('click', function(e) {
-        e.stopPropagation();
-        confirmDeleteArticle(i);
-        
-    });
-}
+//  
 
 function articleFunction(num){
     sessionStorage.setItem('clickedPost', userPosts[num].id);
