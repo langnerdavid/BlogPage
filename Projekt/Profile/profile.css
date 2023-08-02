@@ -217,6 +217,9 @@ body {
     top: 0;
     background: linear-gradient(transparent 30px, var(--article-background));
 }
+#new-article-button-mobile {
+    display:none;
+}
 
 @media screen and (max-width: 600px) {
     #main-content-div {
@@ -236,4 +239,22 @@ body {
     .new-article-button {
       margin-top: 20px;
     }   
+    article {
+        max-height: 100px;
+    }
+    #new-article-button-mobile{
+        display: block;
+        margin:0px;
+        margin-top: 20px;
+        margin-left: 5%;
+    }
+    #new-article-button{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .wrapper{
+        width: 80%;
+    }
 }
