@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../Global/footer.css">
     <link rel="stylesheet" href="../Global/color.css">
     <link rel="stylesheet" href="../Global/header.css">
+    <link rel="stylesheet" href="../Global/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="register.css">
     <script src="register.js" defer></script>
@@ -41,7 +42,7 @@
             <br>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required pattern="^(?=.*[A-Za-z])(?=.*\d).{6,12}$" placeholder="6-12 characters, at least one letter and one number" 
-                oninvalid="this.setCustomValidity('6-12 characters, at least one letter and one number!')" oninput="this.setCustomValidity('')">
+                oninvalid="this.setCustomValidity('6-12 characters, one letter and one number!')" oninput="this.setCustomValidity('')">
             <br>
             <label for="displayname">Display Name:</label>
             <input type="text" id="display-name" name="display-name" required placeholder="4-30 characters" pattern=".{4,30}"

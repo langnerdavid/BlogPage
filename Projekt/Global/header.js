@@ -2,11 +2,25 @@ const searchInput = document.getElementById('search-input');
 const searchButton = document.getElementById('search-button');
 const signInButton = document.getElementById('sign-in-button');
 const registerButton = document.getElementById('register-button');
-const profileButton = document.getElementById('profile-button');
-const logOutButton = document.getElementById('log-out-button');
-const profileToggleDiv = document.getElementById('profile-toggle-div');
-const profileButtonLink = document.getElementById('profile-button-link');
+let profileButton;
+let logOutButton;
+let profileToggleDiv;
+let profileButtonLink;
+if(window.screen.width>600){
+    profileButton = document.getElementsByClassName('profile-button')[0];
+    logOutButton = document.getElementsByClassName('log-out-button')[0];
+    profileToggleDiv = document.getElementsByClassName('profile-toggle-div')[0];
+    profileButtonLink = document.getElementsByClassName('profile-button-link')[0];
+}else{
+    profileButton = document.getElementsByClassName('profile-button')[1];
+    logOutButton = document.getElementsByClassName('log-out-button')[1];
+    profileToggleDiv = document.getElementsByClassName('profile-toggle-div')[1];
+    profileButtonLink = document.getElementsByClassName('profile-button-link')[1];
+}
+
+console.log(profileButton);
 const addNewArticle = document.getElementById('new-article-button');
+const hamburgerMenuMobile = document.getElementById('hamburger-menu');
 let isSearchInputOpen = false;
 //let isUserSignedIn = false; //statischer Input, ob User angemeldet ist
 let isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
@@ -21,15 +35,12 @@ checkUserSignedIn();
 
 function checkUserSignedIn(){
     isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
-    console.log(isUserSignedIn);
     userDataLocalStorage = localStorage.getItem('userData');
     
     if(userDataLocalStorage?.rememberMe && (isUserSignedIn==='false' || isUserSignedIn==null)){
-        console.log("yes");
         loginUser(userDataLocalStorage.username, userDataLocalStorage.password, userDataLocalStorage.rememberMe).then(()=>{sessionStorage.setItem('isUserSignedIn', 'true'); testSignedIn();});
     }
     else{
-        console.log(isUserSignedIn);
         testSignedIn();
     }
 }
@@ -102,15 +113,14 @@ function logOut(){
 function testSignedIn(){
     isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
     if(isUserSignedIn==='true'){
-        console.log("if true")
         profileButton.addEventListener('click', () =>{profileToggleDiv.classList.toggle('hidden');});
         logOutButton.addEventListener('click', logOut);
         addNewArticle?.addEventListener('click', () =>{window.open("../NewArticle/newArticle.html","_self");});
         
         signInButton.classList.add('hidden');
         registerButton.classList.add('hidden');
-    }else{
-        console.log("if false");
+        hamburgerMenuMobile.classList.add('hidden');
+    }else if(window.screen.height>=600){
         signInButton.addEventListener('click', () =>{window.open("../Login/login.html","_self");});
         registerButton.addEventListener('click', () =>{window.open("../Register/register.html","_self");});
         profileButton.classList.add('hidden');

@@ -52,3 +52,14 @@ body {
   background: var(--submit-button-hover);
 }
   
+
+
+@media screen and (max-width: 500px) {
+  .register-form {
+    width: 80%;
+  }
+
+  #description, #display-name, #password, #username{
+    font-size: var(--placeholder-font-size);
+  }
+}
