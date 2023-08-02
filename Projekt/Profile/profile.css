@@ -20,7 +20,8 @@ body {
     border-radius: 5px;
     background-color: var(--wrapper-background-color);
     position: relative;
-    margin-top: 60px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .wrapper img {
@@ -215,4 +216,24 @@ body {
     left: 0;
     top: 0;
     background: linear-gradient(transparent 30px, var(--article-background));
+}
+
+@media screen and (max-width: 600px) {
+    #main-content-div {
+      flex-direction: column;
+    }
+  
+    #blog-div {
+      order: 2;
+      margin-bottom: 20px;
+    }
+  
+    aside {
+      order: 1;
+      margin-top: 20px;
+    }
+  
+    .new-article-button {
+      margin-top: 20px;
+    }   
 }

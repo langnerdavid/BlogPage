@@ -115,3 +115,13 @@ h2{
 .article-wrapper{
     overflow: hidden;
 }
+
+@media screen and (max-width: 1000px) {
+    #main-content-div {
+      flex-direction: column; 
+    }
+  
+    #blog-div {
+      flex-basis: 100%;
+    }
+}
