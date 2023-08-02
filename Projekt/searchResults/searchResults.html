@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="searchResults.css">
     <link rel="stylesheet" href="../Global/header.css">
     <link rel="stylesheet" href="../Global/footer.css">
     <link rel="stylesheet" href="../Global/color.css">
@@ -13,9 +14,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="../Global/api.js" defer></script>
     <script src="../Global/header.js" defer></script>
-    <script src="index.js" defer></script>
+    <script src="searchResults.js" defer></script>
     <title>Document</title>
 </head>
+
 <body>
     <header id="header">
         <nav id = "nav-bar">
@@ -33,33 +35,33 @@
             <button id="search-button"><i id="search-icon" class="fa fa-search"></i></button>
         </div>
     </header>
-    <div id="main-content-div">
-        <div id="blog-div">
-            <button id="new-article-button" class ="nav-button">New Article</button>
-            <div id = "article-preview-list">
-                <template id="article-preview-template">
-                    <div class="article-wrapper">
-                        <article id="article-1" class="article">
-                            <img src="https://cdn.onlinewebfonts.com/svg/img_98811.png" alt="Bild">
-                            <div class="article-text-div">
-                                <button class="change-article-button hidden"><i class="fa fa-pencil" aria-hidden="true"></i></i></button>
-                                <h2>Lorem, ipsum dolor sit amet consectetur</h2>
-                                <p class="article-sub-text-p"></p>
-                                <div class="article-footer-div">
-                                    <p class="article-publishing-date">Zeitstempel</p>
-                                    <div class="centered-line"></div>
-                                    <p class="article-publisher">Username</p>
-                                </div>
-                            </div>
-                        </article>
+    <div id = "main-content-div">
+        <div id="search-results-wrapper">
+            <h2>Ergebnisse zu </h2>
+            <template id="user-results-template">
+                <div class="user-result-div">
+                    <div class="avatar-wrapper">
+                        <img id="avatar" src="https://img.freepik.com/freie-ikonen/benutzer_318-159711.jpg" alt="user" width="100">
+                        <div class="user-details">
+                            <h4 class="display-name" contenteditable="false">Displayname</h4>
+                            <h5 class = "username">Username</h5>
+                            <br />
+                        </div>
                     </div>
-                </template>
-            </div>
+                    <div class="info_data">
+                        <div class="data">
+                            <h4>Description</h4>
+                            <p class="description" contenteditable="false">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+                                illo, vitae aliquid.</p>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <p id="nothing-found" class="hidden">Es gab leider keine passenden Suchergebnisse </p>
         </div>
-        <aside>
-        </aside>
     </div>
     <footer>
     </footer>
 </body>
+
 </html>

@@ -4,6 +4,7 @@ const sectionTemplate = document.getElementById('section-template');
 
 const blogpostTitle = document.getElementById('blogpost-title');
 const blogpostImage = document.getElementsByClassName('image-content')[0];
+const blogpostImageTitle = document.getElementsByClassName('image-title')[0];
 const blogpostText = document.getElementsByClassName('text-content')[0];
 
 let sectionNumbers = 0;
@@ -29,20 +30,42 @@ addSectionButton.addEventListener('click', () => {
 
 function getPost(e){
     e.preventDefault();
-    let textContent = {
-        __type: "text",
-        data:blogpostText.value
-    }
-    const imageContent = {
-        __type: "img",
-        url: blogpostImage.value,
-        caption: "Ein Test Bild"
-    }
     let testPost
     if(sectionNumbers==0){
-        testPost ={
-            title: blogpostTitle.value,
-            content: [textContent, imageContent]
+        if(blogpostImage.value && blogpostText.value){
+            let imageContent = {
+                __type: "img",
+                url: blogpostImage.value,
+                caption: blogpostImageTitle.value
+            }
+            let textContent = {
+                __type: "text",
+                data:blogpostText.value
+            }
+            testPost ={
+                title: blogpostTitle.value,
+                content: [textContent, imageContent]
+            }
+
+        }else if(!blogpostImage.value){
+            let textContent = {
+                __type: "text",
+                data:blogpostText.value
+            }
+            testPost ={
+                title: blogpostTitle.value,
+                content: [textContent]
+            }
+        }else{
+            let imageContent = {
+                __type: "img",
+                url: blogpostImage.value,
+                caption: blogpostImageTitle.value
+            }
+            testPost ={
+                title: blogpostTitle.value,
+                content: [imageContent]
+            }
         }
     }else{
         testPost ={
@@ -57,7 +80,7 @@ function getPost(e){
     const authHeader = `Basic ${encode}`;
     console.log(testPost);
     postPost(testPost, authHeader).then(()=>{
-        window.open('../index/index.html', '_self');
+        //window.open('../index/index.html', '_self');
     }).catch(()=>{
         alert("irgendwas hat nicht geklappt");
     });
@@ -69,21 +92,79 @@ function getSections(){
     console.log(sectionList);
     let sections = new Array(sectionList.length);
     for (let i = 0; i < sectionList.length; i++) {
-        let imageContent={
-            __type: "img",
-            url: sectionList[i].getElementsByClassName('image-content')[0].value,
-            caption: "Ein Test Bild"
+        if(blogpostImage.value && blogpostText.value){
+            let imageContent = {
+                __type: "img",
+                url: sectionList[i].getElementsByClassName('image-content')[0].value,
+                caption: sectionList[i].getElementsByClassName('image-title')[0].value
+            }
+            let textContent = {
+                __type: "text",
+                data: sectionList[i].getElementsByClassName('section-text-content-class')[0].value
+            }
+            sections[i] ={
+                sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
+                content: [textContent, imageContent]
+            }
+
+        }else if(!blogpostImage.value){
+            let textContent = {
+                __type: "text",
+                data: sectionList[i].getElementsByClassName('section-text-content-class')[0].value
+            }
+            sections[i] ={
+                sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
+                content: [textContent]
+            }
+        }else{
+            let imageContent = {
+                __type: "img",
+                url: sectionList[i].getElementsByClassName('image-content')[0].value,
+                caption: sectionList[i].getElementsByClassName('image-title')[0].value
+            }
+            sections[i] ={
+                sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
+                content: [imageContent]
+            }
         }
-        let textContent = {
-            __type: "text",
-            data: sectionList[i].getElementsByClassName('section-text-content-class')[0].value
+    }
+    return sections;
+}
+
+
+function validateForm() {
+    const textContent = blogpostText.value.trim();
+    const imageTitle = blogpostImageTitle.value.trim();
+    const imageContent = blogpostImage.value.trim();
+    const sectionWrappers = document.getElementsByClassName('section-wrapper');
+
+    const hasTextContent = textContent !== '';
+    const hasImageContent = imageTitle !== '' && imageContent !== '';
+    let hasSectionContent = false;
+
+    for (let i = 0; i < sectionWrappers.length; i++) {
+        const sectionTextContent = sectionWrappers[i].getElementsByClassName('section-text-content-class')[0].value.trim();
+        const sectionImageTitle = sectionWrappers[i].getElementsByClassName('image-title')[0].value.trim();
+        const sectionImageContent = sectionWrappers[i].getElementsByClassName('image-content')[0].value.trim();
+
+        const sectionTextContentFilled = sectionTextContent !== '';
+        const sectionImageContentFilled = sectionImageTitle !== '' && sectionImageContent !== '';
+
+        if (!sectionTextContentFilled && !sectionImageContentFilled) {
+            alert("Each section must fill at least one field: 'Section Text Content' or 'Section Image Title' and 'Section Image Link'.");
+            return false;
         }
-        sections[i] ={
-            sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
-            content: [textContent, imageContent]
+
+        if (sectionTextContentFilled || sectionImageContentFilled) {
+            hasSectionContent = true;
+            break;
         }
-        console.log(i);
     }
 
-    return sections;
+    if (!hasTextContent && !hasImageContent && !hasSectionContent) {
+        alert("You must fill at least one content field: 'Text Content' or 'Image Title' and 'Image Link' or at least one section content.");
+        return false;
+    }
+
+    return true;
 }

@@ -68,13 +68,25 @@ function search(){
     const searchRequest = searchInput.value.toLowerCase();
     getUsers().then((res)=>{
         console.log(res);
+        let foundUsers={
+            searchRequest : searchRequest,
+            users:[
+
+            ]
+        };
+        let j = 0;
         for(i=0; i<res.length; i++){
-            let displayName = JSON.stringify(res[i].profile.displayName).toLowerCase();
-            let username = JSON.stringify(res[i].username).toLowerCase();
-            if(displayName.includes(searchRequest)||username.includes(searchRequest)){
-                console.log(res[i]);
+            let displayName = res[i].profile.displayName.toLowerCase();
+            let usernameLowercase = res[i].username.toLowerCase();
+            console.log(usernameLowercase);
+            if((displayName.includes(searchRequest)||usernameLowercase.includes(searchRequest)) && !(usernameLowercase == JSON.parse(userDataLocalStorage).username.toLowerCase())){
+                foundUsers.users[i] = usernameLowercase;
+                j++;
             }
         }
+        localStorage.setItem('foundUsers', JSON.stringify(foundUsers));
+        window.open("../searchResults/searchResults.html","_self");
+    
     });
 }
 
@@ -85,8 +97,8 @@ function logOut(){
         rememberMe: 'false'
     }
     sessionStorage.setItem('isUserSignedIn', 'false');
-    localStorage.setItem('userData', JSON.stringify('userData'));
-    window.open('index.html', '_self');
+    localStorage.setItem('userData', JSON.stringify(userData));
+    window.open('../Index/index.html', '_self');
 }
 
 function testSignedIn(){

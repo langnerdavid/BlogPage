@@ -28,7 +28,7 @@
                 <button id="log-out-button">Log Out</button>
             </div>
         </nav>
-        <div id="logo-div">Logo</div>
+        <a href="../Index/index.html"><img id="logo-img" src="../assets/logo-no-background.png" alt="Logo DT"></a>
         <div id="search-wrapper-div">
             <input id="search-input" type="text" class="search-input-narrow">
             <button id="search-button"><i id="search-icon" class="fa fa-search"></i></button>
@@ -38,6 +38,7 @@
         <div id="blog-div">
             <button id="new-article-button" class="nav-button">New Article</button>
             <div id="article-preview-list">
+                <p class="hidden">Du hast noch keine Posts.</p>
                 <template id="article-preview-template">
                     <div class="article-wrapper">
                         <article id="article-1" class="article">
@@ -45,6 +46,18 @@
                             <div class="article-text-div">
                                 <button class="change-article-button"><i class="fa fa-pencil"
                                         aria-hidden="true"></i></i></button>
+
+                                <button class="delete-article-button"> <i class="fa fa-trash"></i> </button>
+                                <div class="delete-toggle-div-article hidden">
+                                    <p>Confirm delete</p>
+                                    <button class="delete-cancel-button-article">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                    <button class="delete-confirm-button-article">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                </div>
+
                                 <h2>Lorem, ipsum dolor sit amet consectetur</h2>
                                 <p class="article-sub-text-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. facilis illo,
                                     vitae
