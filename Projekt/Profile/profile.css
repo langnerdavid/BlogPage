@@ -113,7 +113,11 @@ aside{
     background-color: var(--focused);
     border-radius: 5px;
   }
-
+.no-posts-p {
+    width: 250px;
+    margin: auto;
+    margin-top: 175px;
+}
 .delete-button {
     background-color: var(--delete-button);
     top: 5px;
@@ -231,9 +235,6 @@ aside{
     top: 0;
     background: linear-gradient(transparent 30px, var(--article-background));
 }
-#new-article-button-mobile {
-    display:none;
-}
 
 @media screen and (max-width: 1000px) {
     #main-content-div {
@@ -254,15 +255,14 @@ aside{
     article {
         width: 90%;
     }
-    #new-article-button-mobile {
-        display: block;
-        margin: 0px;
-        margin-top: 20px;
-        margin-left: 5%;
-    }
 
     #new-article-button {
         display: none;
+    }
+    .no-posts-p{
+        width: 400px;
+        margin:auto;
+        margin-top:20px;
     }
 }
 @media screen and (max-width: 600px) {
@@ -279,5 +279,10 @@ aside{
     .wrapper{
         width: 80%;
         margin-left: 10%;
+    }
+    .no-posts-p {
+        width: 80%;
+        margin: auto;
+        margin-top: 20px;
     }
 }

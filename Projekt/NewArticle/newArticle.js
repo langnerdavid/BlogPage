@@ -61,10 +61,42 @@ function getPost(e){
                 sections: getSections()
             }
         }else{
-            testPost ={
-                title: blogpostTitle.value,
-                content: [textContent, imageContent],//?????????????????????????????????????????????
-                sections: getSections(sectionList[i].getElementsByClassName('image-content')[0], sectionList[i].getElementsByClassName('section-text-content-class')[0])
+            if(blogpostImage.value && blogpostText.value){
+                let imageContent = {
+                    __type: "img",
+                    url: blogpostImage.value,
+                    caption: blogpostImageTitle.value
+                }
+                let textContent = {
+                    __type: "text",
+                    data:blogpostText.value
+                }
+                testPost ={
+                    title: blogpostTitle.value,
+                    content: [textContent, imageContent],
+                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                }
+            }else if(!blogpostImage.value){
+                let textContent = {
+                    __type: "text",
+                    data:blogpostText.value
+                }
+                testPost ={
+                    title: blogpostTitle.value,
+                    content: [textContent],
+                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                }
+            }else{
+                let imageContent = {
+                    __type: "img",
+                    url: blogpostImage.value,
+                    caption: blogpostImageTitle.value
+                }
+                testPost ={
+                    title: blogpostTitle.value,
+                    content: [imageContent],
+                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                }
             }
         }
     }

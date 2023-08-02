@@ -55,13 +55,15 @@
     </header>
     <div id="main-content-div">
         <div id="blog-div">
-            <button id="new-article-button" class="nav-button">New Article</button>
+            <button class="new-article-button nav-button">New Article</button>
             <div id="article-preview-list">
-                <p class="hidden">Du hast noch keine Posts.</p>
+                <p class="no-posts-p hidden">Du hast noch keine Posts.</p>
                 <template id="article-preview-template">
                     <div class="article-wrapper">
                         <article id="article-1" class="article">
-                            <img src="https://cdn.onlinewebfonts.com/svg/img_98811.png" alt="Bild">
+                            <div class="img-cover">
+                                <img src="https://cdn.onlinewebfonts.com/svg/img_98811.png" alt="article preview default img">
+                            </div>
                             <div class="article-text-div">
                                 <button class="change-article-button"><i class="fa fa-pencil"
                                         aria-hidden="true"></i></i></button>
@@ -91,7 +93,7 @@
                     </div>
                 </template>
             </div>
-            <button id="new-article-button-mobile" class="nav-button">New Article</button>
+            <button class="new-article-button nav-button">New Article</button>
         </div>
         <aside>
             <div class="wrapper">
@@ -107,7 +109,7 @@
                     </button>
                 </div>
                 <div class="profile-card">
-                    <img id="avatar" src="https://img.freepik.com/freie-ikonen/benutzer_318-159711.jpg" alt="user" width="100">
+                    <img id="avatar" src="https://img.freepik.com/freie-ikonen/benutzer_318-159711.jpg" alt="avatar img" width="100">
                     <div class="user-details">
                         <h4 id="display-name" contenteditable="false">Displayname</h4>
                         <h5 id="username">Username</h5>
@@ -132,6 +134,7 @@
         </aside>
     </div>
     <footer>
+        <p>&copy; 2023 DT. All rights reserved.</p>
     </footer>
 </body>
 </html>

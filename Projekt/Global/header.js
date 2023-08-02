@@ -1,26 +1,27 @@
 const searchInput = document.getElementById('search-input');
 const searchButton = document.getElementById('search-button');
-const signInButton = document.getElementById('sign-in-button');
-const registerButton = document.getElementById('register-button');
+let signInButton;
+let registerButton;
 let profileButton;
 let logOutButton;
 let profileToggleDiv;
 let profileButtonLink;
+let hamburgerMenuMobile;
 if(window.screen.width>600){
     profileButton = document.getElementsByClassName('profile-button')[0];
     logOutButton = document.getElementsByClassName('log-out-button')[0];
     profileToggleDiv = document.getElementsByClassName('profile-toggle-div')[0];
     profileButtonLink = document.getElementsByClassName('profile-button-link')[0];
+    signInButton = document.getElementById('sign-in-button');
+    registerButton = document.getElementById('register-button');
 }else{
     profileButton = document.getElementsByClassName('profile-button')[1];
     logOutButton = document.getElementsByClassName('log-out-button')[1];
     profileToggleDiv = document.getElementsByClassName('profile-toggle-div')[1];
     profileButtonLink = document.getElementsByClassName('profile-button-link')[1];
+    hamburgerMenuMobile = document.getElementById('hamburger-menu');
 }
 
-console.log(profileButton);
-const addNewArticle = document.getElementById('new-article-button');
-const hamburgerMenuMobile = document.getElementById('hamburger-menu');
 let isSearchInputOpen = false;
 //let isUserSignedIn = false; //statischer Input, ob User angemeldet ist
 let isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
@@ -35,7 +36,7 @@ checkUserSignedIn();
 
 function checkUserSignedIn(){
     isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
-    userDataLocalStorage = localStorage.getItem('userData');
+    userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
     
     if(userDataLocalStorage?.rememberMe && (isUserSignedIn==='false' || isUserSignedIn==null)){
         loginUser(userDataLocalStorage.username, userDataLocalStorage.password, userDataLocalStorage.rememberMe).then(()=>{sessionStorage.setItem('isUserSignedIn', 'true'); testSignedIn();});
@@ -87,8 +88,7 @@ function search(){
         for(i=0; i<res.length; i++){
             let displayName = res[i].profile.displayName.toLowerCase();
             let usernameLowercase = res[i].username.toLowerCase();
-            console.log(usernameLowercase);
-            if((displayName.includes(searchRequest)||usernameLowercase.includes(searchRequest)) && !(usernameLowercase == userDataLocalStorage.username.toLowerCase())){
+            if((displayName.includes(searchRequest)||usernameLowercase.includes(searchRequest)) && !(usernameLowercase == JSON.stringify(userDataLocalStorage.username).toLowerCase())){
                 foundUsers.users[i] = usernameLowercase;
                 j++;
             }
@@ -115,16 +115,14 @@ function testSignedIn(){
     if(isUserSignedIn==='true'){
         profileButton.addEventListener('click', () =>{profileToggleDiv.classList.toggle('hidden');});
         logOutButton.addEventListener('click', logOut);
-        addNewArticle?.addEventListener('click', () =>{window.open("../NewArticle/newArticle.html","_self");});
         
-        signInButton.classList.add('hidden');
-        registerButton.classList.add('hidden');
-        hamburgerMenuMobile.classList.add('hidden');
+        signInButton?.classList.add('hidden');
+        registerButton?.classList.add('hidden');
+        hamburgerMenuMobile?.classList.add('hidden');
     }else if(window.screen.height>=600){
         signInButton.addEventListener('click', () =>{window.open("../Login/login.html","_self");});
         registerButton.addEventListener('click', () =>{window.open("../Register/register.html","_self");});
         profileButton.classList.add('hidden');
-        addNewArticle?.classList.add('hidden');
         
     }
 }

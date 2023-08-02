@@ -17,6 +17,8 @@ const deleteArticleButtons  = document.getElementsByClassName('delete-article-bu
 const deleteArticleToggleDivs = document.getElementsByClassName('delete-toggle-div-article');
 
 
+let addNewArticleButton = document.getElementsByClassName('new-article-button');
+addNewArticleFunction(addNewArticleButton);
 
 deleteToggleButton.addEventListener('click', () => {
   deleteToggleDiv.classList.remove('hidden');

@@ -152,3 +152,20 @@ function patchArticle(num, userPosts){
     sessionStorage.setItem('patchedPost', userPosts[num].id);
     window.open("../patchArticle/patchArticle.html", "_self");
 }
+
+
+
+function addNewArticleFunction(addNewArticleButton){
+    if(window.screen.width>=600){
+        addNewArticleButton[1].classList.add('hidden');
+        addNewArticleButton = addNewArticleButton[0];
+    }else{
+        addNewArticleButton[0].classList.add('hidden');
+        addNewArticleButton = addNewArticleButton[1];
+    }
+    if(sessionStorage.getItem('isUserSignedIn')==='true'){
+        addNewArticleButton?.addEventListener('click', () =>{window.open("../NewArticle/newArticle.html","_self");});
+    }else{
+        addNewArticleButton?.classList.add('hidden');
+    }
+}

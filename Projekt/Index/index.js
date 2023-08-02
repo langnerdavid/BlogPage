@@ -3,12 +3,14 @@ const articles = document.getElementsByClassName('article');
 const articleTemplate = document.getElementById('article-preview-template');
 const articleList = document.getElementById('article-preview-list');
 
+const addNewArticleButton = document.getElementsByClassName('new-article-button')[0];
+
 let lastTenPosts;
 let content;
 let contentImgaeUrl;
 
 
-
+addNewArticleFunctionIndex();
 getPosts().then((res)=>{
     lastTenPosts = res;
     console.log(lastTenPosts[0]);
@@ -39,4 +41,14 @@ getPosts().then((res)=>{
     console.error(error);
 });
 //
+
+
+
+function addNewArticleFunctionIndex(){
+    if(sessionStorage.getItem('isUserSignedIn')==='true'){
+        addNewArticleButton?.addEventListener('click', () =>{window.open("../NewArticle/newArticle.html","_self");});
+    }else{
+        addNewArticleButton?.classList.add('hidden');
+    }
+}
 

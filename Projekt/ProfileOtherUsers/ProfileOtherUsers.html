@@ -57,11 +57,13 @@
     <div id="main-content-div">
         <div id="blog-div">
             <div id="article-preview-list">
-                <p class="hidden">Dieser User hat noch keine Posts.</p>
+                <p class="no-posts-p hidden">Dieser User hat noch keine Posts.</p>
                 <template id="article-preview-template">
                     <div class="article-wrapper">
                         <article id="article-1" class="article">
-                            <img src="https://cdn.onlinewebfonts.com/svg/img_98811.png" alt="Bild">
+                            <div class="img-cover">
+                                <img src="https://cdn.onlinewebfonts.com/svg/img_98811.png" alt="article preview default img">
+                            </div>
                             <div class="article-text-div">
                                 <h2>Lorem, ipsum dolor sit amet consectetur</h2>
                                 <p class="article-sub-text-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. facilis illo,
@@ -81,7 +83,7 @@
         <aside>
             <div class="wrapper">
                 <div class="profile-card">
-                    <img id="avatar" src="https://img.freepik.com/freie-ikonen/benutzer_318-159711.jpg" alt="user" width="100">
+                    <img id="avatar" src="https://img.freepik.com/freie-ikonen/benutzer_318-159711.jpg" alt="avatar img" width="100">
                     <div class="user-details">
                         <h4 id="display-name" contenteditable="false">Displayname</h4>
                         <h5 id="username">Username</h5>
@@ -98,6 +100,7 @@
         </aside>
     </div>
     <footer>
+        <p>&copy; 2023 DT. All rights reserved.</p>
     </footer>
 </body>
 </html>

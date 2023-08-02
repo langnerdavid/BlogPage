@@ -28,8 +28,13 @@ article{
     cursor: pointer;
     position: relative;
 }
-article > img{
+.img-cover > img{
     height: 150px;
+}
+.img-cover{
+    height: 150px;
+    width: 200px;
+    overflow: hidden;
 }
 .article-text-div{
     flex-basis: 65%;
@@ -135,7 +140,13 @@ h2{
     .article-footer-div{
         display: none;
     }
-    article > img{
+    .img-cover > img{
         height: 90px;
+    }
+
+    .img-cover {
+        height: 90px;
+        width: 120px;
+        overflow: hidden;
     }
 }
