@@ -10,4 +10,4 @@ Accessibility ist nicht nur eine ethische Verpflichtung, sondern auch gesetzlich
 Insgesamt ist Accessibility in der Webentwicklung ein wichtiger Schritt, um sicherzustellen, dass das Internet für alle zugänglich ist und eine inklusive digitale Welt zu schaffen. Es ist eine bedeutende Maßnahme, um sicherzustellen, dass Informationen und Dienstleistungen für alle Menschen zugänglich sind, unabhängig von ihren individuellen Fähigkeiten oder technischen Voraussetzungen.
 ### Accessibility am Beispiel unserer Website
 
-## Zu beachtende Punkte
+## Zu beachtende Punkte bei unserer Website
