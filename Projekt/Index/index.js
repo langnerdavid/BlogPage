@@ -30,7 +30,7 @@ getPosts().then((res)=>{
 
     for (let i = 0; i < articles.length; i++) {
     articles[i]?.addEventListener('click', function() {
-        articleFunction(i);
+        articleFunction(i, lastTenPosts);
     });
 }
     
@@ -40,13 +40,3 @@ getPosts().then((res)=>{
 });
 //
 
-
-function articleFunction(num){
-    sessionStorage.setItem('clickedPost', lastTenPosts[num].id);
-    window.open("../Articles/article.html", "_self");
-}
-
-function patchArticle(num){
-    sessionStorage.setItem('patchedPost', lastTenPosts[num].id);
-    window.open("../patchArticle/patchArticle", "_self");
-}

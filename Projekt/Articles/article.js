@@ -50,6 +50,7 @@ getOnePost(sessionStorage.getItem('clickedPost')).then((res)=>{
         if(onePost?.sections[i]?.content[0]?.url){
             img[i].src = onePost?.sections[i]?.content[0].url;
             img[i].alt = onePost?.sections[i]?.content[0].caption;
+            img[i].classList.add('section-only-image');
         }
         //sowohl TextContent als auch ImageContent
         else if (onePost?.sections[i]?.content[1]?.url){

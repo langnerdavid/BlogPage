@@ -60,11 +60,44 @@ article{
     display: inline;
 }
 
-.section-wrapper{
-    display: flex;
-    flex-direction: row;
-}
-.section-wrapper > img{
-    height: 100px;
+
+.section-only-image{
+    width: 60%;
+    height: auto!important;
+    margin-right: 20%!important;
 }
 
+
+.section-text > img {
+  height: 100px;
+  float: right;
+  margin: 5px; /* Add a margin to give some space between the image and text */
+}
+
+.section-text {
+  margin-bottom: 20px;
+  min-height: 100px;
+  overflow: hidden; /* Clear the float and prevent content overflow */
+}
+
+.section-text > h2 {
+  margin: 0;
+}
+
+.section-text > p {
+  margin: 0;
+  margin-top: 10px;
+  text-align: justify;
+}
+
+
+@media screen and (max-width: 600px) {
+    article{
+        width: 85%;
+    }
+    .section-text>img {
+        height: 70px;
+    }
+    
+
+}

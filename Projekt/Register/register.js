@@ -21,7 +21,6 @@ const descrpitionInput = formInputs[3];
         localStorage.setItem('userData', JSON.stringify(userPost));
         window.open('../index/index.html', '_self');
     });
-    //Hier muss noch die WEiterleitung nach erfolgreicher Registrierung/ Fehlermeldung hin
 
 
 });

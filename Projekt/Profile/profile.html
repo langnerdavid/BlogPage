@@ -23,10 +23,28 @@
         <nav id="nav-bar">
             <button id="sign-in-button" class="nav-button">Sign In</button>
             <button id="register-button" class="nav-button">Register</button>
-            <button id="profile-button"><i id="profile-icon" class="fa fa-user"></i></button>
-            <div id="profile-toggle-div" class="hidden">
-                <button id="profile-button-link">Profile</button>
-                <button id="log-out-button">Log Out</button>
+            <button class="profile-button"><i id="profile-icon" class="fa fa-user"></i></button>
+            <div class="profile-toggle-div hidden">
+                <button class="profile-button-link">Profile</button>
+                <button class="log-out-button">Log Out</button>
+            </div>
+        </nav>
+        <nav id="nav-bar-mobile">
+            <button class="profile-button"><i id="profile-icon" class="fa fa-user"></i></button>
+            <div class="profile-toggle-div hidden">
+                <button class="profile-button-link">Profile</button>
+                <button class="log-out-button">Log Out</button>
+            </div>
+            <div id="hamburger-menu">
+                <input id="menu__toggle" type="checkbox" />
+                <label class="menu__btn" for="menu__toggle">
+                    <span></span>
+                </label>
+    
+                <ul class="menu__box">
+                    <li><a class="menu__item" href="../Login/login.html">Sign In</a></li>
+                    <li><a class="menu__item" href="../Register/register.html">Register</a></li>
+                </ul>
             </div>
         </nav>
         <a href="../Index/index.html"><img id="logo-img" src="../assets/logo-no-background.png" alt="Logo DT"></a>
@@ -43,7 +61,7 @@
                 <template id="article-preview-template">
                     <div class="article-wrapper">
                         <article id="article-1" class="article">
-                            <img src="https://images4.alphacoders.com/115/thumb-1920-115716.jpg" alt="Bild">
+                            <img src="https://cdn.onlinewebfonts.com/svg/img_98811.png" alt="Bild">
                             <div class="article-text-div">
                                 <button class="change-article-button"><i class="fa fa-pencil"
                                         aria-hidden="true"></i></i></button>

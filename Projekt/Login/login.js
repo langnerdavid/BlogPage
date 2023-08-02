@@ -26,7 +26,6 @@ const rememberMeInput = formInputs[2];
     }, (err)=>{
         alert("falsches pswd");
     });
-    //Hier muss noch die WEiterleitung nach erfolgreicher Registrierung/ Fehlermeldung hin
 
 
 });
@@ -35,7 +34,7 @@ eyeShowPassword.addEventListener("click", ()=>{
   eyeShowPassword.classList.toggle("fa-eye-slash")
   const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
   passwordInput.setAttribute("type", type)
-})
+});
 
 function loginError(){
     passwordInput.classList.add('password-input-animation');
@@ -51,7 +50,5 @@ function loginErrorRemove(){
 function loginSuccesful(res){
     sessionStorage.setItem('isUserSignedIn', true);
     localStorage.setItem('userData', JSON.stringify(res));
-    //let json = JSON.parse(localStorage.getItem('userData'));
-    //console.log(json);
     window.open('../index/index.html', '_self');
 }

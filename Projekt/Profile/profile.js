@@ -13,7 +13,7 @@ const articleList = document.getElementById('article-preview-list');
 const articles = document.getElementsByClassName('article');
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{4,12}$/; 
 
-
+const deleteArticleButtons  = document.getElementsByClassName('delete-article-button');
 const deleteArticleToggleDivs = document.getElementsByClassName('delete-toggle-div-article');
 
 
@@ -128,52 +128,19 @@ function deleteUserButton(){
 }
 
 getUserPosts(userDataLocalStorage.username).then((res)=>{
-    userPosts = res;
-    console.log(userPosts[0]);
-    if(res.length === 0){
-      articleList.getElementsByTagName('p')[0].classList.remove('hidden');
-    }else{
-      articleList.getElementsByTagName('p')[0].classList.add('hidden');
-      for(j=0; j<userPosts.length; j++){
-          const clone = articleTemplate.content.cloneNode(true);
-          const articleWrapper = clone.querySelector('.article-wrapper');
-          articleList.appendChild(clone);
-          for(i=0; i<userPosts[j].content.length; i++){
-            if(userPosts[j]?.content){
-              if(userPosts[j]?.content[i]?.data){
-                content = userPosts[0]?.content[i]?.data;
-                continue;
-              }else{
-                contentImgaeUrl = userPosts[0]?.content[i]?.url;
-                continue;
-              }
-            }
-          }
-          setArticlepreview(j, userPosts);
-      }
-
-      for (let i = 0; i < articles.length; i++) {
-      articles[i]?.addEventListener('click', function() {
-          articleFunction(i);
-      });
-    }
+  setWrittenArticles(res);
+  for(let i=0; i<res.length; i++){
+    deleteArticleButtons[i].addEventListener('click', (e)=>{
+      e.stopPropagation();
+      confirmDeleteArticle(i, res);
+    });
   }
 }).catch(error => {
     console.error(error);
 });
 //  
 
-function articleFunction(num){
-    sessionStorage.setItem('clickedPost', userPosts[num].id);
-    window.open("../Articles/article.html", "_self");
-}
-
-function patchArticle(num){
-    sessionStorage.setItem('patchedPost', userPosts[num].id);
-    window.open("../patchArticle/patchArticle.html", "_self");
-}
-
-function confirmDeleteArticle(num){
+function confirmDeleteArticle(num, userPosts){
   deleteArticleToggleDivs[num].classList.remove('hidden');
   let deleteArticleCancelButton = deleteArticleToggleDivs[num].getElementsByClassName('delete-cancel-button-article')[0];
   let deleteArticleConfirmButton = deleteArticleToggleDivs[num].getElementsByClassName('delete-confirm-button-article')[0];
@@ -185,12 +152,12 @@ function confirmDeleteArticle(num){
 
   deleteArticleConfirmButton.addEventListener('click', (e) => {
     e.stopPropagation();
-    deleteArticle(num);
+    deleteArticle(num, userPosts);
   });
 
 }
 
-function deleteArticle(num){
+function deleteArticle(num, userPosts){
   deletePost(userPosts[num].id, authHeader).then(()=>{
     console.log("gelöscht?");
     window.location.reload();

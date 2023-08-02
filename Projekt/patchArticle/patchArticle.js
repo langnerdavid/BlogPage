@@ -12,45 +12,37 @@ const blogpostSectionImageTitles = document.getElementsByClassName('image-title'
 const blogpostSectionTexts = document.getElementsByClassName('section-text-content-class');
 const blogpostSectionTitles = document.getElementsByClassName('section-title-class');
 
-
-let sectionNumbers = 0;
+const form = document.getElementById("blogpost-form");
 
 
 getOnePost(sessionStorage.getItem('patchedPost')).then((res)=>{
     blogpostTitle.value = res.title;
     console.log(res);
-    blogpostText.value = res.content[0].data;
-    blogpostImage.value = res.content[1].url;
-    blogpostImageTitle.value = res.content[1].caption;
+    if(res?.content[0]?.data){
+        blogpostText.value = res?.content[0]?.data;
+    }if(res?.content[1]?.url){
+        blogpostImage.value = res?.content[1]?.url;
+        blogpostImageTitle.value = res?.content[1]?.caption;
+    }
     for(let i=0; i<res.sections.length; i++){
         const clone = sectionTemplate.content.cloneNode(true);
         const sectionWrapper = clone.querySelector('.section-wrapper');
         sectionList.appendChild(clone);
         sectionNumbers+=1;
-        blogpostSectionImages[i+1].value = res.sections[i].content[1].url;
-        blogpostSectionImageTitles[i+1].value = res.sections[i].content[1].caption;
-        blogpostSectionTexts[i].value = res.sections[i].content[0].data;
+        if(res?.content[0]?.sections[i]?.data){
+            blogpostSectionTexts[i].value = res.sections[i].content[0].data;
+        }if(res?.content[1]?.sections[i]?.url){
+            blogpostSectionImages[i+1].value = res.sections[i].content[1].url;
+            blogpostSectionImageTitles[i+1].value = res.sections[i].content[1].caption;
+        }
         blogpostSectionTitles[i].value = res.sections[i].sectionTitle;
     }
 });
 
-const form = document.getElementById("blogpost-form");
+
 form.addEventListener("submit", getPost);
 
-addSectionButton.addEventListener('click', () => {
-    const clone = sectionTemplate.content.cloneNode(true);
-    const sectionWrapper = clone.querySelector('.section-wrapper');
-
-    sectionList.appendChild(clone);
-    sectionNumbers+=1;
-
-    const removeSectionButton = sectionWrapper.querySelector('.remove-section-button');
-    removeSectionButton.addEventListener('click', function() {
-        sectionWrapper.remove();
-        sectionNumbers-=1;
-
-    });
-});
+articleAddSectionButton(addSectionButton);
 
 
 function getPost(e){
@@ -93,10 +85,49 @@ function getPost(e){
             }
         }
     }else{
-        testPost ={
-            title: blogpostTitle.value,
-            content: [textContent, imageContent],
-            sections: getSections()
+        if(!blogpostImage.value && !blogpostText.value){
+            testPost ={
+                title: blogpostTitle.value,
+                sections: getSections()
+            }
+        }else{
+            if(blogpostImage.value && blogpostText.value){
+                let imageContent = {
+                    __type: "img",
+                    url: blogpostImage.value,
+                    caption: blogpostImageTitle.value
+                }
+                let textContent = {
+                    __type: "text",
+                    data:blogpostText.value
+                }
+                testPost ={
+                    title: blogpostTitle.value,
+                    content: [textContent, imageContent],
+                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                }
+            }else if(!blogpostImage.value){
+                let textContent = {
+                    __type: "text",
+                    data:blogpostText.value
+                }
+                testPost ={
+                    title: blogpostTitle.value,
+                    content: [textContent],
+                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                }
+            }else{
+                let imageContent = {
+                    __type: "img",
+                    url: blogpostImage.value,
+                    caption: blogpostImageTitle.value
+                }
+                testPost ={
+                    title: blogpostTitle.value,
+                    content: [imageContent],
+                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                }
+            }
         }
     }
     let test = JSON.parse(localStorage.getItem('userData'));
@@ -104,54 +135,11 @@ function getPost(e){
     const encode = btoa(test.username+':'+test.password);
     const authHeader = `Basic ${encode}`;
     console.log(testPost);
-    postPost(testPost, authHeader).then(()=>{
-        //window.open('../index/index.html', '_self');
+    console.log(sessionStorage.getItem('patchedPost'));
+    putPost(testPost, sessionStorage.getItem('patchedPost'), authHeader).then(()=>{
+        window.history.back();
     }).catch(()=>{
-        alert("irgendwas hat nicht geklappt");
+       alert("irgendwas hat nicht geklappt");
     });
 
 };
-
-function getSections(){
-    const sectionList = document.getElementsByClassName('section-wrapper');
-    console.log(sectionList);
-    let sections = new Array(sectionList.length);
-    for (let i = 0; i < sectionList.length; i++) {
-        if(blogpostImage.value && blogpostText.value){
-            let imageContent = {
-                __type: "img",
-                url: sectionList[i].getElementsByClassName('image-content')[0].value,
-                caption: sectionList[i].getElementsByClassName('image-title')[0].value
-            }
-            let textContent = {
-                __type: "text",
-                data: sectionList[i].getElementsByClassName('section-text-content-class')[0].value
-            }
-            sections[i] ={
-                sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
-                content: [textContent, imageContent]
-            }
-
-        }else if(!blogpostImage.value){
-            let textContent = {
-                __type: "text",
-                data: sectionList[i].getElementsByClassName('section-text-content-class')[0].value
-            }
-            sections[i] ={
-                sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
-                content: [textContent]
-            }
-        }else{
-            let imageContent = {
-                __type: "img",
-                url: sectionList[i].getElementsByClassName('image-content')[0].value,
-                caption: sectionList[i].getElementsByClassName('image-title')[0].value
-            }
-            sections[i] ={
-                sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
-                content: [imageContent]
-            }
-        }
-    }
-    return sections;
-}

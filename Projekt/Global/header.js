@@ -88,7 +88,7 @@ function search(){
             let displayName = res[i].profile.displayName.toLowerCase();
             let usernameLowercase = res[i].username.toLowerCase();
             console.log(usernameLowercase);
-            if((displayName.includes(searchRequest)||usernameLowercase.includes(searchRequest)) && !(usernameLowercase == JSON.parse(userDataLocalStorage).username.toLowerCase())){
+            if((displayName.includes(searchRequest)||usernameLowercase.includes(searchRequest)) && !(usernameLowercase == userDataLocalStorage.username.toLowerCase())){
                 foundUsers.users[i] = usernameLowercase;
                 j++;
             }
