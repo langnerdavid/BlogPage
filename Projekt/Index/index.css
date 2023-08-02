@@ -116,7 +116,7 @@ h2{
     overflow: hidden;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 600px) {
     #main-content-div {
       flex-direction: column; 
     }
