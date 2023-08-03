@@ -18,11 +18,11 @@ body{
 }
 #search-results-wrapper > h2{
     text-align:left;
-    width:40%
+    width:calc(40% + 60px);
 }
 .user-result-div{
     width: 40%;
-    height: 200px;
+    height: 150px;
     margin-bottom: 15px;
     border-radius: 10px;
     cursor: pointer;
@@ -32,6 +32,7 @@ body{
     margin-bottom: 20px;
     padding: 20px 30px;
     background-color: var(--wrapper-background-color);
+    overflow: hidden;
 }
 
 .hidden{
@@ -82,9 +83,17 @@ body{
     margin: 0; 
 }
 
+.data{
+    margin-left: 10px;
+}
+
 .data h4 {
     color: var(--text-color);
     margin-bottom: 5px;
+    -webkit-line-clamp: 2;
+    /* Anzahl der Zeilen, die Sie anzeigen möchten */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .data p {
