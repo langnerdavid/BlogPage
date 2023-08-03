@@ -37,9 +37,10 @@ checkUserSignedIn();
 function checkUserSignedIn(){
     isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
     userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
-    
-    if(userDataLocalStorage?.rememberMe && (isUserSignedIn==='false' || isUserSignedIn==null)){
-        loginUser(userDataLocalStorage.username, userDataLocalStorage.password, userDataLocalStorage.rememberMe).then(()=>{sessionStorage.setItem('isUserSignedIn', 'true'); testSignedIn();});
+    if(!userDataLocalStorage?.rememberMe){
+        if((isUserSignedIn==='false' || isUserSignedIn==null)){
+            loginUser(userDataLocalStorage.username, userDataLocalStorage.password, userDataLocalStorage.rememberMe).then(()=>{sessionStorage.setItem('isUserSignedIn', 'true'); testSignedIn();});
+        }
     }
     else{
         testSignedIn();
@@ -112,12 +113,13 @@ function logOut(){
 
 function testSignedIn(){
     isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
+    console.log(isUserSignedIn);
     if(isUserSignedIn==='true'){
         profileButton.addEventListener('click', () =>{profileToggleDiv.classList.toggle('hidden');});
         logOutButton.addEventListener('click', logOut);
         
-        signInButton?.classList.add('hidden');
-        registerButton?.classList.add('hidden');
+        signInButton.classList.add('hidden');
+        registerButton.classList.add('hidden');
         hamburgerMenuMobile?.classList.add('hidden');
     }else if(window.screen.height>=600){
         signInButton.addEventListener('click', () =>{window.open("../Login/login.html","_self");});
