@@ -32,7 +32,6 @@ deleteConfirmButton.addEventListener('click', () => {
   deleteUserButton();
 });
 
-
 getUser(userDataLocalStorage.username).then((res)=>{
   console.log(userDataLocalStorage.username);
   userDataLocalStorage.profile.displayName = res.profile.displayName;
@@ -88,9 +87,6 @@ function saveData() {
   userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
   let encoded = btoa(`${userDataLocalStorage.username}:${userDataLocalStorage.password}`);
   let authHeader = `Basic ${encoded}`;
-  displayName = userDataLocalStorage.profile?.displayName;
-  password = userDataLocalStorage.password;
-  description = userDataLocalStorage.profile?.description;
   let userData = {
     username: userDataLocalStorage.username,
     password: password,

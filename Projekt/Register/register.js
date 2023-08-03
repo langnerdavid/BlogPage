@@ -2,7 +2,7 @@ const formInputs = (document.getElementById('register-form')).getElementsByTagNa
 const usernameInput = formInputs[0];
 const passwordInput = formInputs[1];
 const displayNameInput = formInputs[2];
-const descrpitionInput = formInputs[3];
+const descriptionInput = (document.getElementById('register-form')).getElementsByTagName('textarea')[0];
 
 
 (document.getElementById('register-form')).addEventListener('submit', (event)=> {
@@ -12,7 +12,7 @@ const descrpitionInput = formInputs[3];
         password: passwordInput.value,
         profile:{
             displayName: displayNameInput.value,
-            description: descrpitionInput.value
+            description: descriptionInput.value
         }
     }
     postUsers(userPost).then(()=>{
@@ -22,7 +22,7 @@ const descrpitionInput = formInputs[3];
             password: passwordInput.value,
             profile:{
                 displayName: displayNameInput.value,
-                description: descrpitionInput.value
+                description: descriptionInput.value
             },
             rememberMe: 'false'
         }
