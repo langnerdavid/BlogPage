@@ -21,14 +21,17 @@ body{
     width:40%
 }
 .user-result-div{
-    background-color: grey;
     width: 40%;
-    display: flex;
     height: 200px;
     margin-bottom: 15px;
     border-radius: 10px;
     cursor: pointer;
     flex-direction: row;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 20px 30px;
+    background-color: var(--wrapper-background-color);
 }
 
 .hidden{
@@ -39,7 +42,6 @@ body{
     height: 100px;
     width: 100px;
     margin: 5px;
-    margin-right: 20px;
 }
 
 .user-details{
@@ -57,4 +59,46 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex-basis: 100px;
+    align-items: center;
 }
+
+.avatar-wrapper img {
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+} 
+
+.user-details h4,
+.user-details h5 {
+    margin: 0; 
+}
+
+.data h4 {
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.data p {
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: var(--subtext-color);
+}
+
+#search-results-wrapper {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.user-result-div .data p {
+    text-align: left;
+}
+

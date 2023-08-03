@@ -11,3 +11,4 @@ Insgesamt ist Accessibility in der Webentwicklung ein wichtiger Schritt, um sich
 ### Accessibility am Beispiel unserer Website
 
 ## Zu beachtende Punkte bei unserer Website
+- es dauert manchmal ein bisschen Zeit, bis alles von der API gepulled wurde
