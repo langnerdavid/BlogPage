@@ -11,8 +11,12 @@ const rememberMeInput = formInputs[2];
     loginErrorRemove();
     let username = usernameInput.value;
     let pswd = passwordInput.value;
-    let rememberMe = rememberMeInput.checked;
-    console.log(rememberMe)
+    let rememberMe;
+    if(rememberMeInput.checked){
+        rememberMe='true';
+    }else{
+        rememberMe='false';
+    }
     loginUser(username, pswd, rememberMe).then((res)=>{
         console.log(res);
         if(res){

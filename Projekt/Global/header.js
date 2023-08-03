@@ -37,9 +37,14 @@ checkUserSignedIn();
 function checkUserSignedIn(){
     isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
     userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
-    if(!userDataLocalStorage?.rememberMe){
+    console.log(userDataLocalStorage.rememberMe==='true');
+    if(userDataLocalStorage.rememberMe==='true'){
+        console.log('if 1')
         if((isUserSignedIn==='false' || isUserSignedIn==null)){
+            console.log("if 2")
             loginUser(userDataLocalStorage.username, userDataLocalStorage.password, userDataLocalStorage.rememberMe).then(()=>{sessionStorage.setItem('isUserSignedIn', 'true'); testSignedIn();});
+        }else{
+            testSignedIn();
         }
     }
     else{
@@ -113,7 +118,6 @@ function logOut(){
 
 function testSignedIn(){
     isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
-    console.log(isUserSignedIn);
     if(isUserSignedIn==='true'){
         profileButton.addEventListener('click', () =>{profileToggleDiv.classList.toggle('hidden');});
         logOutButton.addEventListener('click', logOut);

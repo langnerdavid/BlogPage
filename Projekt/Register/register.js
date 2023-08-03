@@ -18,6 +18,15 @@ const descrpitionInput = formInputs[3];
     }
     postUsers(userPost).then(()=>{
         sessionStorage.setItem('isUserSignedIn', true);
+        userPost = {
+            username: usernameInput.value,
+            password: passwordInput.value,
+            profile:{
+                displayName: displayNameInput.value,
+                description: descrpitionInput.value
+            },
+            rememberMe: 'false'
+        }
         localStorage.setItem('userData', JSON.stringify(userPost));
         window.open('../index/index.html', '_self');
     });
