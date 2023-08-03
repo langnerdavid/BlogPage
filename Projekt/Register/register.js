@@ -7,7 +7,6 @@ const descrpitionInput = formInputs[3];
 
 (document.getElementById('register-form')).addEventListener('submit', (event)=> {
     event.preventDefault();
-    localStorage.setItem('password', pswd);
     let userPost = {
         username: usernameInput.value,
         password: passwordInput.value,
