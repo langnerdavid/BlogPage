@@ -122,8 +122,8 @@ function testSignedIn(){
         profileButton.addEventListener('click', () =>{profileToggleDiv.classList.toggle('hidden');});
         logOutButton.addEventListener('click', logOut);
         
-        signInButton.classList.add('hidden');
-        registerButton.classList.add('hidden');
+        signInButton?.classList.add('hidden');
+        registerButton?.classList.add('hidden');
         hamburgerMenuMobile?.classList.add('hidden');
     }else if(window.screen.height>=600){
         signInButton.addEventListener('click', () =>{window.open("../Login/login.html","_self");});

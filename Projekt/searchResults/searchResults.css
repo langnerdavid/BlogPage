@@ -111,3 +111,12 @@ body{
     text-align: left;
 }
 
+@media screen and (max-width: 1000px) {
+    .user-result-div{
+        flex-direction: column;
+        width: 100px;
+        height: 300px;
+        overflow: hidden;
+    }
+}
+
