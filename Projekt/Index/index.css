@@ -124,7 +124,6 @@ h2{
         font-size: var(--h2-font-size-mobile);
         display: -webkit-box;
         -webkit-line-clamp: 2;
-        /* Anzahl der Zeilen, die Sie anzeigen möchten */
         -webkit-box-orient: vertical;
         overflow: hidden;
     }

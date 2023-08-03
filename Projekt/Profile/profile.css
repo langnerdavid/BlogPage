@@ -265,15 +265,6 @@ aside{
         margin-top:20px;
     }
 }
-@media screen and (max-width: 600px) {
-  
-    .new-article-button {
-      margin-top: 20px;
-    }   
-    article {
-        max-height: 100px;
-    }
-}
 
 @media screen and (max-width: 500px) {
     .wrapper{
@@ -285,4 +276,10 @@ aside{
         margin: auto;
         margin-top: 20px;
     }
+    .new-article-button {
+        margin-top: 20px;
+      }   
+      article {
+          max-height: 100px;
+      }
 }
