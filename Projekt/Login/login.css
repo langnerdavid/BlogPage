@@ -36,7 +36,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    min-height: calc(100vh - 170px);
     width: 100vw;
 }
 
@@ -115,3 +115,19 @@ body{
       border-color: var(--animation-key-frames);
     }
   }
+
+
+@media screen and (max-width: 600px) {
+    label {
+        font-size: var(--p-font-size-mobile);
+    }
+    input{
+        font-size: var(--p-font-size-mobile);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .login-form {
+        width: 80%;
+    }
+}

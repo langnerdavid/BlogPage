@@ -10,17 +10,28 @@ body {
     background-color: var(--background-color);
 }
 
+#blog-div{
+    width: 60%;
+}
+aside{
+    width: 40%;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
 .wrapper {
     width: 400px;
     margin: 0 auto;
     display: flex;
+    justify-self: center;
     flex-direction: column;
     align-items: center;
     padding: 20px 30px;
     border-radius: 5px;
     background-color: var(--wrapper-background-color);
     position: relative;
-    margin-top: 60px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .wrapper img {
@@ -102,7 +113,11 @@ body {
     background-color: var(--focused);
     border-radius: 5px;
   }
-
+.no-posts-p {
+    width: 250px;
+    margin: auto;
+    margin-top: 175px;
+}
 .delete-button {
     background-color: var(--delete-button);
     top: 5px;
@@ -190,8 +205,12 @@ body {
     width: 150px;
     left: calc(50% - 75px);
     cursor: auto;
+    z-index: 2;
 }
-
+.delete-toggle-div-article > button{
+    margin-right: 10px;
+    margin-left: 10px;
+}
 .delete-toggle-div-article > p{
     margin-bottom: 10px;
 }
@@ -215,4 +234,55 @@ body {
     left: 0;
     top: 0;
     background: linear-gradient(transparent 30px, var(--article-background));
+}
+
+@media screen and (max-width: 1000px) {
+    #main-content-div {
+        flex-direction: column;         
+    }
+
+    #blog-div {
+        order: 2;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    aside {
+        order: 1;
+        margin-top: 20px;
+        width: 100%
+    }
+    article {
+        width: 90%;
+    }
+
+    #new-article-button {
+        display: none;
+    }
+    .no-posts-p{
+        width: 400px;
+        margin:auto;
+        margin-top:20px;
+    }
+}
+@media screen and (max-width: 600px) {
+  
+    .new-article-button {
+      margin-top: 20px;
+    }   
+    article {
+        max-height: 100px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .wrapper{
+        width: 80%;
+        margin-left: 10%;
+    }
+    .no-posts-p {
+        width: 80%;
+        margin: auto;
+        margin-top: 20px;
+    }
 }

@@ -6,29 +6,16 @@ const blogpostTitle = document.getElementById('blogpost-title');
 const blogpostImage = document.getElementsByClassName('image-content')[0];
 const blogpostImageTitle = document.getElementsByClassName('image-title')[0];
 const blogpostText = document.getElementsByClassName('text-content')[0];
-
-let sectionNumbers = 0;
-
 const form = document.getElementById("blogpost-form");
+
+
 form.addEventListener("submit", getPost);
 
-addSectionButton.addEventListener('click', () => {
-    const clone = sectionTemplate.content.cloneNode(true);
-    const sectionWrapper = clone.querySelector('.section-wrapper');
-
-    sectionList.appendChild(clone);
-    sectionNumbers+=1;
-
-    const removeSectionButton = sectionWrapper.querySelector('.remove-section-button');
-    removeSectionButton.addEventListener('click', function() {
-        sectionWrapper.remove();
-        sectionNumbers-=1;
-
-    });
-});
+articleAddSectionButton(addSectionButton);
 
 
 function getPost(e){
+    const sectionList = document.getElementsByClassName('section-wrapper');
     e.preventDefault();
     let testPost
     if(sectionNumbers==0){
@@ -68,68 +55,61 @@ function getPost(e){
             }
         }
     }else{
-        testPost ={
-            title: blogpostTitle.value,
-            content: [textContent, imageContent],
-            sections: getSections()
+        if(!blogpostImage.value && !blogpostText.value){
+            testPost ={
+                title: blogpostTitle.value,
+                sections: getSections()
+            }
+        }else{
+            if(blogpostImage.value && blogpostText.value){
+                let imageContent = {
+                    __type: "img",
+                    url: blogpostImage.value,
+                    caption: blogpostImageTitle.value
+                }
+                let textContent = {
+                    __type: "text",
+                    data:blogpostText.value
+                }
+                testPost ={
+                    title: blogpostTitle.value,
+                    content: [textContent, imageContent],
+                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                }
+            }else if(!blogpostImage.value){
+                let textContent = {
+                    __type: "text",
+                    data:blogpostText.value
+                }
+                testPost ={
+                    title: blogpostTitle.value,
+                    content: [textContent],
+                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                }
+            }else{
+                let imageContent = {
+                    __type: "img",
+                    url: blogpostImage.value,
+                    caption: blogpostImageTitle.value
+                }
+                testPost ={
+                    title: blogpostTitle.value,
+                    content: [imageContent],
+                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                }
+            }
         }
     }
     let test = JSON.parse(localStorage.getItem('userData'));
-    console.log(test.password);
     const encode = btoa(test.username+':'+test.password);
     const authHeader = `Basic ${encode}`;
-    console.log(testPost);
     postPost(testPost, authHeader).then(()=>{
-        //window.open('../index/index.html', '_self');
+        window.history.back();
     }).catch(()=>{
         alert("irgendwas hat nicht geklappt");
     });
 
 };
-
-function getSections(){
-    const sectionList = document.getElementsByClassName('section-wrapper');
-    console.log(sectionList);
-    let sections = new Array(sectionList.length);
-    for (let i = 0; i < sectionList.length; i++) {
-        if(blogpostImage.value && blogpostText.value){
-            let imageContent = {
-                __type: "img",
-                url: sectionList[i].getElementsByClassName('image-content')[0].value,
-                caption: sectionList[i].getElementsByClassName('image-title')[0].value
-            }
-            let textContent = {
-                __type: "text",
-                data: sectionList[i].getElementsByClassName('section-text-content-class')[0].value
-            }
-            sections[i] ={
-                sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
-                content: [textContent, imageContent]
-            }
-
-        }else if(!blogpostImage.value){
-            let textContent = {
-                __type: "text",
-                data: sectionList[i].getElementsByClassName('section-text-content-class')[0].value
-            }
-            sections[i] ={
-                sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
-                content: [textContent]
-            }
-        }else{
-            let imageContent = {
-                __type: "img",
-                url: sectionList[i].getElementsByClassName('image-content')[0].value,
-                caption: sectionList[i].getElementsByClassName('image-title')[0].value
-            }
-            sections[i] ={
-                sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
-                content: [imageContent]
-            }
-        }
-    }
-    return sections;
-}
 
 
 function validateForm() {
@@ -151,7 +131,7 @@ function validateForm() {
         const sectionImageContentFilled = sectionImageTitle !== '' && sectionImageContent !== '';
 
         if (!sectionTextContentFilled && !sectionImageContentFilled) {
-            alert("Each section must fill at least one field: 'Section Text Content' or 'Section Image Title' and 'Section Image Link'.");
+            alert("One section must fill at least one field: 'Section Text Content' or 'Section Image Title' and 'Section Image Link'.");
             return false;
         }
 

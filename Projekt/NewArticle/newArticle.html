@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../Articles/article.css" />
+    <link rel="stylesheet" href="../Index/index.css" />
     <link rel="stylesheet" href="newArticle.css" />
     <link rel="stylesheet" href="../Global/header.css" />
     <link rel="stylesheet" href="../Global/footer.css" />
@@ -15,28 +16,47 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <script src="../Global/header.js" defer></script>
     <script src="../Global/api.js" defer></script>
+    <script src="../Global/header.js" defer></script>
+    <script src="../Global/global.js" defer></script>
     <script src="newArticle.js" defer></script>
     <title>Document</title>
   </head>
   <body>
     <header id="header">
-      <nav id = "nav-bar">
-          <button id="sign-in-button" class ="nav-button">Sign In</button>
-          <button id="register-button" class ="nav-button">Register</button>
-          <button id="profile-button" ><i id="profile-icon" class="fa fa-user"></i></button>
-          <div id="profile-toggle-div" class = "hidden">
-              <button id="profile-button-link">Profile</button>
-              <button id="log-out-button">Log Out</button>
-          </div>
+      <nav id="nav-bar">
+        <button id="sign-in-button" class="nav-button">Sign In</button>
+        <button id="register-button" class="nav-button">Register</button>
+        <button class="profile-button"><i id="profile-icon" class="fa fa-user"></i></button>
+        <div class="profile-toggle-div hidden">
+          <button class="profile-button-link">Profile</button>
+          <button class="log-out-button">Log Out</button>
+        </div>
+      </nav>
+      <nav id="nav-bar-mobile">
+        <button class="profile-button"><i id="profile-icon" class="fa fa-user"></i></button>
+        <div class="profile-toggle-div hidden">
+          <button class="profile-button-link">Profile</button>
+          <button class="log-out-button">Log Out</button>
+        </div>
+        <div id="hamburger-menu">
+          <input id="menu__toggle" type="checkbox" />
+          <label class="menu__btn" for="menu__toggle">
+            <span></span>
+          </label>
+    
+          <ul class="menu__box">
+            <li><a class="menu__item" href="../Login/login.html">Sign In</a></li>
+            <li><a class="menu__item" href="../Register/register.html">Register</a></li>
+          </ul>
+        </div>
       </nav>
       <a href="../Index/index.html"><img id="logo-img" src="../assets/logo-no-background.png" alt="Logo DT"></a>
       <div id="search-wrapper-div">
-          <input id="search-input" type="text" class = "search-input-narrow">
-          <button id="search-button"><i id="search-icon" class="fa fa-search"></i></button>
+        <input id="search-input" type="text" class="search-input-narrow">
+        <button id="search-button"><i id="search-icon" class="fa fa-search"></i></button>
       </div>
-  </header>
+    </header>
     <div id="main-content-div">
       <form id="blogpost-form">
         <label for="blogpost-title">Title:</label>
@@ -80,6 +100,8 @@
         <input type="submit" value="Submit" onclick="return validateForm()"/>
       </form>
     </div>
-    <footer></footer>
+    <footer>
+      <p>&copy; 2023 DT. All rights reserved.</p>
+    </footer>
   </body>
 </html>

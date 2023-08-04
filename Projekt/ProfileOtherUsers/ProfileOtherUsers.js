@@ -21,54 +21,13 @@ getUser(clickedUser).then((res)=>{
 
 
 getUserPosts(clickedUser).then((res)=>{
-    userPosts = res;
-    console.log(userPosts[0]);
-    if(res.length === 0){
-      articleList.getElementsByTagName('p')[0].classList.remove('hidden');
-    }else{
-      articleList.getElementsByTagName('p')[0].classList.add('hidden');
-      for(j=0; j<userPosts.length; j++){
-        const clone = articleTemplate.content.cloneNode(true);
-        const articleWrapper = clone.querySelector('.article-wrapper');
-        articleList.appendChild(clone);
-        for(i=0; i<userPosts[j].content.length; i++){
-            if(userPosts[j].content[i].data){
-                content = userPosts[0].content[i].data;
-                continue;
-            }else{
-                contentImgaeUrl = userPosts[0].content[i].url;
-                continue;
-            }
-        }
-        setArticlepreview(j);
-      }
-
-    for (let i = 0; i < articles.length; i++) {
-      articles[i]?.addEventListener('click', function() {
-        articleFunction(i);
-      });
-    }
-  }
+    setWrittenArticles(res);
     
     
 }).catch(error => {
     console.error(error);
 });
 //
-
-function setArticlepreview(i){
-    articles[i].getElementsByTagName('h2')[0].innerHTML = userPosts[i].title;
-    articles[i].getElementsByClassName('article-publishing-date')[0].innerHTML = formatTimeSinceCreation(userPosts[i].createdAt);
-    articles[i].getElementsByClassName('article-publisher')[0].innerHTML = userPosts[i].username;  
-    articles[i].getElementsByClassName('article-sub-text-p')[0].innerHTML = userPosts[i].content[0].data;  
-    articles[i].getElementsByTagName('img')[0].src = userPosts[i].content[1].url;
-    let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));   
-}
-
-function articleFunction(num){
-    sessionStorage.setItem('clickedPost', userPosts[num].id);
-    window.open("../Articles/article.html", "_self");
-}
 
 function patchArticle(num){
     sessionStorage.setItem('patchedPost', userPosts[num].id);

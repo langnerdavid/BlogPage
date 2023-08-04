@@ -3,12 +3,14 @@ const articles = document.getElementsByClassName('article');
 const articleTemplate = document.getElementById('article-preview-template');
 const articleList = document.getElementById('article-preview-list');
 
+const addNewArticleButton = document.getElementsByClassName('new-article-button')[0];
+
 let lastTenPosts;
 let content;
 let contentImgaeUrl;
 
 
-
+addNewArticleFunctionIndex();
 getPosts().then((res)=>{
     lastTenPosts = res;
     console.log(lastTenPosts[0]);
@@ -25,12 +27,12 @@ getPosts().then((res)=>{
                 continue;
             }
         }
-        setArticlepreview(j);
+        setArticlepreview(j, lastTenPosts);
     }
 
     for (let i = 0; i < articles.length; i++) {
     articles[i]?.addEventListener('click', function() {
-        articleFunction(i);
+        articleFunction(i, lastTenPosts);
     });
 }
     
@@ -40,37 +42,13 @@ getPosts().then((res)=>{
 });
 //
 
-function setArticlepreview(i){
-    articles[i].getElementsByTagName('h2')[0].innerHTML = lastTenPosts[i].title;
-    articles[i].getElementsByClassName('article-publishing-date')[0].innerHTML = formatTimeSinceCreation(lastTenPosts[i].createdAt);
-    articles[i].getElementsByClassName('article-publisher')[0].innerHTML = lastTenPosts[i].username;  
-    const textElement = articles[i].getElementsByClassName('article-sub-text-p')[0];
-    const newText = lastTenPosts[i]?.content[0]?.data;
-    if (newText) {
-        textElement.innerHTML = newText;
+
+
+function addNewArticleFunctionIndex(){
+    if(sessionStorage.getItem('isUserSignedIn')==='true'){
+        addNewArticleButton?.addEventListener('click', () =>{window.open("../NewArticle/newArticle.html","_self");});
+    }else{
+        addNewArticleButton?.classList.add('hidden');
     }
-    const imgElement = articles[i].getElementsByTagName('img')[0];
-    const newUrl = lastTenPosts[i]?.content[1]?.url;
-    if (newUrl) {
-        imgElement.src = newUrl;
-    }
-    let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));   
-    if(lastTenPosts[i].username===userDataLocalStorage?.username?.toLowerCase()){
-        articles[i].getElementsByClassName('change-article-button')[0].classList.remove('hidden');
-        articles[i].getElementsByClassName('change-article-button')[0].addEventListener('click', function(e) {
-            e.stopPropagation();
-            patchArticle(i);
-            
-        });
-    } 
 }
 
-function articleFunction(num){
-    sessionStorage.setItem('clickedPost', lastTenPosts[num].id);
-    window.open("../Articles/article.html", "_self");
-}
-
-function patchArticle(num){
-    sessionStorage.setItem('patchedPost', lastTenPosts[num].id);
-    window.open("../patchArticle/patchArticle", "_self");
-}
