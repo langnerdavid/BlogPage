@@ -14,15 +14,16 @@ body{
     flex-direction: column;
     align-items: center;
     position: relative;
-    padding-bottom:20px
+    padding-bottom:20px;
+    margin: 0 auto;
+    background-color: var(--background-color);
 }
 #search-results-wrapper > h2{
     text-align:left;
     width:calc(40% + 60px);
 }
 .user-result-div{
-    width: 40%;
-    height: 150px;
+    width: 50%;
     margin-bottom: 15px;
     border-radius: 10px;
     cursor: pointer;
@@ -30,7 +31,7 @@ body{
     display: flex;
     align-items: flex-start;
     margin-bottom: 20px;
-    padding: 20px 30px;
+    padding: 10px 20px;
     background-color: var(--wrapper-background-color);
     overflow: hidden;
 }
@@ -62,6 +63,8 @@ body{
     justify-content: center;
     flex-basis: 100px;
     align-items: center;
+    margin-left: 10px;
+    margin-right: 15px;
 }
 
 .avatar-wrapper img {
@@ -91,7 +94,6 @@ body{
     color: var(--text-color);
     margin-bottom: 5px;
     -webkit-line-clamp: 2;
-    /* Anzahl der Zeilen, die Sie anzeigen möchten */
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -102,21 +104,17 @@ body{
     color: var(--subtext-color);
 }
 
-#search-results-wrapper {
-    width: 60%;
-    margin: 0 auto;
-}
-
 .user-result-div .data p {
     text-align: left;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width:700px){
     .user-result-div{
-        flex-direction: column;
-        width: 100px;
-        height: 300px;
-        overflow: hidden;
+        width: 70%;
     }
 }
-
+@media screen and (max-width:600px){
+    .user-result-div{
+        width: 90%;
+    }
+}

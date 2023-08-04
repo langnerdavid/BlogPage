@@ -236,6 +236,10 @@ aside{
     background: linear-gradient(transparent 30px, var(--article-background));
 }
 
+#description{
+    word-wrap: break-word;
+}
+
 @media screen and (max-width: 1000px) {
     #main-content-div {
         flex-direction: column;         
@@ -265,15 +269,6 @@ aside{
         margin-top:20px;
     }
 }
-@media screen and (max-width: 600px) {
-  
-    .new-article-button {
-      margin-top: 20px;
-    }   
-    article {
-        max-height: 100px;
-    }
-}
 
 @media screen and (max-width: 500px) {
     .wrapper{
@@ -285,4 +280,10 @@ aside{
         margin: auto;
         margin-top: 20px;
     }
+    .new-article-button {
+        margin-top: 20px;
+      }   
+      article {
+          max-height: 100px;
+      }
 }
