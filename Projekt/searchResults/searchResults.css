@@ -94,7 +94,6 @@ body{
     color: var(--text-color);
     margin-bottom: 5px;
     -webkit-line-clamp: 2;
-    /* Anzahl der Zeilen, die Sie anzeigen möchten */
     -webkit-box-orient: vertical;
     overflow: hidden;
 }

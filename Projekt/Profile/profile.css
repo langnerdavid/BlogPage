@@ -236,6 +236,10 @@ aside{
     background: linear-gradient(transparent 30px, var(--article-background));
 }
 
+#description{
+    word-wrap: break-word;
+}
+
 @media screen and (max-width: 1000px) {
     #main-content-div {
         flex-direction: column;         
