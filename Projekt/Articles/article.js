@@ -61,6 +61,7 @@ getOnePost(sessionStorage.getItem('clickedPost')).then((res)=>{
         // nur TextContent
         else{
             content[i].textContent = onePost?.sections[i]?.content[0]?.data;
+            img[i].classList.add('hidden');
         }
 
     }

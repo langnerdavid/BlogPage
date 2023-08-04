@@ -53,28 +53,32 @@ function setArticlepreview(i, posts){
 }
 
 
-function getSections(image, text){
-    const sectionList = document.getElementsByClassName('section-wrapper');
+function getSections(sectionList){
+    console.log(sectionList)
     let sections = new Array(sectionList.length);
     for (let i = 0; i < sectionList.length; i++) {
-        if(image.value && text.value){
+        let image = sectionList[i].getElementsByClassName('image-content')[0];
+        let imageCaption = sectionList[i].getElementsByClassName('image-title')[0];
+        let text = sectionList[i].getElementsByClassName('section-text-content-class')[0];
+        console.log(sectionList[i].getElementsByClassName('section-title-class')[0]);
+        if(image?.value && text?.value){
             let imageContent = {
                 __type: "img",
-                url: sectionList[i].getElementsByClassName('image-content')[0].value,
-                caption: sectionList[i].getElementsByClassName('image-title')[0].value
+                url: image.value,
+                caption: imageCaption.value
             }
             let textContent = {
                 __type: "text",
-                data: sectionList[i].getElementsByClassName('section-text-content-class')[0].value
+                data: text.value
             }
             sections[i] ={
                 sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
                 content: [textContent, imageContent]
             }
-        }else if(!image.value){
+        }else if(text?.value){
             let textContent = {
                 __type: "text",
-                data: sectionList[i].getElementsByClassName('section-text-content-class')[0].value
+                data: text.value
             }
             sections[i] ={
                 sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
@@ -83,8 +87,8 @@ function getSections(image, text){
         }else{
             let imageContent = {
                 __type: "img",
-                url: sectionList[i].getElementsByClassName('image-content')[0].value,
-                caption: sectionList[i].getElementsByClassName('image-title')[0].value
+                url: image.value,
+                caption: imageCaption.value
             }
             sections[i] ={
                 sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
@@ -92,6 +96,7 @@ function getSections(image, text){
             }
         }
     }
+    console.log(sections);
     return sections;
 }
 

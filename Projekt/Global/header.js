@@ -55,6 +55,13 @@ function checkUserSignedIn(){
 function addAnimation(){
     console.log("function");
     event.stopPropagation();
+    document.addEventListener(
+        'keydown', (event) => {
+          // if not 'enter key' just exit here
+          if (event.keyCode === 13 && searchInput.value){
+            search();           
+          }
+        });
     if(!isSearchInputOpen){
         searchInput.classList.remove('search-input-narrow');
         searchInput.classList.add('search-input-animation');

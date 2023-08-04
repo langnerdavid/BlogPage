@@ -29,11 +29,14 @@ getOnePost(sessionStorage.getItem('patchedPost')).then((res)=>{
         const sectionWrapper = clone.querySelector('.section-wrapper');
         sectionList.appendChild(clone);
         sectionNumbers+=1;
-        if(res?.content[0]?.sections[i]?.data){
+        if(res?.sections[i]?.content[0]?.data){
             blogpostSectionTexts[i].value = res.sections[i].content[0].data;
-        }if(res?.content[1]?.sections[i]?.url){
+        }if(res?.sections[i]?.content[1]?.url){
             blogpostSectionImages[i+1].value = res.sections[i].content[1].url;
             blogpostSectionImageTitles[i+1].value = res.sections[i].content[1].caption;
+        }if(res?.sections[i]?.content[0]?.url){
+            blogpostSectionImages[i+1].value = res.sections[i].content[0].url;
+            blogpostSectionImageTitles[i+1].value = res.sections[i].content[0].caption;
         }
         blogpostSectionTitles[i].value = res.sections[i].sectionTitle;
     }
@@ -49,7 +52,7 @@ function getPost(e){
     e.preventDefault();
     let testPost
     if(sectionNumbers==0){
-        if(blogpostImage.value && blogpostText.value){
+        if(blogpostImage?.value && blogpostText?.value){
             let imageContent = {
                 __type: "img",
                 url: blogpostImage.value,
@@ -64,7 +67,7 @@ function getPost(e){
                 content: [textContent, imageContent]
             }
 
-        }else if(!blogpostImage.value){
+        }else if(!blogpostImage?.value){
             let textContent = {
                 __type: "text",
                 data:blogpostText.value
@@ -85,13 +88,13 @@ function getPost(e){
             }
         }
     }else{
-        if(!blogpostImage.value && !blogpostText.value){
+        if(!blogpostImage?.value && !blogpostText?.value){
             testPost ={
                 title: blogpostTitle.value,
-                sections: getSections()
+                sections: getSections(sectionList.getElementsByClassName('section-wrapper'))
             }
         }else{
-            if(blogpostImage.value && blogpostText.value){
+            if(blogpostImage?.value && blogpostText?.value){
                 let imageContent = {
                     __type: "img",
                     url: blogpostImage.value,
@@ -104,9 +107,9 @@ function getPost(e){
                 testPost ={
                     title: blogpostTitle.value,
                     content: [textContent, imageContent],
-                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                    sections: getSections(sectionList.getElementsByClassName('section-wrapper'))
                 }
-            }else if(!blogpostImage.value){
+            }else if(blogpostText?.value){
                 let textContent = {
                     __type: "text",
                     data:blogpostText.value
@@ -114,7 +117,7 @@ function getPost(e){
                 testPost ={
                     title: blogpostTitle.value,
                     content: [textContent],
-                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                    sections: getSections(sectionList.getElementsByClassName('section-wrapper'))
                 }
             }else{
                 let imageContent = {
@@ -125,7 +128,7 @@ function getPost(e){
                 testPost ={
                     title: blogpostTitle.value,
                     content: [imageContent],
-                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                    sections: getSections(sectionList.getElementsByClassName('section-wrapper'))
                 }
             }
         }
@@ -137,7 +140,8 @@ function getPost(e){
     console.log(testPost);
     console.log(sessionStorage.getItem('patchedPost'));
     putPost(testPost, sessionStorage.getItem('patchedPost'), authHeader).then(()=>{
-        window.history.back();
+        console.log(testPost);
+        //window.history.back();
     }).catch(()=>{
        alert("irgendwas hat nicht geklappt");
     });

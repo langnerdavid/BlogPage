@@ -19,7 +19,7 @@ function getPost(e){
     e.preventDefault();
     let testPost
     if(sectionNumbers==0){
-        if(blogpostImage.value && blogpostText.value){
+        if(blogpostImage?.value && blogpostText?.value){
             let imageContent = {
                 __type: "img",
                 url: blogpostImage.value,
@@ -34,7 +34,7 @@ function getPost(e){
                 content: [textContent, imageContent]
             }
 
-        }else if(!blogpostImage.value){
+        }else if(!blogpostImage?.value){
             let textContent = {
                 __type: "text",
                 data:blogpostText.value
@@ -55,13 +55,13 @@ function getPost(e){
             }
         }
     }else{
-        if(!blogpostImage.value && !blogpostText.value){
+        if(!blogpostImage?.value && !blogpostText?.value){
             testPost ={
                 title: blogpostTitle.value,
-                sections: getSections()
+                sections: getSections(sectionList)
             }
         }else{
-            if(blogpostImage.value && blogpostText.value){
+            if(blogpostImage?.value && blogpostText?.value){
                 let imageContent = {
                     __type: "img",
                     url: blogpostImage.value,
@@ -74,9 +74,9 @@ function getPost(e){
                 testPost ={
                     title: blogpostTitle.value,
                     content: [textContent, imageContent],
-                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                    sections: getSections(sectionList)
                 }
-            }else if(!blogpostImage.value){
+            }else if(blogpostText?.value){
                 let textContent = {
                     __type: "text",
                     data:blogpostText.value
@@ -84,7 +84,7 @@ function getPost(e){
                 testPost ={
                     title: blogpostTitle.value,
                     content: [textContent],
-                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                    sections: getSections(sectionList)
                 }
             }else{
                 let imageContent = {
@@ -95,7 +95,7 @@ function getPost(e){
                 testPost ={
                     title: blogpostTitle.value,
                     content: [imageContent],
-                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                    sections: getSections(sectionList)
                 }
             }
         }
@@ -104,6 +104,7 @@ function getPost(e){
     const encode = btoa(test.username+':'+test.password);
     const authHeader = `Basic ${encode}`;
     postPost(testPost, authHeader).then(()=>{
+        console.log(testPost);
         window.history.back();
     }).catch(()=>{
         alert("irgendwas hat nicht geklappt");

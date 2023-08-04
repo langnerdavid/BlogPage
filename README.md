@@ -11,7 +11,9 @@ Insgesamt ist Accessibility in der Webentwicklung ein wichtiger Schritt, um sich
 ### Accessibility am Beispiel unserer Website
 Beim gestalten der Webanwendung wurde daruaf geachtet semantisch stimmhaften HTML-Code zu entwicklen. Als Beispiele hierfür ist aufzuführen, dass die Elemente in der Navigationsleiste in dem entsprechend dafür vorgesehenen <nav>-Element stehen. Des weiteren wurden Artikel im <article>-Tag eingefügt. Das gleiche gilt für die Verwendung von <sections>, <h>, <header> und <footer>.
 Bei verwendeten Bildern wurde der entsprechende Inhalt im alt-Text angegeben, damit die Webseite auch mit einem Reader verwendet werden kann.
-Gleiches gilt auch für die Verwendung von imputs. 
+Gleiches gilt auch für die Verwendung von inputs. 
 ?Zusätzlich wurde bei der Farbwahl, auf hohe Kontraste zwischen Text und Hintergrund geachtet?. 
+Um die Accessibility zusätzlich zu steigern, wurde auch darauf geachtet, dass (so weit möglich) die Bedinung auch ausschließlich mit der Tastatur möglich ist. Dazu wurde beispielsweise die Funktion ergänzt, dass eine Suche mit der Enter-Taste bestätigt werden kann.
+Des weiteren wurde nicht ausschließlich auf "Farbcodierung" zum Erkennen von Funktionen gesetzt, damit auch Farbenblinde Menschen die Webseite ohn einschränkungen nutzen können. So wurde nach Möglichkeit immer zusätzlich zu der entsprechenden Farbe ein Icon, wie eine Mülltonne oder ein Stift eingefügt.
 ## Zu beachtende Punkte bei unserer Website
 - es dauert manchmal ein bisschen Zeit, bis alles von der API gepulled wurde
