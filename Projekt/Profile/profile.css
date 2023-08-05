@@ -226,7 +226,6 @@ aside{
     content: "";
     position: relative;
     overflow-wrap: anywhere;
-    overflow: hidden;
 }
 
 .article-sub-text-p:before {
