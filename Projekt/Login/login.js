@@ -18,14 +18,10 @@ const rememberMeInput = formInputs[2];
         rememberMe='false';
     }
     loginUser(username, pswd, rememberMe).then((res)=>{
-        console.log(res);
         if(res){
             loginSuccesful(res);
-            getUser(username).then((res)=>{
-                console.log(res);
-            });
         }else{
-            loginError();
+            loginError(); // animation, falls Anmeldedaten flasch sind
         }
     }, (err)=>{
         alert("falsches pswd");
@@ -34,11 +30,13 @@ const rememberMeInput = formInputs[2];
 
 });
 
+//Hier wird das Password bei Bedarf angezeigt
 eyeShowPassword.addEventListener("click", ()=>{
   eyeShowPassword.classList.toggle("fa-eye-slash")
   const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
   passwordInput.setAttribute("type", type)
 });
+
 
 function loginError(){
     passwordInput.classList.add('password-input-animation');

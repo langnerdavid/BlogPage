@@ -1,6 +1,7 @@
 let sectionNumbers = 0;
 
 
+//Hier werden die Anzeigeeinstellungen für die Artikel Preview (z.B: im Profil oder beim aProfil anderer user) eingestellt
 function setArticlepreview(i, posts){
     articles[i].getElementsByTagName('h2')[0].innerHTML = posts[i].title;
     articles[i].getElementsByClassName('article-publishing-date')[0].innerHTML = formatTimeSinceCreation(posts[i].createdAt);
@@ -53,6 +54,7 @@ function setArticlepreview(i, posts){
 }
 
 
+//Hier werden alle Sections beim patchPost und newPost gesucht und der Post dann je nach eingegeben Angaben angepasst
 function getSections(sectionList){
     console.log(sectionList)
     let sections = new Array(sectionList.length);
@@ -101,6 +103,7 @@ function getSections(sectionList){
 }
 
 
+//Hier wird die Funktionalität des add-Section-Buttons eingestellt
 function articleAddSectionButton(addSectionButton){
     addSectionButton.addEventListener('click', () => {
     const clone = sectionTemplate.content.cloneNode(true);
@@ -118,7 +121,7 @@ function articleAddSectionButton(addSectionButton){
 });
 }
 
-
+//Hier werden die Anzeigeeinstellungen der geschriebenen Artikel eingestellt (Profile)
 function setWrittenArticles(userPosts){
     if(userPosts.length === 0){
       articleList.getElementsByTagName('p')[0].classList.remove('hidden');
@@ -148,18 +151,20 @@ function setWrittenArticles(userPosts){
     }
 }
 
+//Hier wird gespeichert welcher Artikel aus dem Artikel-Preview geöffnet werden soll
 function articleFunction(num, userPosts){
     sessionStorage.setItem('clickedPost', userPosts[num].id);
     window.open("../Articles/article.html", "_self");
 }
 
+//Hier wird gespeichert welcher Artikel bearbeitet werden soll
 function patchArticle(num, userPosts){
     sessionStorage.setItem('patchedPost', userPosts[num].id);
     window.open("../patchArticle/patchArticle.html", "_self");
 }
 
 
-
+//Hier wird die Funktionalität des add-new-article Buttons eingestellt
 function addNewArticleFunction(addNewArticleButton){
     if(window.screen.width>=600){
         addNewArticleButton[1].classList.add('hidden');
@@ -174,3 +179,30 @@ function addNewArticleFunction(addNewArticleButton){
         addNewArticleButton?.classList.add('hidden');
     }
 }
+
+
+
+//Hier wird die die Zeit seit erstellung von Posts berechnet
+function formatTimeSinceCreation(createdAt) {
+    let now = new Date();
+    let createdDate = new Date(createdAt);
+    let timeDiff = now - createdDate;
+  
+    // Anzahl der vergangenen Minuten berechnen
+    const minutes = Math.floor(timeDiff / (1000 * 60));
+  
+    if (minutes < 60) {
+      return 'Vor ' + minutes + (minutes === 1 ? ' Minute' : ' Minuten');
+    }
+  
+    // Anzahl der vergangenen Stunden berechnen
+    const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+  
+    if (hours < 24) {
+      return 'Vor ' + hours + (hours === 1 ? ' Stunde' : ' Stunden');
+    }
+  
+    // Anzahl der vergangenen Tage berechnen
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    return 'Vor ' + days + (days === 1 ? ' Tag' : ' Tagen');
+  }

@@ -13,7 +13,6 @@ const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{4,12}$/;
 
 
 getUser(clickedUser).then((res)=>{
-  console.log(res);
   document.getElementById('display-name').innerText = res.profile.displayName;
   document.getElementById('description').innerText = res.profile.description;
   document.getElementById('username').innerText = res.username;
@@ -28,8 +27,3 @@ getUserPosts(clickedUser).then((res)=>{
     console.error(error);
 });
 //
-
-function patchArticle(num){
-    sessionStorage.setItem('patchedPost', userPosts[num].id);
-    window.open("../patchArticle/patchArticle.html", "_self");
-}

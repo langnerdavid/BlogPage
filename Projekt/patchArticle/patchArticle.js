@@ -15,9 +15,9 @@ const blogpostSectionTitles = document.getElementsByClassName('section-title-cla
 const form = document.getElementById("blogpost-form");
 
 
+//Hier werden die bereits gefüllten angaben des zu bearbeitendenden Posts angezgéigt
 getOnePost(sessionStorage.getItem('patchedPost')).then((res)=>{
     blogpostTitle.value = res.title;
-    console.log(res);
     if(res?.content[0]?.data){
         blogpostText.value = res?.content[0]?.data;
     }if(res?.content[1]?.url){
@@ -40,17 +40,19 @@ getOnePost(sessionStorage.getItem('patchedPost')).then((res)=>{
         }
         blogpostSectionTitles[i].value = res.sections[i].sectionTitle;
     }
+}).catch(error => {
+    console.error(error);
 });
 
 
 form.addEventListener("submit", getPost);
 
-articleAddSectionButton(addSectionButton);
+articleAddSectionButton(addSectionButton); //Funtkionalität des "add-Section"-Buttons
 
 
 function getPost(e){
     e.preventDefault();
-    let testPost
+    let patchedPost
     if(sectionNumbers==0){
         if(blogpostImage?.value && blogpostText?.value){
             let imageContent = {
@@ -62,7 +64,7 @@ function getPost(e){
                 __type: "text",
                 data:blogpostText.value
             }
-            testPost ={
+            patchedPost ={
                 title: blogpostTitle.value,
                 content: [textContent, imageContent]
             }
@@ -72,7 +74,7 @@ function getPost(e){
                 __type: "text",
                 data:blogpostText.value
             }
-            testPost ={
+            patchedPost ={
                 title: blogpostTitle.value,
                 content: [textContent]
             }
@@ -82,14 +84,14 @@ function getPost(e){
                 url: blogpostImage.value,
                 caption: blogpostImageTitle.value
             }
-            testPost ={
+            patchedPost ={
                 title: blogpostTitle.value,
                 content: [imageContent]
             }
         }
     }else{
         if(!blogpostImage?.value && !blogpostText?.value){
-            testPost ={
+            patchedPost ={
                 title: blogpostTitle.value,
                 sections: getSections(sectionList.getElementsByClassName('section-wrapper'))
             }
@@ -104,7 +106,7 @@ function getPost(e){
                     __type: "text",
                     data:blogpostText.value
                 }
-                testPost ={
+                patchedPost ={
                     title: blogpostTitle.value,
                     content: [textContent, imageContent],
                     sections: getSections(sectionList.getElementsByClassName('section-wrapper'))
@@ -114,7 +116,7 @@ function getPost(e){
                     __type: "text",
                     data:blogpostText.value
                 }
-                testPost ={
+                patchedPost ={
                     title: blogpostTitle.value,
                     content: [textContent],
                     sections: getSections(sectionList.getElementsByClassName('section-wrapper'))
@@ -125,7 +127,7 @@ function getPost(e){
                     url: blogpostImage.value,
                     caption: blogpostImageTitle.value
                 }
-                testPost ={
+                patchedPost ={
                     title: blogpostTitle.value,
                     content: [imageContent],
                     sections: getSections(sectionList.getElementsByClassName('section-wrapper'))
@@ -134,14 +136,10 @@ function getPost(e){
         }
     }
     let test = JSON.parse(localStorage.getItem('userData'));
-    console.log(test.password);
     const encode = btoa(test.username+':'+test.password);
     const authHeader = `Basic ${encode}`;
-    console.log(testPost);
-    console.log(sessionStorage.getItem('patchedPost'));
-    putPost(testPost, sessionStorage.getItem('patchedPost'), authHeader).then(()=>{
-        console.log(testPost);
-        //window.history.back();
+    putPost(patchedPost, sessionStorage.getItem('patchedPost'), authHeader).then(()=>{
+        window.history.back();
     }).catch(()=>{
        alert("irgendwas hat nicht geklappt");
     });

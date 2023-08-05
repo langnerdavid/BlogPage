@@ -15,19 +15,25 @@ const descriptionInput = (document.getElementById('register-form')).getElementsB
             description: descriptionInput.value
         }
     }
-    postUsers(userPost).then(()=>{
-        sessionStorage.setItem('isUserSignedIn', true);
-        userPost = {
-            username: usernameInput.value,
-            password: passwordInput.value,
-            profile:{
-                displayName: displayNameInput.value,
-                description: descriptionInput.value
-            },
-            rememberMe: 'false'
+    postUsers(userPost).then((res)=>{
+        if(res ===null){
+            window.alert('Der Username wird bereits verwendet');
+        }else{
+            sessionStorage.setItem('isUserSignedIn', true);
+            userPost = {
+                username: usernameInput.value,
+                password: passwordInput.value,
+                profile:{
+                    displayName: displayNameInput.value,
+                    description: descriptionInput.value
+                },
+                rememberMe: 'false'
+            }
+            localStorage.setItem('userData', JSON.stringify(userPost));
+            window.open('../index/index.html', '_self');   
         }
-        localStorage.setItem('userData', JSON.stringify(userPost));
-        window.open('../index/index.html', '_self');
+    }).catch(error => {
+        console.error(error);
     });
 
 
