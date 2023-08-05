@@ -13,6 +13,7 @@ body {
 #blog-div{
     width: 60%;
 }
+
 aside{
     width: 40%;
     padding-right: 20px;
@@ -84,7 +85,6 @@ aside{
     color: var(--subtext-color);
 }
 
-
 .edit-button {
     background-color: var(--submit-button-background);
     color: var(--button-color);
@@ -98,21 +98,22 @@ aside{
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease-in-out;
-  }
+}
   
-  .edit-button.active {
+.edit-button.active {
     background-color: var(--edit-buton-active);
-  }
+}
   
-  .user-details,
-  .info {
+.user-details,
+.info {
     margin-bottom: 20px;
-  }
+}
   
-  .focused{
+.focused{
     background-color: var(--focused);
     border-radius: 5px;
-  }
+}
+
 .no-posts-p {
     width: 250px;
     margin: auto;
@@ -149,7 +150,6 @@ aside{
     cursor: pointer;
 }
 
-  
 #delete-confirm-button, .delete-confirm-button-article {
     background-color: var(--delete-confirm-button);
     color: var(--button-color);
@@ -176,6 +176,7 @@ aside{
     border-radius: 3px;
     cursor: pointer;
 }
+
 .hidden{
     visibility: hidden;
 }
@@ -207,10 +208,12 @@ aside{
     cursor: auto;
     z-index: 2;
 }
+
 .delete-toggle-div-article > button{
     margin-right: 10px;
     margin-left: 10px;
 }
+
 .delete-toggle-div-article > p{
     margin-bottom: 10px;
 }
