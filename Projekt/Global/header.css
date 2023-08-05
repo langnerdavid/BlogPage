@@ -59,7 +59,7 @@ header {
 }
 
 .profile-toggle-div{
-    background-color: var(--profile-toggle-background-color);
+    background-color: var(--profile-toggle-background);
     width: 75px;
     position: absolute;
     left:0;

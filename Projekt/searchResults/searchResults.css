@@ -34,7 +34,6 @@ body{
 
 .user-result-div{
     width: 50%;
-    margin-bottom: 15px;
     border-radius: 10px;
     cursor: pointer;
     flex-direction: row;
