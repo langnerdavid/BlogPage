@@ -9,7 +9,7 @@ Accessibility ist nicht nur eine ethische Verpflichtung, sondern auch gesetzlich
 
 Insgesamt ist Accessibility in der Webentwicklung ein wichtiger Schritt, um sicherzustellen, dass das Internet für alle zugänglich ist und eine inklusive digitale Welt zu schaffen. Es ist eine bedeutende Maßnahme, um sicherzustellen, dass Informationen und Dienstleistungen für alle Menschen zugänglich sind, unabhängig von ihren individuellen Fähigkeiten oder technischen Voraussetzungen.
 ### Accessibility am Beispiel unserer Website
-Beim gestalten der Webanwendung wurde daruaf geachtet semantisch stimmhaften HTML-Code zu entwicklen. Als Beispiele hierfür ist aufzuführen, dass die Elemente in der Navigationsleiste in dem entsprechend dafür vorgesehenen <nav>-Element stehen. Des weiteren wurden Artikel im <article>-Tag eingefügt. Das gleiche gilt für die Verwendung von <sections>, <h>, <header> und <footer>.
+Beim gestalten der Webanwendung wurde darauf geachtet semantisch stimmhaften HTML-Code zu entwicklen. Als Beispiele hierfür ist aufzuführen, dass die Elemente in der Navigationsleiste in dem entsprechend dafür vorgesehenen <nav>-Element stehen. Des weiteren wurden Artikel im <article>-Tag eingefügt. Das gleiche gilt für die Verwendung von <sections>, <h>, <header> und <footer>.
 Bei verwendeten Bildern wurde der entsprechende Inhalt im alt-Text angegeben, damit die Webseite auch mit einem Reader verwendet werden kann.
 Gleiches gilt auch für die Verwendung von inputs. 
 ?Zusätzlich wurde bei der Farbwahl, auf hohe Kontraste zwischen Text und Hintergrund geachtet?. 
