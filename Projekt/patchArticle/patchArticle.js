@@ -15,9 +15,9 @@ const blogpostSectionTitles = document.getElementsByClassName('section-title-cla
 const form = document.getElementById("blogpost-form");
 
 
+//Hier werden die bereits gefüllten angaben des zu bearbeitendenden Posts angezgéigt
 getOnePost(sessionStorage.getItem('patchedPost')).then((res)=>{
     blogpostTitle.value = res.title;
-    console.log(res);
     if(res?.content[0]?.data){
         blogpostText.value = res?.content[0]?.data;
     }if(res?.content[1]?.url){
@@ -29,27 +29,32 @@ getOnePost(sessionStorage.getItem('patchedPost')).then((res)=>{
         const sectionWrapper = clone.querySelector('.section-wrapper');
         sectionList.appendChild(clone);
         sectionNumbers+=1;
-        if(res?.content[0]?.sections[i]?.data){
+        if(res?.sections[i]?.content[0]?.data){
             blogpostSectionTexts[i].value = res.sections[i].content[0].data;
-        }if(res?.content[1]?.sections[i]?.url){
+        }if(res?.sections[i]?.content[1]?.url){
             blogpostSectionImages[i+1].value = res.sections[i].content[1].url;
             blogpostSectionImageTitles[i+1].value = res.sections[i].content[1].caption;
+        }if(res?.sections[i]?.content[0]?.url){
+            blogpostSectionImages[i+1].value = res.sections[i].content[0].url;
+            blogpostSectionImageTitles[i+1].value = res.sections[i].content[0].caption;
         }
         blogpostSectionTitles[i].value = res.sections[i].sectionTitle;
     }
+}).catch(error => {
+    console.error(error);
 });
 
 
 form.addEventListener("submit", getPost);
 
-articleAddSectionButton(addSectionButton);
+articleAddSectionButton(addSectionButton); //Funtkionalität des "add-Section"-Buttons
 
 
 function getPost(e){
     e.preventDefault();
-    let testPost
+    let patchedPost
     if(sectionNumbers==0){
-        if(blogpostImage.value && blogpostText.value){
+        if(blogpostImage?.value && blogpostText?.value){
             let imageContent = {
                 __type: "img",
                 url: blogpostImage.value,
@@ -59,17 +64,17 @@ function getPost(e){
                 __type: "text",
                 data:blogpostText.value
             }
-            testPost ={
+            patchedPost ={
                 title: blogpostTitle.value,
                 content: [textContent, imageContent]
             }
 
-        }else if(!blogpostImage.value){
+        }else if(!blogpostImage?.value){
             let textContent = {
                 __type: "text",
                 data:blogpostText.value
             }
-            testPost ={
+            patchedPost ={
                 title: blogpostTitle.value,
                 content: [textContent]
             }
@@ -79,19 +84,19 @@ function getPost(e){
                 url: blogpostImage.value,
                 caption: blogpostImageTitle.value
             }
-            testPost ={
+            patchedPost ={
                 title: blogpostTitle.value,
                 content: [imageContent]
             }
         }
     }else{
-        if(!blogpostImage.value && !blogpostText.value){
-            testPost ={
+        if(!blogpostImage?.value && !blogpostText?.value){
+            patchedPost ={
                 title: blogpostTitle.value,
-                sections: getSections()
+                sections: getSections(sectionList.getElementsByClassName('section-wrapper'))
             }
         }else{
-            if(blogpostImage.value && blogpostText.value){
+            if(blogpostImage?.value && blogpostText?.value){
                 let imageContent = {
                     __type: "img",
                     url: blogpostImage.value,
@@ -101,20 +106,20 @@ function getPost(e){
                     __type: "text",
                     data:blogpostText.value
                 }
-                testPost ={
+                patchedPost ={
                     title: blogpostTitle.value,
                     content: [textContent, imageContent],
-                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                    sections: getSections(sectionList.getElementsByClassName('section-wrapper'))
                 }
-            }else if(!blogpostImage.value){
+            }else if(blogpostText?.value){
                 let textContent = {
                     __type: "text",
                     data:blogpostText.value
                 }
-                testPost ={
+                patchedPost ={
                     title: blogpostTitle.value,
                     content: [textContent],
-                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                    sections: getSections(sectionList.getElementsByClassName('section-wrapper'))
                 }
             }else{
                 let imageContent = {
@@ -122,21 +127,18 @@ function getPost(e){
                     url: blogpostImage.value,
                     caption: blogpostImageTitle.value
                 }
-                testPost ={
+                patchedPost ={
                     title: blogpostTitle.value,
                     content: [imageContent],
-                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                    sections: getSections(sectionList.getElementsByClassName('section-wrapper'))
                 }
             }
         }
     }
     let test = JSON.parse(localStorage.getItem('userData'));
-    console.log(test.password);
     const encode = btoa(test.username+':'+test.password);
     const authHeader = `Basic ${encode}`;
-    console.log(testPost);
-    console.log(sessionStorage.getItem('patchedPost'));
-    putPost(testPost, sessionStorage.getItem('patchedPost'), authHeader).then(()=>{
+    putPost(patchedPost, sessionStorage.getItem('patchedPost'), authHeader).then(()=>{
         window.history.back();
     }).catch(()=>{
        alert("irgendwas hat nicht geklappt");

@@ -1,6 +1,7 @@
 let sectionNumbers = 0;
 
 
+//Hier werden die Anzeigeeinstellungen für die Artikel Preview (z.B: im Profil oder beim aProfil anderer user) eingestellt
 function setArticlepreview(i, posts){
     articles[i].getElementsByTagName('h2')[0].innerHTML = posts[i].title;
     articles[i].getElementsByClassName('article-publishing-date')[0].innerHTML = formatTimeSinceCreation(posts[i].createdAt);
@@ -53,28 +54,33 @@ function setArticlepreview(i, posts){
 }
 
 
-function getSections(image, text){
-    const sectionList = document.getElementsByClassName('section-wrapper');
+//Hier werden alle Sections beim patchPost und newPost gesucht und der Post dann je nach eingegeben Angaben angepasst
+function getSections(sectionList){
+    console.log(sectionList)
     let sections = new Array(sectionList.length);
     for (let i = 0; i < sectionList.length; i++) {
-        if(image.value && text.value){
+        let image = sectionList[i].getElementsByClassName('image-content')[0];
+        let imageCaption = sectionList[i].getElementsByClassName('image-title')[0];
+        let text = sectionList[i].getElementsByClassName('section-text-content-class')[0];
+        console.log(sectionList[i].getElementsByClassName('section-title-class')[0]);
+        if(image?.value && text?.value){
             let imageContent = {
                 __type: "img",
-                url: sectionList[i].getElementsByClassName('image-content')[0].value,
-                caption: sectionList[i].getElementsByClassName('image-title')[0].value
+                url: image.value,
+                caption: imageCaption.value
             }
             let textContent = {
                 __type: "text",
-                data: sectionList[i].getElementsByClassName('section-text-content-class')[0].value
+                data: text.value
             }
             sections[i] ={
                 sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
                 content: [textContent, imageContent]
             }
-        }else if(!image.value){
+        }else if(text?.value){
             let textContent = {
                 __type: "text",
-                data: sectionList[i].getElementsByClassName('section-text-content-class')[0].value
+                data: text.value
             }
             sections[i] ={
                 sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
@@ -83,8 +89,8 @@ function getSections(image, text){
         }else{
             let imageContent = {
                 __type: "img",
-                url: sectionList[i].getElementsByClassName('image-content')[0].value,
-                caption: sectionList[i].getElementsByClassName('image-title')[0].value
+                url: image.value,
+                caption: imageCaption.value
             }
             sections[i] ={
                 sectionTitle: sectionList[i].getElementsByClassName('section-title-class')[0].value,
@@ -92,10 +98,12 @@ function getSections(image, text){
             }
         }
     }
+    console.log(sections);
     return sections;
 }
 
 
+//Hier wird die Funktionalität des add-Section-Buttons eingestellt
 function articleAddSectionButton(addSectionButton){
     addSectionButton.addEventListener('click', () => {
     const clone = sectionTemplate.content.cloneNode(true);
@@ -113,7 +121,7 @@ function articleAddSectionButton(addSectionButton){
 });
 }
 
-
+//Hier werden die Anzeigeeinstellungen der geschriebenen Artikel eingestellt (Profile)
 function setWrittenArticles(userPosts){
     if(userPosts.length === 0){
       articleList.getElementsByTagName('p')[0].classList.remove('hidden');
@@ -143,18 +151,20 @@ function setWrittenArticles(userPosts){
     }
 }
 
+//Hier wird gespeichert welcher Artikel aus dem Artikel-Preview geöffnet werden soll
 function articleFunction(num, userPosts){
     sessionStorage.setItem('clickedPost', userPosts[num].id);
     window.open("../Articles/article.html", "_self");
 }
 
+//Hier wird gespeichert welcher Artikel bearbeitet werden soll
 function patchArticle(num, userPosts){
     sessionStorage.setItem('patchedPost', userPosts[num].id);
     window.open("../patchArticle/patchArticle.html", "_self");
 }
 
 
-
+//Hier wird die Funktionalität des add-new-article Buttons eingestellt
 function addNewArticleFunction(addNewArticleButton){
     if(window.screen.width>=600){
         addNewArticleButton[1].classList.add('hidden');
@@ -169,3 +179,30 @@ function addNewArticleFunction(addNewArticleButton){
         addNewArticleButton?.classList.add('hidden');
     }
 }
+
+
+
+//Hier wird die die Zeit seit erstellung von Posts berechnet
+function formatTimeSinceCreation(createdAt) {
+    let now = new Date();
+    let createdDate = new Date(createdAt);
+    let timeDiff = now - createdDate;
+  
+    // Anzahl der vergangenen Minuten berechnen
+    const minutes = Math.floor(timeDiff / (1000 * 60));
+  
+    if (minutes < 60) {
+      return 'Vor ' + minutes + (minutes === 1 ? ' Minute' : ' Minuten');
+    }
+  
+    // Anzahl der vergangenen Stunden berechnen
+    const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+  
+    if (hours < 24) {
+      return 'Vor ' + hours + (hours === 1 ? ' Stunde' : ' Stunden');
+    }
+  
+    // Anzahl der vergangenen Tage berechnen
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    return 'Vor ' + days + (days === 1 ? ' Tag' : ' Tagen');
+  }

@@ -18,10 +18,20 @@ body{
     margin: 0 auto;
     background-color: var(--background-color);
 }
+
 #search-results-wrapper > h2{
+    margin-top: 10px;
     text-align:left;
-    width:calc(40% + 60px);
+    width:calc(50% + 40px);
 }
+
+.display-name{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden
+}
+
 .user-result-div{
     width: 50%;
     margin-bottom: 15px;
@@ -112,9 +122,15 @@ body{
     .user-result-div{
         width: 70%;
     }
+    #search-results-wrapper > h2{
+        width:calc(70% + 40px);
+    }
 }
 @media screen and (max-width:600px){
     .user-result-div{
         width: 90%;
+    }
+    #search-results-wrapper > h2{
+        width:calc(90% + 40px);
     }
 }

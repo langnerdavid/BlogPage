@@ -71,13 +71,13 @@ article{
 .section-text > img {
   height: 100px;
   float: right;
-  margin: 5px; /* Add a margin to give some space between the image and text */
+  margin: 5px; 
 }
 
 .section-text {
   margin-bottom: 20px;
   min-height: 100px;
-  overflow: hidden; /* Clear the float and prevent content overflow */
+  overflow: hidden; 
 }
 
 .section-text > h2 {
@@ -98,6 +98,4 @@ article{
     .section-text>img {
         height: 70px;
     }
-    
-
 }

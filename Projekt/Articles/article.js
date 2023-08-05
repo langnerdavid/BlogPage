@@ -17,29 +17,35 @@ let mainTextDivP;
 let mainTextDivH2;
 
 let wordCount = 0;
-const wordsPerMinute = 250;
-sessionStorage.getItem('clickedPost');
+const wordsPerMinute = 250; //wird zur berechnung der geschätzten Lesezeit benötigt
 
 getOnePost(sessionStorage.getItem('clickedPost')).then((res)=>{
     let onePost = res;
     console.log(onePost);
+
+    //Hier werden die Anzeigeeinstellungen für den Main-COntent eingestellt
     articleHeading.textContent = onePost.title;
     publishingDetailsP[0].textContent = onePost.username;
     publishingDetailsP[1].textContent = formatTimeSinceCreation(onePost.createdAt);
+    //nur img content
     if(onePost?.content[0]?.url){
         articlePicture[0].src = onePost?.content[0]?.url;
         articlePicture[0].alt = onePost?.content[0]?.caption;
-    }else if (onePost?.content[1]?.url){
+    }
+    //img und Text content
+    else if (onePost?.content[1]?.url){
         contentText.textContent = onePost?.content[0]?.data;
         articlePicture[0].src = onePost?.content[1]?.url;
         articlePicture[0].alt = onePost?.content[1]?.caption;
     }
-    
+    //nur text Content
     else{
         articlePicture[0].classList.add('hidden');
         contentText.textContent = onePost?.content[0]?.data;
     }
+    
 
+    // Hier werden die Anzeigeeinstellungen für alle sections eingestellt
     for(i=0; i<onePost.sections.length; i++){
         const clone = sectionTemplate.content.cloneNode(true);
         mainSectionDiv.appendChild(clone);
@@ -61,6 +67,7 @@ getOnePost(sessionStorage.getItem('clickedPost')).then((res)=>{
         // nur TextContent
         else{
             content[i].textContent = onePost?.sections[i]?.content[0]?.data;
+            img[i].classList.add('hidden');
         }
 
     }
@@ -76,10 +83,12 @@ getOnePost(sessionStorage.getItem('clickedPost')).then((res)=>{
 
 
 
+
+//Um die geschätzte Lesezeit berechnen zu können werden hier die Wörter aller relevanten Elemente gezählt
 function countWords(str) {
     return str.trim().split(/\s+/).length;
 }
-
+//Um die Geschätzte Lesezeit berechnen zu können werden zuerst alle relevanten Elemente mit Text gesucht
 function countWordElements(ps, h2){
     console.log(ps);
     console.log(h2);
@@ -91,6 +100,7 @@ function countWordElements(ps, h2){
     }
 }
 
+// Hier wird die Geschätzte Lesezeit berechnet
 function calcReadingTime(){
     let readingTime = Math.round(wordCount/wordsPerMinute);
     if(readingTime<1){

@@ -10,7 +10,8 @@ let content;
 let contentImgaeUrl;
 
 
-addNewArticleFunctionIndex();
+addNewArticleFunctionIndex(); //Falls der USer angemeldet ist, wird hier ein "New Button" angezeigt mit dem neue Posts erstellt werden können
+
 getPosts().then((res)=>{
     lastTenPosts = res;
     console.log(lastTenPosts[0]);
@@ -27,7 +28,7 @@ getPosts().then((res)=>{
                 continue;
             }
         }
-        setArticlepreview(j, lastTenPosts);
+        setArticlepreview(j, lastTenPosts); //Hier wird derden alle ELemente des Artikel-Previews durch die von der API erhaltenen Daten ersetzt
     }
 
     for (let i = 0; i < articles.length; i++) {

@@ -7,11 +7,10 @@ const searchResultsH2 = document.getElementsByTagName('h2')[0];
 const nothingFound = document.getElementById('nothing-found');
 
 const userResults = document.getElementsByClassName('user-result-div');
-console.log(userResults)
 
 let foundUsers = JSON.parse(localStorage.getItem('foundUsers'));
-console.log(searchResultsH2)
 searchResultsH2.innerHTML = 'Ergebnisse zu '+foundUsers.searchRequest;
+
 if(foundUsers.users.length===0){
     nothingFound.classList.remove('hidden');
 }else{

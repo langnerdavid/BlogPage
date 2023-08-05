@@ -11,15 +11,17 @@ const form = document.getElementById("blogpost-form");
 
 form.addEventListener("submit", getPost);
 
-articleAddSectionButton(addSectionButton);
+articleAddSectionButton(addSectionButton); //Funktionalität für den "add Section"-Button
 
 
-function getPost(e){
+function getPost(){
     const sectionList = document.getElementsByClassName('section-wrapper');
     e.preventDefault();
-    let testPost
+    let newPost
+
+    //ABfragebblock, der den Post je nach verwendetetn Elementen richtig anpasst
     if(sectionNumbers==0){
-        if(blogpostImage.value && blogpostText.value){
+        if(blogpostImage?.value && blogpostText?.value){
             let imageContent = {
                 __type: "img",
                 url: blogpostImage.value,
@@ -29,17 +31,17 @@ function getPost(e){
                 __type: "text",
                 data:blogpostText.value
             }
-            testPost ={
+            newPost ={
                 title: blogpostTitle.value,
                 content: [textContent, imageContent]
             }
 
-        }else if(!blogpostImage.value){
+        }else if(!blogpostImage?.value){
             let textContent = {
                 __type: "text",
                 data:blogpostText.value
             }
-            testPost ={
+            newPost ={
                 title: blogpostTitle.value,
                 content: [textContent]
             }
@@ -49,19 +51,19 @@ function getPost(e){
                 url: blogpostImage.value,
                 caption: blogpostImageTitle.value
             }
-            testPost ={
+            newPost ={
                 title: blogpostTitle.value,
                 content: [imageContent]
             }
         }
     }else{
-        if(!blogpostImage.value && !blogpostText.value){
-            testPost ={
+        if(!blogpostImage?.value && !blogpostText?.value){
+            newPost ={
                 title: blogpostTitle.value,
-                sections: getSections()
+                sections: getSections(sectionList)
             }
         }else{
-            if(blogpostImage.value && blogpostText.value){
+            if(blogpostImage?.value && blogpostText?.value){
                 let imageContent = {
                     __type: "img",
                     url: blogpostImage.value,
@@ -71,20 +73,20 @@ function getPost(e){
                     __type: "text",
                     data:blogpostText.value
                 }
-                testPost ={
+                newPost ={
                     title: blogpostTitle.value,
                     content: [textContent, imageContent],
-                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                    sections: getSections(sectionList)
                 }
-            }else if(!blogpostImage.value){
+            }else if(blogpostText?.value){
                 let textContent = {
                     __type: "text",
                     data:blogpostText.value
                 }
-                testPost ={
+                newPost ={
                     title: blogpostTitle.value,
                     content: [textContent],
-                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                    sections: getSections(sectionList)
                 }
             }else{
                 let imageContent = {
@@ -92,10 +94,10 @@ function getPost(e){
                     url: blogpostImage.value,
                     caption: blogpostImageTitle.value
                 }
-                testPost ={
+                newPost ={
                     title: blogpostTitle.value,
                     content: [imageContent],
-                    sections: getSections(sectionList.getElementsByClassName('image-content')[0], sectionList.getElementsByClassName('section-text-content-class')[0])
+                    sections: getSections(sectionList)
                 }
             }
         }
@@ -103,7 +105,7 @@ function getPost(e){
     let test = JSON.parse(localStorage.getItem('userData'));
     const encode = btoa(test.username+':'+test.password);
     const authHeader = `Basic ${encode}`;
-    postPost(testPost, authHeader).then(()=>{
+    postPost(newPost, authHeader).then(()=>{
         window.history.back();
     }).catch(()=>{
         alert("irgendwas hat nicht geklappt");
@@ -112,6 +114,8 @@ function getPost(e){
 };
 
 
+
+//Überprüfung, ob der Post nach Vorgaben gefüllt wurde
 function validateForm() {
     const textContent = blogpostText.value.trim();
     const imageTitle = blogpostImageTitle.value.trim();

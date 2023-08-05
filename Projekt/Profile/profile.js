@@ -18,8 +18,10 @@ const deleteArticleToggleDivs = document.getElementsByClassName('delete-toggle-d
 
 
 let addNewArticleButton = document.getElementsByClassName('new-article-button');
-addNewArticleFunction(addNewArticleButton);
+addNewArticleFunction(addNewArticleButton); //der add new Article Button wird angezeigt, falls der User angemeldet ist
 
+
+//Wenn deletet werden soll, muss das bestätigt werden, damit das nicht versehentlich passiert
 deleteToggleButton.addEventListener('click', () => {
   deleteToggleDiv.classList.remove('hidden');
 });
@@ -33,13 +35,16 @@ deleteConfirmButton.addEventListener('click', () => {
 });
 
 getUser(userDataLocalStorage.username).then((res)=>{
-  console.log(userDataLocalStorage.username);
   userDataLocalStorage.profile.displayName = res.profile.displayName;
   userDataLocalStorage.profile.description = res.profile.description;
   localStorage.setItem('userData', JSON.stringify(userDataLocalStorage));
   setInputValues();
+}).catch(error => {
+  console.error(error);
 });
 
+
+//Hier wird die Bearbeitung des Useres eingestellt
 function toggleEdit() {
   var fields = document.querySelectorAll('[contenteditable]');
   var editButton = document.querySelector('.edit-button');
@@ -82,7 +87,7 @@ function toggleEdit() {
   }
 }
 
-
+//Die geänderten Userdaten werden hier gespeichert
 function saveData() {
   userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
   let encoded = btoa(`${userDataLocalStorage.username}:${userDataLocalStorage.password}`);
@@ -97,10 +102,12 @@ function saveData() {
   }
   patchUser(userData, authHeader).then(()=>{
     localStorage.setItem('userData', JSON.stringify(userData));
-  });
+  }).catch(error => {
+    console.error(error);
+});
 }
 
-
+//Hier werden die Profil-daten des Users angezeigt
 function setInputValues(){
   userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
   displayName = userDataLocalStorage.profile.displayName;
@@ -115,13 +122,14 @@ function setInputValues(){
 
 function deleteUserButton(){
   userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
-  console.log(userDataLocalStorage.password);
   encoded = btoa(`${userDataLocalStorage.username}:${userDataLocalStorage.password}`);
   authHeader = `Basic ${encoded}`;
   deleteUsers(userDataLocalStorage.username, authHeader).then((res)=>{
     sessionStorage.setItem('isUserSignedIn', false);
     localStorage.setItem('userData', JSON.stringify(res));
     window.open('../index/index.html', '_self');
+  }).catch(error => {
+    console.error(error);
   });
 }
 
@@ -138,6 +146,8 @@ getUserPosts(userDataLocalStorage.username).then((res)=>{
 });
 //  
 
+
+//Soll ein Artikel gelöscht werden, muss das hier bestätigt werden
 function confirmDeleteArticle(num, userPosts){
   deleteArticleToggleDivs[num].classList.remove('hidden');
   let deleteArticleCancelButton = deleteArticleToggleDivs[num].getElementsByClassName('delete-cancel-button-article')[0];

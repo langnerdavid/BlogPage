@@ -7,6 +7,8 @@ let logOutButton;
 let profileToggleDiv;
 let profileButtonLink;
 let hamburgerMenuMobile;
+
+//Alle Elemente bei kleinen screens
 if(window.screen.width>600){
     profileButton = document.getElementsByClassName('profile-button')[0];
     logOutButton = document.getElementsByClassName('log-out-button')[0];
@@ -23,25 +25,23 @@ if(window.screen.width>600){
 }
 
 let isSearchInputOpen = false;
-//let isUserSignedIn = false; //statischer Input, ob User angemeldet ist
 let isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
 let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
-console.log(userDataLocalStorage)
 
 searchButton.addEventListener('click', addAnimation);
 profileButtonLink.addEventListener('click', () =>{
     window.open('../profile/profile.html', '_self');
 });
-checkUserSignedIn();
 
+checkUserSignedIn(); //hier wird überprüft, ob aktuell jemand angemeldet ist, um dann den Header anzupassen
+
+
+//Hier wird überprüft ob der User angemeldet werden muss (wenn er remember me gesetzt hat)
 function checkUserSignedIn(){
     isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
     userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
-    console.log(userDataLocalStorage.rememberMe==='true');
     if(userDataLocalStorage.rememberMe==='true'){
-        console.log('if 1')
-        if((isUserSignedIn==='false' || isUserSignedIn==null)){
-            console.log("if 2")
+        if((isUserSignedIn==='false' || isUserSignedIn==null)){ //falls der user remeber me aktiviert hat und aktuell nicht angemeldet ist, soll er angemeldet werden
             loginUser(userDataLocalStorage.username, userDataLocalStorage.password, userDataLocalStorage.rememberMe).then(()=>{sessionStorage.setItem('isUserSignedIn', 'true'); testSignedIn();});
         }else{
             testSignedIn();
@@ -52,9 +52,36 @@ function checkUserSignedIn(){
     }
 }
 
+
+//Hier wird der Header angepasst, wenn der User angemeldet ist
+function testSignedIn(){
+    isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
+    if(isUserSignedIn==='true'){
+        profileButton.addEventListener('click', () =>{profileToggleDiv.classList.toggle('hidden');});
+        logOutButton.addEventListener('click', logOut);
+        
+        signInButton?.classList.add('hidden');
+        registerButton?.classList.add('hidden');
+        hamburgerMenuMobile?.classList.add('hidden');
+    }else if(window.screen.height>=600){
+        signInButton.addEventListener('click', () =>{window.open("../Login/login.html","_self");});
+        registerButton.addEventListener('click', () =>{window.open("../Register/register.html","_self");});
+        profileButton.classList.add('hidden');
+        
+    }
+}
+
+
+//Hier wird der Suchinput animiert und die Suche gestartet
 function addAnimation(){
     console.log("function");
     event.stopPropagation();
+    document.addEventListener(
+        'keydown', (event) => {
+          if (event.keyCode === 13 && searchInput.value){
+            search();           
+          }
+        });
     if(!isSearchInputOpen){
         searchInput.classList.remove('search-input-narrow');
         searchInput.classList.add('search-input-animation');
@@ -80,6 +107,7 @@ function addAnimation(){
     }
 }
 
+//Hier wird die Suche Vorverarbeitet, um dann auf searchResults.html angezeigt werden zu können
 function search(){
     const searchRequest = searchInput.value.toLowerCase();
     getUsers().then((res)=>{
@@ -114,46 +142,4 @@ function logOut(){
     sessionStorage.setItem('isUserSignedIn', 'false');
     localStorage.setItem('userData', JSON.stringify(userData));
     window.open('../Index/index.html', '_self');
-}
-
-function testSignedIn(){
-    isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
-    if(isUserSignedIn==='true'){
-        profileButton.addEventListener('click', () =>{profileToggleDiv.classList.toggle('hidden');});
-        logOutButton.addEventListener('click', logOut);
-        
-        signInButton?.classList.add('hidden');
-        registerButton?.classList.add('hidden');
-        hamburgerMenuMobile?.classList.add('hidden');
-    }else if(window.screen.height>=600){
-        signInButton.addEventListener('click', () =>{window.open("../Login/login.html","_self");});
-        registerButton.addEventListener('click', () =>{window.open("../Register/register.html","_self");});
-        profileButton.classList.add('hidden');
-        
-    }
-}
-
-
-function formatTimeSinceCreation(createdAt) {
-  const now = new Date();
-  const createdDate = new Date(createdAt);
-  const timeDiff = now - createdDate;
-
-  // Anzahl der vergangenen Minuten berechnen
-  const minutes = Math.floor(timeDiff / (1000 * 60));
-
-  if (minutes < 60) {
-    return 'Vor ' + minutes + (minutes === 1 ? ' Minute' : ' Minuten');
-  }
-
-  // Anzahl der vergangenen Stunden berechnen
-  const hours = Math.floor(timeDiff / (1000 * 60 * 60));
-
-  if (hours < 24) {
-    return 'Vor ' + hours + (hours === 1 ? ' Stunde' : ' Stunden');
-  }
-
-  // Anzahl der vergangenen Tage berechnen
-  const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-  return 'Vor ' + days + (days === 1 ? ' Tag' : ' Tagen');
 }
