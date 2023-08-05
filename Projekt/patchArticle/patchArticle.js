@@ -15,7 +15,7 @@ const blogpostSectionTitles = document.getElementsByClassName('section-title-cla
 const form = document.getElementById("blogpost-form");
 
 
-//Hier werden die bereits gefüllten angaben des zu bearbeitendenden Posts angezgéigt
+//Hier werden die bereits gefüllten angaben des zu bearbeitenden Posts angezeigt
 getOnePost(sessionStorage.getItem('patchedPost')).then((res)=>{
     blogpostTitle.value = res.title;
     if(res?.content[0]?.data){
@@ -26,7 +26,7 @@ getOnePost(sessionStorage.getItem('patchedPost')).then((res)=>{
     }
     for(let i=0; i<res.sections.length; i++){
         const clone = sectionTemplate.content.cloneNode(true);
-        const sectionWrapper = clone.querySelector('.section-wrapper');
+        clone.querySelector('.section-wrapper');
         sectionList.appendChild(clone);
         sectionNumbers+=1;
         if(res?.sections[i]?.content[0]?.data){
@@ -47,13 +47,13 @@ getOnePost(sessionStorage.getItem('patchedPost')).then((res)=>{
 
 form.addEventListener("submit", getPost);
 
-articleAddSectionButton(addSectionButton); //Funtkionalität des "add-Section"-Buttons
+articleAddSectionButton(addSectionButton); //Funktionalität des "add-Section"-Buttons
 
 
 function getPost(e){
     e.preventDefault();
     let patchedPost
-    if(sectionNumbers==0){
+    if(sectionNumbers===0){
         if(blogpostImage?.value && blogpostText?.value){
             let imageContent = {
                 __type: "img",
@@ -140,8 +140,11 @@ function getPost(e){
     const authHeader = `Basic ${encode}`;
     putPost(patchedPost, sessionStorage.getItem('patchedPost'), authHeader).then(()=>{
         window.history.back();
+        setTimeout(() => {
+            window.location.reload();
+          }, 100);
     }).catch(()=>{
        alert("irgendwas hat nicht geklappt");
     });
 
-};
+}

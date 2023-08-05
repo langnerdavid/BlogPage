@@ -26,7 +26,7 @@ if(foundUsers.users.length===0){
         });
     }   
     for (let i = 0; i < userResults.length; i++) {
-        userResults[i]?.addEventListener('click', function(e) {
+        userResults[i]?.addEventListener('click', function() {
             sessionStorage.setItem('clickedUser', userNames[i].innerHTML);
             window.open("../ProfileOtherUsers/ProfileOtherUsers.html", "_self");
         });

@@ -16,11 +16,11 @@ articleAddSectionButton(addSectionButton); //Funktionalität für den "add Secti
 
 function getPost(){
     const sectionList = document.getElementsByClassName('section-wrapper');
-    e.preventDefault();
+    event.preventDefault();
     let newPost
 
-    //ABfragebblock, der den Post je nach verwendetetn Elementen richtig anpasst
-    if(sectionNumbers==0){
+    //Abfrageblock, der den Post je nach verwendeten Elementen richtig anpasst
+    if(sectionNumbers===0){
         if(blogpostImage?.value && blogpostText?.value){
             let imageContent = {
                 __type: "img",
@@ -107,11 +107,14 @@ function getPost(){
     const authHeader = `Basic ${encode}`;
     postPost(newPost, authHeader).then(()=>{
         window.history.back();
+        setTimeout(() => {
+            window.location.reload();
+          }, 100);
     }).catch(()=>{
         alert("irgendwas hat nicht geklappt");
     });
 
-};
+}
 
 
 

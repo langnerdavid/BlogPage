@@ -23,7 +23,7 @@ getOnePost(sessionStorage.getItem('clickedPost')).then((res)=>{
     let onePost = res;
     console.log(onePost);
 
-    //Hier werden die Anzeigeeinstellungen für den Main-COntent eingestellt
+    //Hier werden die Anzeigeeinstellungen für den Main-Content eingestellt
     articleHeading.textContent = onePost.title;
     publishingDetailsP[0].textContent = onePost.username;
     publishingDetailsP[1].textContent = formatTimeSinceCreation(onePost.createdAt);
@@ -88,7 +88,7 @@ getOnePost(sessionStorage.getItem('clickedPost')).then((res)=>{
 function countWords(str) {
     return str.trim().split(/\s+/).length;
 }
-//Um die Geschätzte Lesezeit berechnen zu können werden zuerst alle relevanten Elemente mit Text gesucht
+//Um die geschätzte Lesezeit berechnen zu können werden zuerst alle relevanten Elemente mit Text gesucht
 function countWordElements(ps, h2){
     console.log(ps);
     console.log(h2);
@@ -100,7 +100,7 @@ function countWordElements(ps, h2){
     }
 }
 
-// Hier wird die Geschätzte Lesezeit berechnet
+// Hier wird die geschätzte Lesezeit berechnet
 function calcReadingTime(){
     let readingTime = Math.round(wordCount/wordsPerMinute);
     if(readingTime<1){

@@ -21,7 +21,7 @@ let addNewArticleButton = document.getElementsByClassName('new-article-button');
 addNewArticleFunction(addNewArticleButton); //der add new Article Button wird angezeigt, falls der User angemeldet ist
 
 
-//Wenn deletet werden soll, muss das bestätigt werden, damit das nicht versehentlich passiert
+//Wenn delete werden soll, muss das bestätigt werden, damit das nicht versehentlich passiert
 deleteToggleButton.addEventListener('click', () => {
   deleteToggleDiv.classList.remove('hidden');
 });
@@ -44,10 +44,10 @@ getUser(userDataLocalStorage.username).then((res)=>{
 });
 
 
-//Hier wird die Bearbeitung des Useres eingestellt
+//Hier wird die Bearbeitung des users eingestellt
 function toggleEdit() {
-  var fields = document.querySelectorAll('[contenteditable]');
-  var editButton = document.querySelector('.edit-button');
+  let fields = document.querySelectorAll('[contenteditable]');
+  let editButton = document.querySelector('.edit-button');
 
   if (editButton.innerText === 'Edit Fields') {
     editButton.innerText = 'Save Fields';
@@ -62,7 +62,7 @@ function toggleEdit() {
 
 
     if (displayName.length < 4 || displayName.length > 30) {
-      alert('Dispalyname must be between 4-30 characters!');
+      alert('Displayname must be between 4-30 characters!');
       return;
     }
 
@@ -89,7 +89,7 @@ function toggleEdit() {
 
 //Die geänderten Userdaten werden hier gespeichert
 function saveData() {
-  userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
+  let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
   let encoded = btoa(`${userDataLocalStorage.username}:${userDataLocalStorage.password}`);
   let authHeader = `Basic ${encoded}`;
   let userData = {
@@ -109,7 +109,7 @@ function saveData() {
 
 //Hier werden die Profil-daten des Users angezeigt
 function setInputValues(){
-  userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
+  let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
   displayName = userDataLocalStorage.profile.displayName;
   password = userDataLocalStorage.password;
   description = userDataLocalStorage.profile.description;
@@ -121,11 +121,11 @@ function setInputValues(){
 
 
 function deleteUserButton(){
-  userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
+  let userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
   encoded = btoa(`${userDataLocalStorage.username}:${userDataLocalStorage.password}`);
   authHeader = `Basic ${encoded}`;
   deleteUsers(userDataLocalStorage.username, authHeader).then((res)=>{
-    sessionStorage.setItem('isUserSignedIn', false);
+    sessionStorage.setItem('isUserSignedIn', 'false');
     localStorage.setItem('userData', JSON.stringify(res));
     window.open('../index/index.html', '_self');
   }).catch(error => {

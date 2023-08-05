@@ -12,12 +12,11 @@ async function getUsers() {
                 }
             }
         );
-        const data = await response.json();
-        return data;
+        return await response.json();
         
     } catch (error) {
         console.error(error);
-        return;
+
     }
 }
 
@@ -42,7 +41,7 @@ async function getUser(user) {
         
     } catch (error) {
         console.error(error);
-        return;
+
     }
 }
 
@@ -62,7 +61,7 @@ async function getUserPosts(user) {
         
     } catch (error) {
         console.error(error);
-        return;
+
     }
 }
 
@@ -127,13 +126,13 @@ async function postUsers(user) {
         
     } catch (error) {
         console.error(error);
-        return;
+
     }
 }
 
 async function patchUser(user, authHeader) {
     try {
-        const response = await fetch(
+        await fetch(
             'https://lukas.rip/api/users/' + user.username,
             {
                 method: 'PATCH',
@@ -146,12 +145,11 @@ async function patchUser(user, authHeader) {
                 body: JSON.stringify(user)
             }
         );
-        const data = await response.text();
-        return;
-        
+
+
     } catch (error) {
         console.error(error);
-        return;
+
     }
 }
 
@@ -166,7 +164,7 @@ async function deleteUsers(username,authHeader) {
         }
     }
     try {
-        const response = await fetch(
+        await fetch(
             'https://lukas.rip/api/users/' + username,
             {
                 method: 'DELETE',
@@ -178,10 +176,10 @@ async function deleteUsers(username,authHeader) {
             }
         );
         return userData;
-        
+
     } catch (error) {
         console.error(error);
-        return;
+
     }
 }
 
@@ -197,12 +195,11 @@ async function getPosts() {
             }
         );
         const data = await response.text();
-        const jsonData = JSON.parse(data);
-        return jsonData;
+        return JSON.parse(data);
         
     } catch (error) {
         console.error(error);
-        return;
+
     }
 }
 
@@ -219,12 +216,11 @@ async function getOnePost(postid) {
             }
         );
         const data = await response.text();
-        const jsonData = JSON.parse(data);
-        return jsonData;
+        return JSON.parse(data);
         
     } catch (error) {
         console.error(error);
-        return;
+
     }
 }
 
@@ -242,12 +238,11 @@ async function postPost(post, authHeader) {
                 body: JSON.stringify(post)
             }
         );
-        const data = await response.text();
-        return data;
+        return await response.text();
         
     } catch (error) {
         console.error(error);
-        return;
+
     }
 }
 
@@ -265,12 +260,11 @@ async function putPost(post, postid, authHeader) {
                 body: JSON.stringify(post)
             }
         );
-        const data = await response.text();
-        return data;
+        return await response.text();
         
     } catch (error) {
         console.error(error);
-        return;
+
     }
 }
 
@@ -286,11 +280,10 @@ async function deletePost(postID, authHeader) {
                 }
             }
         );
-        const data = await response.text();
-        return data;
+        return await response.text();
         
     } catch (error) {
         console.error(error);
-        return;
+
     }
 }

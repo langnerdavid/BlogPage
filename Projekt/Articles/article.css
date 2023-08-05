@@ -21,11 +21,6 @@ article{
     border-radius: 10px;
 }
 
-.article-heading{
-    font-size: 40px;
-    margin:0;
-}
-
 .heading-break{
     border-bottom: 6px black solid;
     margin-top: 5px;
@@ -56,13 +51,6 @@ article{
 
 .reading-time-p{
     display: inline;
-}
-
-
-.section-only-image{
-    width: 60%;
-    height: auto!important;
-    margin-right: 20%!important;
 }
 
 

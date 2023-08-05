@@ -97,25 +97,15 @@ aside{
     border-radius: 4px;
     transition: background-color 0.3s ease-in-out;
 }
-  
-.edit-button.active {
-    background-color: var(--edit-buton-active);
-}
-  
+
 .user-details,
 .info {
     margin-bottom: 20px;
 }
-  
-.focused{
-    background-color: var(--focused);
-    border-radius: 5px;
-}
 
 .no-posts-p {
     width: 250px;
-    margin: auto;
-    margin-top: 175px;
+    margin: 175px auto auto;
 }
 .delete-button {
     background-color: var(--delete-button);
@@ -260,13 +250,9 @@ aside{
         width: 90%;
     }
 
-    #new-article-button {
-        display: none;
-    }
     .no-posts-p{
         width: 400px;
-        margin:auto;
-        margin-top:20px;
+        margin: 20px auto auto;
     }
 }
 
@@ -277,8 +263,7 @@ aside{
     }
     .no-posts-p {
         width: 80%;
-        margin: auto;
-        margin-top: 20px;
+        margin: 20px auto auto;
     }
     .new-article-button {
         margin-top: 20px;

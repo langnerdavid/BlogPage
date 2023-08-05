@@ -8,10 +8,12 @@ body{
     flex-wrap: wrap;
 }
 
-.hiddern{
-    visibility: hidden;
+/*noinspection CssUnusedSymbol*/
+.password-input-animation{
+    animation-name: shake, glow-red;
+    animation-duration: 0.7s, 1.0s;
+    animation-iteration-count: 1, 1;
 }
-
 #login-error-div{
     width: 400px;
     height: 70px;
@@ -19,7 +21,7 @@ body{
     position: absolute;
     left:calc(50% - 200px);
     border-radius: 10px;
-    top: 160px;
+    top: 140px;
     padding-left: 10px;
     padding-top:10px;
 
@@ -32,8 +34,7 @@ body{
 }
 
 #login-error-div > p{
-    margin:0;
-    margin-top: 5px;
+    margin: 5px 0 0;
 }
 
 #main-content-login {
@@ -97,12 +98,6 @@ body{
 
 .login-form input[type="submit"]:hover {
     background: var(--submit-button-hover);
-}
-
-.password-input-animation{
-    animation-name: shake, glow-red;
-    animation-duration: 0.7s, 1.0s;
-    animation-iteration-count: 1, 1;
 }
 
 @keyframes shake {

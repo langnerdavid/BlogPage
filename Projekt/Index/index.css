@@ -22,8 +22,7 @@ article{
     background-color: var(--article-background);
     padding: 5px;
     border-radius:5px;
-    margin:auto;
-    margin-top: 20px;
+    margin: 20px auto auto;
     cursor: pointer;
     position: relative;
 }
@@ -50,8 +49,7 @@ article{
 
 h2{
     font-size: 20px;
-    margin:0;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
     width: 65%;
     overflow-wrap: anywhere;   
     display: -webkit-box;
@@ -86,13 +84,11 @@ h2{
 }
 
 .article-publishing-date{
-    margin:0;
-    margin-right: 10px;
+    margin: 0 10px 0 0;
 }
 
 .article-publisher{
-    margin:0;
-    margin-left: 10px;
+    margin: 0 0 0 10px;
 }
 
 .centered-line{
@@ -113,10 +109,6 @@ h2{
     height: 25px;
     border-radius: 3px;
     cursor: pointer;
-}
-
-.hidden{
-    visibility: hidden;
 }
 
 .article-wrapper{

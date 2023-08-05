@@ -15,6 +15,20 @@ body {
   min-height: calc(100vh - 170px);
   width: 100vw;
 }
+#password-container {
+  width: 100%;
+  position: relative;
+  height: 55px;
+}
+
+.fa-eye {
+  position: absolute;
+  top: 55%;
+  right: 4%;
+  cursor: pointer;
+  color: var(--fa-eye-color);
+  visibility: hidden;
+}
 
 .register-form {
   width: 400px;

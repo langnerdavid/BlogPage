@@ -1,7 +1,7 @@
 let sectionNumbers = 0;
 
 
-//Hier werden die Anzeigeeinstellungen für die Artikel Preview (z.B: im Profil oder beim aProfil anderer user) eingestellt
+//Hier werden die Anzeigeeinstellungen für die Artikel Preview (z.B.: im Profil oder beim aProfil anderer user) eingestellt
 function setArticlepreview(i, posts){
     articles[i].getElementsByTagName('h2')[0].innerHTML = posts[i].title;
     articles[i].getElementsByClassName('article-publishing-date')[0].innerHTML = formatTimeSinceCreation(posts[i].createdAt);
@@ -127,17 +127,17 @@ function setWrittenArticles(userPosts){
       articleList.getElementsByTagName('p')[0].classList.remove('hidden');
     }else{
         articleList.getElementsByTagName('p')[0].classList.add('hidden');
-        for(j=0; j<userPosts.length; j++){
+        for(let j=0; j<userPosts.length; j++){
             const clone = articleTemplate.content.cloneNode(true);
-            const articleWrapper = clone.querySelector('.article-wrapper');
+            clone.querySelector('.article-wrapper');
             articleList.appendChild(clone);
-            for(i=0; i<userPosts[j].content.length; i++){
+            for(let i=0; i<userPosts[j].content.length; i++){
                 if(userPosts[j].content[i].data){
                     content = userPosts[0]?.content[i]?.data;
-                    continue;
+
                 }else{
-                    contentImgaeUrl = userPosts[0]?.content[i]?.url;
-                    continue;
+                    contentImageUrl = userPosts[0]?.content[i]?.url;
+
                 }
             }
             setArticlepreview(j, userPosts);
@@ -182,7 +182,7 @@ function addNewArticleFunction(addNewArticleButton){
 
 
 
-//Hier wird die die Zeit seit erstellung von Posts berechnet
+//Hier wird die Zeit seit erstellung von Posts berechnet
 function formatTimeSinceCreation(createdAt) {
     let now = new Date();
     let createdDate = new Date(createdAt);

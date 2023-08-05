@@ -7,7 +7,7 @@ header {
     align-items: center;
     position: relative;
 
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 3px;
 }
 
 #logo-img {
@@ -48,7 +48,7 @@ header {
     border:none;
 }
 
-#profile-icon{
+#profile-icon, #profile-icon-mobile{
     font-size: 40px;
     color: var(--profile-icon-color);
     cursor: pointer;
@@ -95,12 +95,10 @@ header {
     border:none;
     height: 40px;
     width: 40px;
-    margin: 8px;
     text-align:center;
     display:flex;
     justify-content: center;
-    margin-left:3px;
-    margin-right: 10px; 
+    margin: 8px 10px 8px 3px;
     cursor: pointer;
 }
 
@@ -120,19 +118,6 @@ header {
     width: 0;
 }
 
-.search-input-extended{
-    width: 150px;
-}
-
-.search-input-animation{
-    animation: search-bar-animation  0.4s forwards;
-}
-
-.search-input-animation-rev{
-    animation: search-bar-animation  0.4s forwards;
-    animation-direction: reverse;
-}
-
 @keyframes search-bar-animation {
     from {width: 0;}
     to {width: 150px;}
@@ -143,9 +128,7 @@ header {
         display: none;
     }
     .nav-button{
-        margin:0;
-        margin-left: 5%;
-        margin-top: 15px;
+        margin: 15px 0 0 5%;
     }
     #nav-bar-mobile {
         margin-left: 10px;
@@ -251,9 +234,6 @@ header {
         }
     }
 
-    .search-input-extended {
-        width: 100px;
-    }
 }
 
 @media screen and (max-width: 500px) {
@@ -267,7 +247,4 @@ header {
         }
     }
 
-    .search-input-extended {
-        width: 50px;
-    }
 }

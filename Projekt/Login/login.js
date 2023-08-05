@@ -1,5 +1,4 @@
 const formInputs = (document.getElementById('login-form')).getElementsByTagName('input');
-const passwordLogin = document.getElementById('password-input');
 const loginErrorDiv = document.getElementById('login-error-div');
 const eyeShowPassword = document.getElementById('eye-show-password');
 const usernameInput = formInputs[0];
@@ -21,9 +20,9 @@ const rememberMeInput = formInputs[2];
         if(res){
             loginSuccesful(res);
         }else{
-            loginError(); // animation, falls Anmeldedaten flasch sind
+            loginError(); // animation, falls Anmeldedaten falsch sind
         }
-    }, (err)=>{
+    }, ()=>{
         alert("falsches pswd");
     });
 
@@ -39,9 +38,10 @@ eyeShowPassword.addEventListener("click", ()=>{
 
 
 function loginError(){
+    console.log(passwordInput)
     passwordInput.classList.add('password-input-animation');
     loginErrorDiv.classList.remove('hidden');
-    sessionStorage.setItem('isUserSignedIn', false);
+    sessionStorage.setItem('isUserSignedIn', 'false');
 }
 
 function loginErrorRemove(){
@@ -50,7 +50,7 @@ function loginErrorRemove(){
 }
 
 function loginSuccesful(res){
-    sessionStorage.setItem('isUserSignedIn', true);
+    sessionStorage.setItem('isUserSignedIn', 'true');
     localStorage.setItem('userData', JSON.stringify(res));
     window.open('../index/index.html', '_self');
 }

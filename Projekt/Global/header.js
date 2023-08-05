@@ -9,7 +9,7 @@ let profileButtonLink;
 let hamburgerMenuMobile;
 
 //Alle Elemente bei kleinen screens
-if(window.screen.width>600){
+if(window.screen.width>=600){
     profileButton = document.getElementsByClassName('profile-button')[0];
     logOutButton = document.getElementsByClassName('log-out-button')[0];
     profileToggleDiv = document.getElementsByClassName('profile-toggle-div')[0];
@@ -41,7 +41,7 @@ function checkUserSignedIn(){
     isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
     userDataLocalStorage = JSON.parse(localStorage.getItem('userData'));
     if(userDataLocalStorage.rememberMe==='true'){
-        if((isUserSignedIn==='false' || isUserSignedIn==null)){ //falls der user remeber me aktiviert hat und aktuell nicht angemeldet ist, soll er angemeldet werden
+        if((isUserSignedIn==='false' || isUserSignedIn==null)){ //falls der user remember me aktiviert hat und aktuell nicht angemeldet ist, soll er angemeldet werden
             loginUser(userDataLocalStorage.username, userDataLocalStorage.password, userDataLocalStorage.rememberMe).then(()=>{sessionStorage.setItem('isUserSignedIn', 'true'); testSignedIn();});
         }else{
             testSignedIn();
@@ -107,7 +107,7 @@ function addAnimation(){
     }
 }
 
-//Hier wird die Suche Vorverarbeitet, um dann auf searchResults.html angezeigt werden zu können
+//Hier wird die Suche vorverarbeitet, um dann auf searchResults.html angezeigt werden zu können
 function search(){
     const searchRequest = searchInput.value.toLowerCase();
     getUsers().then((res)=>{
@@ -119,10 +119,10 @@ function search(){
             ]
         };
         let j = 0;
-        for(i=0; i<res.length; i++){
+        for(let i=0; i<res.length; i++){
             let displayName = res[i].profile.displayName.toLowerCase();
             let usernameLowercase = res[i].username.toLowerCase();
-            if((displayName.includes(searchRequest)||usernameLowercase.includes(searchRequest)) && !(usernameLowercase == JSON.stringify(userDataLocalStorage.username).toLowerCase())){
+            if((displayName.includes(searchRequest)||usernameLowercase.includes(searchRequest)) && !(usernameLowercase === JSON.stringify(userDataLocalStorage.username).toLowerCase())){
                 foundUsers.users[i] = usernameLowercase;
                 j++;
             }

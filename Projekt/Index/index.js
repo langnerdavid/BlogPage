@@ -1,4 +1,3 @@
-const article1 = document.getElementById('article-1');
 const articles = document.getElementsByClassName('article');
 const articleTemplate = document.getElementById('article-preview-template');
 const articleList = document.getElementById('article-preview-list');
@@ -7,7 +6,7 @@ const addNewArticleButton = document.getElementsByClassName('new-article-button'
 
 let lastTenPosts;
 let content;
-let contentImgaeUrl;
+let contentImageUrl;
 
 
 addNewArticleFunctionIndex(); //Falls der USer angemeldet ist, wird hier ein "New Button" angezeigt mit dem neue Posts erstellt werden können
@@ -15,20 +14,20 @@ addNewArticleFunctionIndex(); //Falls der USer angemeldet ist, wird hier ein "Ne
 getPosts().then((res)=>{
     lastTenPosts = res;
     console.log(lastTenPosts[0]);
-    for(j=0; j<lastTenPosts.length; j++){
+    for(let j=0; j<lastTenPosts.length; j++){
         const clone = articleTemplate.content.cloneNode(true);
-        const articleWrapper = clone.querySelector('.article-wrapper');
+        clone.querySelector('.article-wrapper');
         articleList.appendChild(clone);
-        for(i=0; i<lastTenPosts[j].content.length; i++){
+        for(let i=0; i<lastTenPosts[j].content.length; i++){
             if(lastTenPosts[j].content[i].data){
                 content = lastTenPosts[0]?.content[i]?.data;
-                continue;
+
             }else{
-                contentImgaeUrl = lastTenPosts[0]?.content[i]?.url;
-                continue;
+                contentImageUrl = lastTenPosts[0]?.content[i]?.url;
+
             }
         }
-        setArticlepreview(j, lastTenPosts); //Hier wird derden alle ELemente des Artikel-Previews durch die von der API erhaltenen Daten ersetzt
+        setArticlepreview(j, lastTenPosts); //Hier werden die Platzhalter alle ELemente des Artikel-Previews durch die von der API erhaltenen Daten ersetzt
     }
 
     for (let i = 0; i < articles.length; i++) {

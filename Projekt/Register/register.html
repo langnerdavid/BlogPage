@@ -29,7 +29,7 @@
             </div>
         </nav>
         <nav id="nav-bar-mobile">
-            <button class="profile-button"><i id="profile-icon" class="fa fa-user"></i></button>
+            <button class="profile-button"><i id="profile-icon-mobile" class="fa fa-user"></i></button>
             <div class="profile-toggle-div hidden">
                 <button class="profile-button-link">Profile</button>
                 <button class="log-out-button">Log Out</button>
@@ -58,16 +58,19 @@
             <input type="text" id="username" name="username" required pattern="[a-zA-Z0-9]{4,10}" placeholder="4-10 characters, only letters and numbers"
                 oninvalid="this.setCustomValidity('4-10 characters, only letters and numbers!')" oninput="this.setCustomValidity('')">
             <br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required pattern="^(?=.*[A-Za-z])(?=.*\d).{6,12}$" placeholder="6-12 characters, at least one letter and one number" 
-                oninvalid="this.setCustomValidity('6-12 characters, one letter and one number!')" oninput="this.setCustomValidity('')">
+            <div id="password-container">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required pattern="^(?=.*[A-Za-z])(?=.*\d).{6,12}$" placeholder="6-12 characters, at least one letter and one number" 
+                    oninvalid="this.setCustomValidity('6-12 characters, one letter and one number!')" oninput="this.setCustomValidity('')">
+                <i class="fa-solid fa-eye" id="eye-show-password"></i>
+            </div>
             <br>
-            <label for="displayname">Display Name:</label>
+            <label for="display-name">Display Name:</label>
             <input type="text" id="display-name" name="display-name" required placeholder="4-30 characters" pattern=".{4,30}"
                 oninvalid="this.setCustomValidity('4-30 characters!')" oninput="this.setCustomValidity('')">
             <br>
             <label for="description">Description:</label>
-            <textarea type="text" id="description" name="description" placeholder="optional, maximum 300 characters" rows="8" pattern=".{,300}"></textarea>
+            <textarea id="description" name="description" placeholder="optional, maximum 300 characters" rows="8"></textarea>
             <br>
             <input type="submit" value="Register">
         </form>
