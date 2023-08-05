@@ -16,7 +16,6 @@ body{
     background-color: var(--blog-div-background);
 }
 
-
 article{
     display:flex;
     width: 60%;
@@ -28,14 +27,17 @@ article{
     cursor: pointer;
     position: relative;
 }
+
 .img-cover > img{
     height: 150px;
 }
+
 .img-cover{
     height: 150px;
     width: 200px;
     overflow: hidden;
 }
+
 .article-text-div{
     flex-basis: 65%;
     display: flex;
@@ -45,6 +47,7 @@ article{
     max-height: 160px;
     overflow: hidden;
 }
+
 h2{
     font-size: 20px;
     margin:0px;
@@ -56,6 +59,7 @@ h2{
     -webkit-line-clamp: 3;
     overflow: hidden
 }
+
 .article-sub-text-p{
     width: 100%;
     max-height: 60%;
@@ -82,7 +86,6 @@ h2{
     margin-top: auto;
 }
 
-
 .article-publishing-date{
     margin:0px;
     margin-right: 10px;
@@ -100,6 +103,7 @@ h2{
     background-color: var(--centered-line-background);
     margin-top: 10px;
 }
+
 .change-article-button{
     background-color: var(--submit-button-background);
     border:none;

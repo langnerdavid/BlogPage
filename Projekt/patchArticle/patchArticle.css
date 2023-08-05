@@ -49,7 +49,6 @@
     display: block;
 }
 
-
 .remove-section-button {
     background-color: var(--remove-section-background);
     color: var(--button-color);

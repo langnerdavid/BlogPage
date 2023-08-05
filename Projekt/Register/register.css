@@ -51,8 +51,6 @@ body {
 .register-form input[type="submit"]:hover {
   background: var(--submit-button-hover);
 }
-  
-
 
 @media screen and (max-width: 500px) {
   .register-form {
