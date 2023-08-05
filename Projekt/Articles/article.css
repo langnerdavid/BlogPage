@@ -44,8 +44,7 @@ article{
 }
 
 .publisher-p{
-    margin:0;
-    margin-right: 20px;
+    margin: 0 20px 0 0;
 }
 .publishing-date-p{
     margin:0;
@@ -84,9 +83,8 @@ article{
 }
 
 .section-text > p {
-  margin: 0;
-  margin-top: 10px;
-  text-align: justify;
+    margin: 10px 0 0;
+    text-align: justify;
 }
 
 

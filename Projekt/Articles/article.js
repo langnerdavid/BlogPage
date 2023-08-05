@@ -46,7 +46,7 @@ getOnePost(sessionStorage.getItem('clickedPost')).then((res)=>{
     
 
     // Hier werden die Anzeigeeinstellungen für alle sections eingestellt
-    for(i=0; i<onePost.sections.length; i++){
+    for(let i=0; i<onePost.sections.length; i++){
         const clone = sectionTemplate.content.cloneNode(true);
         mainSectionDiv.appendChild(clone);
         console.log(onePost?.sections[i]?.content);
@@ -92,10 +92,10 @@ function countWords(str) {
 function countWordElements(ps, h2){
     console.log(ps);
     console.log(h2);
-    for(i=4; i<ps.length; i++){
+    for(let i=4; i<ps.length; i++){
         wordCount+=countWords(ps[i].innerHTML);
     }
-    for(i=0; i<h2.length; i++){
+    for(let i=0; i<h2.length; i++){
         wordCount+=countWords(h2[i].innerHTML);
     }
 }
