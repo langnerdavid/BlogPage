@@ -1,6 +1,6 @@
 body{
     display: flex;
-    margin:0px;
+    margin:0;
     flex-wrap: wrap;
 }
 
@@ -16,7 +16,6 @@ article{
     width: 70%;
     background-color: var(--aside-background);
     padding: 10px;
-    margin: 0 auto;
     position: relative;
     margin: 20px;
     border-radius: 10px;
@@ -24,7 +23,7 @@ article{
 
 .article-heading{
     font-size: 40px;
-    margin:0px;
+    margin:0;
 }
 
 .heading-break{
@@ -45,11 +44,11 @@ article{
 }
 
 .publisher-p{
-    margin:0px;
+    margin:0;
     margin-right: 20px;
 }
 .publishing-date-p{
-    margin:0px;
+    margin:0;
 }
 
 #reading-time-div{

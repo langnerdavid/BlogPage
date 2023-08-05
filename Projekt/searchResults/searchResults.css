@@ -1,5 +1,5 @@
 body{
-    margin:0px;
+    margin:0;
 }
 
 #main-content-div{
@@ -64,7 +64,7 @@ body{
     overflow-wrap: anywhere;
 }
 .user-details > h4, .user-details > h5{
-    margin:0px;
+    margin:0;
 } 
 
 .avatar-wrapper{

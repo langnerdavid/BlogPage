@@ -22,7 +22,7 @@ header {
 #nav-bar {
     margin-left: 10px;
     position: absolute;
-    left:0px;
+    left:0;
     display: flex;
     align-items: flex-start;
 
@@ -62,15 +62,15 @@ header {
     background-color: var(--profile-toggle-background-color);
     width: 75px;
     position: absolute;
-    left:0px;
+    left:0;
     top: 40px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 }
 
 .profile-toggle-div > button{
     height: 50px;
     width: 100%;
-    margin:0px;
+    margin:0;
     text-align: left;
     padding-left: 10px;
     border:none;
@@ -84,14 +84,14 @@ header {
 
 #search-wrapper-div{
     position: absolute;
-    right: 0px;
+    right: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
 #search-button{
-    border-radius: 0px;
+    border-radius: 0;
     border:none;
     height: 40px;
     width: 40px;
@@ -111,13 +111,13 @@ header {
 
 #search-input{
     height: 40px;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     border:none;
 }
 
 .search-input-narrow {
-    width: 0px;
+    width: 0;
 }
 
 .search-input-extended{
@@ -134,7 +134,7 @@ header {
 }
 
 @keyframes search-bar-animation {
-    from {width: 0px;}
+    from {width: 0;}
     to {width: 150px;}
 }
 
@@ -143,14 +143,14 @@ header {
         display: none;
     }
     .nav-button{
-        margin:0px;
+        margin:0;
         margin-left: 5%;
         margin-top: 15px;
     }
     #nav-bar-mobile {
         margin-left: 10px;
         position: absolute;
-        left: 0px;
+        left: 0;
         display: flex;
         align-items: flex-start;
 
@@ -243,7 +243,7 @@ header {
 
     @keyframes search-bar-animation {
         from {
-            width: 0px;
+            width: 0;
         }
 
         to {
@@ -259,7 +259,7 @@ header {
 @media screen and (max-width: 500px) {
     @keyframes search-bar-animation {
         from {
-            width: 0px;
+            width: 0;
         }
 
         to {
