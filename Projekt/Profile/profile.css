@@ -22,7 +22,6 @@ aside{
 
 .wrapper {
     width: 400px;
-    margin: 0 auto;
     display: flex;
     justify-self: center;
     flex-direction: column;
@@ -31,8 +30,7 @@ aside{
     border-radius: 5px;
     background-color: var(--wrapper-background-color);
     position: relative;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px auto;
 }
 
 .wrapper img {
