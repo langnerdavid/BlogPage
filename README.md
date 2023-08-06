@@ -1,24 +1,56 @@
 # BlogPage
+von David Langner und Tarek Bürner
 ## Accesibility
 ### Was bedeutet Accessibility im Kontext der Webentwicklung? 
-Accessibility (Barrierefreiheit) in der Webentwicklung bezieht sich darauf, Websites und Webanwendungen so zu gestalten und zu entwickeln, dass sie für alle Menschen zugänglich sind, unabhängig von ihren individuellen Fähigkeiten oder Einschränkungen. Das Ziel ist es, eine Online-Erfahrung zu schaffen, bei der niemand ausgeschlossen wird und alle Nutzerinnen und Nutzer die gleichen Informationen und Dienstleistungen gleichermaßen nutzen können.
-
-Dies erfordert die Verwendung semantischer HTML-Codes, um die Struktur und Bedeutung der Inhalte klar zu definieren, die Bereitstellung alternativer Texte für Bilder, die Verwendung von Untertiteln und Transkripten für Videos, die Gestaltung von gut erkennbaren Farben und Kontrasten sowie die Anpassung an verschiedene Bildschirmgrößen und Geräte.
-
-Accessibility ist nicht nur eine ethische Verpflichtung, sondern auch gesetzlich vorgeschrieben, da viele Länder Richtlinien zur Barrierefreiheit haben. Unternehmen und Organisationen, die barrierefreie Websites bereitstellen, zeigen nicht nur ihr Engagement für soziale Verantwortung und Gleichberechtigung, sondern erreichen auch eine größere Zielgruppe. Somit ist Accesability nicht nur ein MIttel zum Zweck sondern schafft auch einen klaren Wettebwerbsvorteil.
-
-Insgesamt ist Accessibility in der Webentwicklung ein wichtiger Schritt, um sicherzustellen, dass das Internet für alle zugänglich ist und eine inklusive digitale Welt zu schaffen. Es ist eine bedeutende Maßnahme, um sicherzustellen, dass Informationen und Dienstleistungen für alle Menschen zugänglich sind, unabhängig von ihren individuellen Fähigkeiten oder technischen Voraussetzungen.
-
+Accessibility (Barrierefreiheit) in der Webentwicklung bezieht sich darauf, Websites und Webanwendungen so 
+zu gestalten und zu entwickeln, dass sie für alle Menschen zugänglich sind, unabhängig von ihren individuellen 
+Fähigkeiten oder Einschränkungen. Das vorrangige Ziel ist es, eine inklusive Online-Erfahrung zu schaffen, bei 
+der niemand aufgrund von körperlichen, kognitiven oder technischen Hindernissen ausgeschlossen wird. Jede*r 
+Nutzer*in soll die gleichen Informationen und Dienstleistungen gleichermaßen nutzen können. 
+ 
+Um diese Barrierefreiheit zu erreichen, ist es von entscheidender Bedeutung, dass Entwicklerinnen und 
+Entwickler auf semantische HTML-Codes setzen, die die Struktur und Bedeutung der Inhalte klar definieren. 
+Eine sorgfältige Wahl der HTML-Elemente ermöglicht es Benutzern von Screenreadern und anderen 
+Assistenztechnologien, den Inhalt besser zu verstehen und effektiv zu navigieren. 
+ 
+Des Weiteren ist die Bereitstellung alternativer Texte für Bilder ein wesentlicher Bestandteil der 
+Barrierefreiheit. Durch die Angabe von aussagekräftigen Alt-Texten erhalten Benutzer mit Seheinschränkungen 
+eine klare Beschreibung des Bildinhalts, auch wenn das Bild selbst nicht angezeigt wird. Dies gewährleistet, 
+dass die Website für alle Nutzer*innen zugänglich ist. 
+ 
+Ein weiterer Aspekt der Accessibility betrifft die Gestaltung von Farben und Kontrasten. Die Wahl von gut 
+erkennbaren Farbpaletten und ausreichendem Kontrast zwischen Text und Hintergrund verbessert die 
+Lesbarkeit und Nutzbarkeit der Website, insbesondere für Menschen mit Sehbeeinträchtigungen. Indem diese 
+Aspekte berücksichtigt werden, wird die visuelle Erfahrung für alle Besucherinnen und Besucher angenehmer. 
+ 
+Zusätzlich zur Beachtung der visuellen Aspekte sollte eine barrierefreie Website auch auf verschiedene 
+Bildschirmgrößen und Geräte reagieren können. Eine responsive Gestaltung stellt sicher, dass die Inhalte auf 
+mobilen Geräten genauso zugänglich sind wie auf Desktop-Computern. 
+ 
+Accessibility ist nicht nur eine moralische Verpflichtung, sondern auch gesetzlich vorgeschrieben, da viele 
+Länder spezifische Richtlinien und Gesetze zur Barrierefreiheit haben. Unternehmen und Organisationen, die 
+eine barrierefreie Website bereitstellen, demonstrieren ihr Engagement für soziale Verantwortung und 
+Gleichberechtigung. Darüber hinaus profitieren sie von einem erweiterten Publikum und einem klaren 
+Wettbewerbsvorteil. 
+ 
+Insgesamt ist Accessibility in der Webentwicklung ein bedeutsamer Schritt, um sicherzustellen, dass das 
+Internet für alle zugänglich ist und eine inklusive digitale Welt geschaffen wird. Es ist eine bedeutende 
+Maßnahme, um sicherzustellen, dass Informationen und Dienstleistungen für alle Menschen zugänglich sind, 
+unabhängig von ihren individuellen Fähigkeiten oder technischen Voraussetzungen.
 
 ### Accessibility am Beispiel unserer Website
-Beim Gestalten der Webanwendung wurde darauf geachtet, semantisch sinnvollen HTML-Code zu entwickeln. Als Beispiele hierfür ist aufzuführen, dass die Elemente in der Navigationsleiste in dem dafür vorgesehenen `<nav>`-Element stehen. Ebenso wurden Artikel im `<article>`-Tag eingefügt, um die Struktur des Inhalts klarer zu definieren. Das gleiche Prinzip wurde auch bei der Verwendung von `<sections>`, `<h>`, `<header>` und `<footer>` angewendet, um die semantische Bedeutung jedes Abschnitts der Website zu verdeutlichen. Durch diese sinnvolle Strukturierung des HTML-Codes wird es Benutzern von Screenreadern und anderen Assistenztechnologien ermöglicht, den Inhalt besser zu verstehen und die Navigation erleichtert.
+Bei der Gestaltung unserer Webanwendung haben wir besonderes Augenmerk auf die Umsetzung von Accessibility (Barrierefreiheit) gelegt, um sicherzustellen, dass unsere Website für alle Nutzerinnen und Nutzer zugänglich und benutzbar ist, unabhängig von ihren individuellen Fähigkeiten oder technischen Voraussetzungen.
 
-Ein weiterer wichtiger Aspekt der Accessibility ist die richtige Verwendung von Alternativtexten für Bilder. Bei verwendeten Bildern wurde der entsprechende Inhalt im alt-Text angegeben. Dadurch wird sichergestellt, dass die Webseite auch von Benutzern mit Screenreadern korrekt interpretiert werden kann und sie so den Kontext der Bilder verstehen können, selbst wenn diese nicht angezeigt werden.
+Ein wesentlicher Schritt in dieser Richtung war die Verwendung semantisch sinnvoller HTML-Code-Elemente. Wir haben dafür gesorgt, dass die Elemente in der Navigationsleiste im dafür vorgesehenen `<nav>`-Element stehen, Artikel im `<article>`-Tag eingefügt wurden und die Struktur des Inhalts durch `<sections>`, '`<h>`, `<header>` und `<footer>` klar definiert wurde. Dadurch wird nicht nur die visuelle Darstellung verbessert, sondern auch Benutzern von Screenreadern und anderen Assistenztechnologien eine bessere Verständlichkeit und Navigation ermöglicht.
 
-Darüber hinaus wurde bei der Farbwahl auf hohe Kontraste zwischen Text und Hintergrund geachtet. Ein ausreichender Kontrast gewährleistet, dass der Text leicht lesbar ist, insbesondere für Personen mit Sehbeeinträchtigungen. Dadurch wird die Lesbarkeit und Benutzbarkeit der Webseite für alle Besucher verbessert.
+Ein weiterer bedeutender Schwerpunkt lag auf der angemessenen Verwendung von Alternativtexten für Bilder. Für jedes verwendete Bild haben wir relevante und aussagekräftige Alt-Texte bereitgestellt. Auf diese Weise können auch Nutzerinnen und Nutzer mit Seheinschränkungen den Kontext und die Bedeutung der Bilder verstehen, selbst wenn diese nicht sichtbar sind.
 
-Um die Accessibility zusätzlich zu steigern, wurde auch darauf geachtet, dass die Bedienung der Webseite auch ausschließlich mit der Tastatur möglich ist. Dazu wurde beispielsweise die Funktion ergänzt, dass eine Suche mit der Enter-Taste bestätigt werden kann. Dies stellt sicher, dass Benutzer, die aus verschiedenen Gründen keine Maus verwenden können, die Webseite vollständig und effizient nutzen können.
+Um die Lesbarkeit und Benutzbarkeit für alle Besucherinnen und Besucher zu gewährleisten, haben wir hohe Kontraste zwischen Text und Hintergrund in unserer Farbwahl berücksichtigt. Dadurch wird der Text gut lesbar, insbesondere für Menschen mit Sehbeeinträchtigungen.
 
-Ein weiterer Schwerpunkt lag auf der klaren Darstellung von Funktionen und Inhalten, unabhängig von der Farbwahrnehmung der Benutzer. Anstatt sich ausschließlich auf Farbcodierung zu verlassen, wurden immer zusätzlich zu den entsprechenden Farben auch Icons wie eine Mülltonne oder ein Stift eingefügt, um die Funktionen zu kennzeichnen. Dadurch wird sichergestellt, dass auch farbenblinde Menschen die Webseite ohne Einschränkungen nutzen können und keine wichtigen Informationen oder Funktionen aufgrund der Farbgestaltung übersehen.
-## Zu beachtende Punkte bei unserer Website
+Ein weiterer Meilenstein in der Umsetzung von Accessibility war die Integration einer Tastaturnavigation. Unsere Website kann vollständig und effizient mit der Tastatur navigiert werden, sodass Benutzerinnen und Benutzer, die keine Maus verwenden können, die Seite mühelos bedienen können. Beispielsweise haben wir die Funktion implementiert, dass die Suche mit der Enter-Taste bestätigt werden kann.
+
+Zusätzlich zu den visuellen Hinweisen durch Farbcodierung haben wir Icons wie eine Mülltonne oder ein Stift eingefügt, um Funktionen und Inhalte zu kennzeichnen. Dies stellt sicher, dass auch farbenblinde Menschen die Website ohne Einschränkungen nutzen können und keine wichtigen Informationen oder Funktionen aufgrund der Farbgestaltung übersehen.
+
+Durch die konsequente Umsetzung dieser Accessibility-Maßnahmen haben wir eine barrierefreie Website geschaffen, die allen Nutzern und Nutzerinnen eine inklusive und angenehme Online-Erfahrung bietet. Unsere Website steht allen offen und erfüllt die Anforderungen einer vielfältigen Zielgruppe, indem sie gleichermaßen benutzerfreundlich und zugänglich für alle ist.
+## Zu beachtende Punkte bei unserer WebsiteB
 - es dauert manchmal ein bisschen Zeit, bis alles von der API gepulled wurde
