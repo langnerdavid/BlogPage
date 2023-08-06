@@ -7,6 +7,7 @@ let logOutButton;
 let profileToggleDiv;
 let profileButtonLink;
 let hamburgerMenuMobile;
+let isGreater600;
 
 //Alle Elemente bei kleinen screens
 if(window.innerWidth>=600){
@@ -16,12 +17,14 @@ if(window.innerWidth>=600){
     profileButtonLink = document.getElementsByClassName('profile-button-link')[0];
     signInButton = document.getElementById('sign-in-button');
     registerButton = document.getElementById('register-button');
+    isGreater600=true;
 }else{
     profileButton = document.getElementsByClassName('profile-button')[1];    
     logOutButton = document.getElementsByClassName('log-out-button')[1];
     profileToggleDiv = document.getElementsByClassName('profile-toggle-div')[1];
     profileButtonLink = document.getElementsByClassName('profile-button-link')[1];
     hamburgerMenuMobile = document.getElementById('hamburger-menu');
+    isGreater600=true;
 }
 
 let isSearchInputOpen = false;
@@ -35,7 +38,26 @@ profileButtonLink.addEventListener('click', () =>{
 
 checkUserSignedIn(); //hier wird überprüft, ob aktuell jemand angemeldet ist, um dann den Header anzupassen
 
-
+addEventListener("resize", () => {
+    if(window.innerWidth>=600 && isGreater600 === false){
+        profileButton = document.getElementsByClassName('profile-button')[0];
+        logOutButton = document.getElementsByClassName('log-out-button')[0];
+        profileToggleDiv = document.getElementsByClassName('profile-toggle-div')[0];
+        profileButtonLink = document.getElementsByClassName('profile-button-link')[0];
+        signInButton = document.getElementById('sign-in-button');
+        registerButton = document.getElementById('register-button');
+        isGreater600 = true;
+        checkUserSignedIn();
+    }else if(window.innerWidth<600 && isGreater600 === true){
+        profileButton = document.getElementsByClassName('profile-button')[1];    
+        logOutButton = document.getElementsByClassName('log-out-button')[1];
+        profileToggleDiv = document.getElementsByClassName('profile-toggle-div')[1];
+        profileButtonLink = document.getElementsByClassName('profile-button-link')[1];
+        hamburgerMenuMobile = document.getElementById('hamburger-menu');
+        isGreater600 = false;
+        checkUserSignedIn();
+    }
+});
 //Hier wird überprüft ob der User angemeldet werden muss (wenn er remember me gesetzt hat)
 function checkUserSignedIn(){
     isUserSignedIn = sessionStorage.getItem('isUserSignedIn');
