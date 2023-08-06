@@ -17,7 +17,8 @@ if(window.screen.width>=600){
     signInButton = document.getElementById('sign-in-button');
     registerButton = document.getElementById('register-button');
 }else{
-    profileButton = document.getElementsByClassName('profile-button')[1];    logOutButton = document.getElementsByClassName('log-out-button')[1];
+    profileButton = document.getElementsByClassName('profile-button')[1];    
+    logOutButton = document.getElementsByClassName('log-out-button')[1];
     profileToggleDiv = document.getElementsByClassName('profile-toggle-div')[1];
     profileButtonLink = document.getElementsByClassName('profile-button-link')[1];
     hamburgerMenuMobile = document.getElementById('hamburger-menu');
