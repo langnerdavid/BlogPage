@@ -9,7 +9,7 @@ let profileButtonLink;
 let hamburgerMenuMobile;
 
 //Alle Elemente bei kleinen screens
-if(window.screen.width>=600){
+if(window.innerWidth>=600){
     profileButton = document.getElementsByClassName('profile-button')[0];
     logOutButton = document.getElementsByClassName('log-out-button')[0];
     profileToggleDiv = document.getElementsByClassName('profile-toggle-div')[0];
@@ -63,7 +63,7 @@ function testSignedIn(){
         signInButton?.classList.add('hidden');
         registerButton?.classList.add('hidden');
         hamburgerMenuMobile?.classList.add('hidden');
-    }else if(window.screen.widht>=600){
+    }else if(window.innerWidth>=600){
         signInButton.addEventListener('click', () =>{window.open("../Login/login.html","_self");});
         registerButton.addEventListener('click', () =>{window.open("../Register/register.html","_self");});
         profileButton.classList.add('hidden');
