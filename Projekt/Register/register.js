@@ -2,7 +2,7 @@ const formInputs = document.getElementById('register-form').getElementsByTagName
 const usernameInput = formInputs[0];
 const passwordInput = formInputs[1];
 const displayNameInput = formInputs[2];
-const descriptionInput = document.getElementById('description-input');
+const descriptionInput = document.getElementById('description');
 const eyeShowPassword = document.getElementById('eye-show-password');
 
 function validateTextarea() {
