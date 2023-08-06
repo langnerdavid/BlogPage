@@ -53,6 +53,6 @@ Zusätzlich zu den visuellen Hinweisen durch Farbcodierung wurden Icons wie eine
 
 Durch die konsequente Umsetzung dieser Accessibility-Maßnahmen wurde eine barrierefreie Website geschaffen, die allen Nutzern und Nutzerinnen eine inklusive und angenehme Online-Erfahrung bietet. Die Website steht allen offen und erfüllt die Anforderungen einer vielfältigen Zielgruppe, indem sie gleichermaßen benutzerfreundlich und zugänglich für alle ist.
 ## Zu beachtende Punkte bei unserer Website
-- Da der Header für das responsible Design in Js Abhängig von der screen.width geändert wird, sollte die Website entweder mit einem Smartphone oder mit Chrome im Device Mode getestet werden
+- Da der Header für das responsible Design in Js Abhängig von der screen.width geändert wird, sollte die Website entweder mit einem Smartphone oder mit Chrome im Device Mode getestet werden. Alternativ kann man auch die Seite reloaden.
 - es dauert manchmal ein bisschen Zeit, bis alles von der API gepulled wurde
 - etwas magisches passiert, wenn man auf den Footer drückt
